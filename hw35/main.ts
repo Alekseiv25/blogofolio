@@ -1,14 +1,18 @@
-type UsersType = {
+interface IUsers  {
     name: string
     phone: string
     email: string
-    animals?: string[]
-    cars?: string[]
+    animals?: AnimalsType[]
+    cars?: CarsType[]
     hasChildren: boolean
     hasEducation: boolean
 }
 
-const users: UsersType[] = [
+type CarsType = "bmw" | "audi"
+
+type AnimalsType = "cat" | "dog"
+
+const users: IUsers[] = [
     {
         name: "Harry Felton",
         phone: "(09) 897 33 33",
@@ -45,19 +49,19 @@ const amountCars: number = (users.filter(users => users.cars).reduce((total, amo
 console.log(amountCars)
 
 // //3
-function hasEducation(arr: UsersType[]): UsersType[] {
+function hasEducation(arr: IUsers[]): IUsers[] {
     return (arr.filter((users) => users.hasEducation))
 }
 console.log(hasEducation(users));
 
 //4
-function hasAnimal(arr: UsersType[]): UsersType[] {
+function hasAnimal(arr: IUsers[]): IUsers[] {
     return (arr.filter((users) => users.animals))
 }
 console.log(hasAnimal(users));
 
 //5
-function carsName(arr: UsersType[]): string {
+function carsName(arr: IUsers[]): string {
     return arr.filter((users) => users.cars).map((users) => users.cars).join(',')
 }
 console.log(carsName(users));
