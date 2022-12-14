@@ -1,4 +1,3 @@
-// 1. 
 var faculties = [
     {
         id: 1,

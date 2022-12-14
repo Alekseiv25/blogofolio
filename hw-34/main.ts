@@ -1,13 +1,16 @@
 // 1. 
-
-type FacultiesType = {
-    id: number,
-    faculty: "History department" | "Department of Biology" | "Faculty of Mathematics" | "Faculty of Design",
-    subjects: string[]
+interface Ifaculties {
+    id: number
+    faculty: FacultiesType
+    subjects: SubjectsType[]
     countStudents: number
 }
 
-const faculties: FacultiesType[] = [
+type FacultiesType = "History department" | "Department of Biology" | "Faculty of Mathematics" | "Faculty of Design"
+
+type SubjectsType = "The World History" | "History of Rome" | "biology" | "chemistry" | "mathematics" | "geometry" | "trigonometry" | "ui" | "ux" | "graphic design"
+
+const faculties: Ifaculties[] = [
     {
         id: 1,
         faculty: "History department",
@@ -37,27 +40,37 @@ const faculties: FacultiesType[] = [
 // 2.
 
 
-type MoviesType = {
+interface IMovies {
     id: number
-    title: string
+    title: TitleType
     year: number
     released: string
     runtime: string
-    genre: string
-    director: string
+    genre: GenreType[]
+    director: DirectorType
     writer: string
-    actors: string[]
+    actors: ActorsType[]
     plot: string
     country: string
     poster: string
     imdbRating: number
     imdbVotes: number
-    type: 'movie'
+    type: MovieType
     boxOffice: string
     production: string
 }
 
-const movies: MoviesType[] = [
+type TitleType = "Black Widow" | "Harry Potter and the Deathly Hallows: Part 2"
+
+type GenreType = "Action" | "Sci-Fi" | "Adventure" | "Drama" | "Fantasy"
+
+type DirectorType = "Cate Shortland" | "David Yates"
+
+type ActorsType = "Scarlett Johansson" | "Florence Pugh" | "David Harbour" | "Daniel Radcliffe" | "Emma Watson" | "Rupert Grint"
+
+type MovieType = "movie" | "cartoon"
+
+const movies: IMovies[] = [
     {
         id: 1,
         title: "Black Widow",
