@@ -1,7 +1,19 @@
 // .App {
 //   text-align: center;
 // }
-.App-header {display: flex;}
+* {
+    box-sizing: border-box;
+
+}
+
+.App-header {
+    max-width: 1380px;
+    margin: 0 auto;
+}
+
+
+
+
 // .App-logo {
 //   height: 40vmin;
 //   pointer-events: none;

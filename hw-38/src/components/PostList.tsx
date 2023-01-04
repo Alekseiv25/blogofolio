@@ -2,6 +2,7 @@ import { useState } from "react"
 import { getAllPosts } from "./PostService"
 import { IPost } from './PostService'
 import style from "./PostList.module.scss"
+import { DislikeButton, FavoriteButton, Appl  } from "./Buttons/Buttons"
 
 
 
@@ -28,13 +29,18 @@ export const PostList = () => {
             {
                 posts.map((posts) => (
                     <>
-                        <div key={posts.id} className={style.post}>
+                        <div className={style.post}>
                             <div>
-                                <p className={style.date}>{posts.date}</p>
-                                <p key={posts.id} className={style.title}>{posts.title} </p>
-                                <p key={posts.id} className={style.text}>{posts.text}</p>
+                                <div className={style.titlewrapper}>
+                                    <p className={style.date}>{posts.date}</p>
+                                    <p className={style.title}>{posts.title} </p>
+                                    <p className={style.text}>{posts.text}</p></div>
                             </div>
-                            <img key={posts.id} className={style.image} width='100' height='100' src={posts.image} alt='123'></img>
+                            <img className={style.image} width='100' height='100' src={posts.image} alt='123'></img>
+                            <Appl/>
+                            {/* <LikeButton /> */}
+                            <DislikeButton />
+                            <FavoriteButton />
                         </div>
                     </>))}
         </div>)
