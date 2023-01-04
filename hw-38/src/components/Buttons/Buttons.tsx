@@ -4,7 +4,7 @@ import FavButton from './favorite.svg'
 import style from './Buttons.module.scss'
 import { useState } from 'react'
 
-export const Appl = () => {
+export const Buttons = () => {
     const [likeCount, setLikeCount] = useState(Math.floor(Math.random() * 100))
     const [likeActive, setLikeActive] = useState(false)
     const [dislikeActive, setDislikeActive] = useState(false)
@@ -40,7 +40,7 @@ export const Appl = () => {
         setFavActive(prev2 => !prev2)
     }
 
-    
+
 
 
 
