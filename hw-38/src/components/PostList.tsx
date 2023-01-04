@@ -2,13 +2,14 @@ import { useState } from "react"
 import { getAllPosts } from "./PostService"
 import { IPost } from './PostService'
 import style from "./PostList.module.scss"
-import { DislikeButton, FavoriteButton, Appl  } from "./Buttons/Buttons"
+import { Appl } from "./Buttons/Buttons"
 
 
 
 
 export const PostList = () => {
     const [posts, setPosts] = useState<IPost[]>([])
+
 
     getAllPosts(10).then(data => {
         setPosts(data)
@@ -36,11 +37,8 @@ export const PostList = () => {
                                     <p className={style.title}>{posts.title} </p>
                                     <p className={style.text}>{posts.text}</p></div>
                             </div>
-                            <img className={style.image} width='100' height='100' src={posts.image} alt='123'></img>
-                            <Appl/>
-                            {/* <LikeButton /> */}
-                            <DislikeButton />
-                            <FavoriteButton />
+                            <img className={style.image} src={posts.image} alt='123'></img>
+                            <Appl />
                         </div>
                     </>))}
         </div>)

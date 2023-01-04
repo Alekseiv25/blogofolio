@@ -55,7 +55,9 @@
 
         .image {
             border-radius: 15px;
-            width: 50%;
+            width: 100px;
+            height: 100px;
+            min-width: 50%;
         }
     }
 }
