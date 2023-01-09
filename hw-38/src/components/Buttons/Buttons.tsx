@@ -5,10 +5,10 @@ import style from './Buttons.module.scss'
 import { useState } from 'react'
 
 export const Buttons = () => {
-    const [likeCount, setLikeCount] = useState(Math.floor(Math.random() * 100))
-    const [likeActive, setLikeActive] = useState(false)
-    const [dislikeActive, setDislikeActive] = useState(false)
-    const [dislikeCount, setDislikeCount] = useState(Math.floor(Math.random() * 50))
+    const [likeCount, setLikeCount] = useState<number>(Math.floor(Math.random() * 100))
+    const [likeActive, setLikeActive] = useState<boolean>(false)
+    const [dislikeActive, setDislikeActive] = useState<boolean>(false)
+    const [dislikeCount, setDislikeCount] = useState<number>(Math.floor(Math.random() * 50))
 
     const [favActive, setFavActive] = useState(false)
 
