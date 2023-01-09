@@ -1,20 +1,18 @@
-import { useState, useEffect } from "react"
-import { getAllPosts } from "./PostService"
-import { IPost } from './PostService'
+import { useState } from "react"
+import { getAllPosts, IPost } from '../PostService'
 import style from "./PostList.module.scss"
-import { PostItem } from "./PostItem"
+import { PostItem } from "./PostItem/PostItem"
 
-
+export interface IRes {
+    count: number
+    results: IPost[]
+}
 
 
 export const PostList = () => {
     const [posts, setPosts] = useState<IPost[]>([])
 
-
-    getAllPosts(10).then(data => {
-        setPosts(data)
-        console.log(data);
-    })
+    getAllPosts().then((post) => { setPosts(post) })
 
     if (!posts.length) {
         return (
@@ -26,7 +24,7 @@ export const PostList = () => {
     return (
         <div className={style.posts}>
             {posts.map((el) => (
-                <PostItem key={el.id} user={el} />
+                <PostItem key={el.id} user={el} id={0} image={""} text={""} lesson_num={0} title={""} date={0} />
             ))
             }
         </div>)

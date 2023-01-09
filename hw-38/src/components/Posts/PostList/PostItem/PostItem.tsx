@@ -1,8 +1,8 @@
-import { IPost } from './PostService'
-import style from './PostList.module.scss'
-import { Buttons } from './Buttons/Buttons'
+import { IPost } from '../../PostService'
+import style from './PostItem.module.scss'
+import { Buttons } from '../../../Buttons/Buttons'
 
-export const PostItem = (props: any) => {
+export const PostItem = (props: IPost) => {
 
 
     return (<div className={style.post}>
