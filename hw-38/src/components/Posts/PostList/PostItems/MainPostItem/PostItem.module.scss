@@ -1,12 +1,17 @@
 .post {
     position: relative;
     background-color: rgb(214, 214, 214);
-    display: flex;
     margin: 10px;
     justify-content: space-between;
     min-height: 200px;
     border-radius: 15px;
     padding: 10px;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
 
     .titlewrapper {
         background-color: rgb(160, 157, 157);
@@ -45,8 +50,7 @@
 
     .image {
         border-radius: 15px;
-        width: 100px;
-        height: 100px;
-        min-width: 50%;
+        max-height: 200px;
+        width: 500px;
     }
 }

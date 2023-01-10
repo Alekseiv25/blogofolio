@@ -1,101 +1,101 @@
-.LikeButton {
-    width: 50px;
-    height: 50px;
-    background: rgb(94, 94, 255);
-    position: absolute;
-    left: 12px;
-    bottom: 14px;
+.container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s;
-    border: 0px solid;
-    border-radius: 50%;
-    cursor: pointer;
+    justify-content: space-between;
 
-    img {
-        width: 100%;
-        height: 100%;
+    .LikeButton {
+        margin-right: 5px;
+        width: 50px;
+        height: 50px;
+        background: rgb(94, 94, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+        border: 0px solid;
+        border-radius: 50%;
+        cursor: pointer;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
-}
 
-.LikeCounter {
-    position: absolute;
-    left: 65px;
-    bottom: 15px;
-    font-size: 24px;
-}
+    .LikeCounter {
 
-.LikeButton:hover {
-    transform: scale(1.1);
-}
-
-.DislikeButton {
-    width: 50px;
-    height: 50px;
-    background: rgb(255, 0, 0);
-    position: absolute;
-    left: 105px;
-    bottom: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s;
-    border: 0px solid;
-    border-radius: 50%;
-    cursor: pointer;
-
-    img {
-        width: 100%;
-        height: 100%;
+        font-size: 24px;
+        margin-right: 15px;
     }
-}
 
-.dislikeCounter {
-    position: absolute;
-    left: 165px;
-    bottom: 15px;
-    font-size: 24px;
-}
-
-.DislikeButton:hover {
-    transform: scale(1.1);
-}
-
-
-.FavoriteButton {
-    width: 50px;
-    height: 50px;
-    background-color: gold;
-    position: absolute;
-    right: 5px;
-    bottom: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s;
-    border: 0px solid;
-    border-radius: 50%;
-    cursor: pointer;
-
-    img {
-        width: 100%;
-        height: 100%;
+    .LikeButton:hover {
+        transform: scale(1.1);
     }
-}
 
-.FavoriteButton:hover {
-    transform: scale(1.1);
-}
+    .DislikeButton {
+        margin-right: 5px;
+        width: 50px;
+        height: 50px;
+        background: rgb(255, 0, 0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+        border: 0px solid;
+        border-radius: 50%;
+        cursor: pointer;
 
-.likeActive {
-    background-color: rgb(0, 255, 191);
-}
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
 
-.dislikeActive {
-    background-color: rgb(255, 0, 98);
-}
+    .dislikeCounter {
+        font-size: 24px;
+    }
 
-.favActive {
-    background-color: rgb(72, 255, 0);
+    .DislikeButton:hover {
+        transform: scale(1.1);
+    }
+
+
+    .FavoriteButton {
+        width: 50px;
+        height: 50px;
+        background-color: gold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+        border: 0px solid;
+        border-radius: 50%;
+        cursor: pointer;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .FavoriteButton:hover {
+        transform: scale(1.1);
+    }
+
+    .likeActive {
+        background-color: rgb(0, 255, 191);
+    }
+
+    .dislikeActive {
+        background-color: rgb(255, 0, 98);
+    }
+
+    .favActive {
+        background-color: rgb(72, 255, 0);
+    }
+
+    .LikeDislikeContainer {
+        display: flex;
+        justify-content: space-between;
+    }
+
 }

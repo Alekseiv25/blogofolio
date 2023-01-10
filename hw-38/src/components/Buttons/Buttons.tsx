@@ -44,8 +44,9 @@ export const Buttons = () => {
 
 
 
-    return (<><button className={`${style.LikeButton} ${likeActive ? `${style.likeActive}` : ''}`} onClick={LikeCount} >
-        <img src={LikeIco} alt="LikeIco" /></button>
+    return (<div className={style.container}><div className={style.LikeDislikeContainer}>
+        <button className={`${style.LikeButton} ${likeActive ? `${style.likeActive}` : ''}`} onClick={LikeCount} >
+            <img src={LikeIco} alt="LikeIco" /></button>
         <div className={style.LikeCounter}>{likeCount}</div>
 
 
@@ -53,9 +54,10 @@ export const Buttons = () => {
             <img src={DislikeIco} alt="DislikeIco" />
         </button>
         <div className={style.dislikeCounter}>{dislikeCount}</div>
+    </div>
 
         <button className={`${style.FavoriteButton} ${favActive ? `${style.favActive}` : ''}`}><img src={FavButton} alt="FavButton" onClick={ChangeBg} /></button>
-    </>)
+    </div>)
 
 }
 

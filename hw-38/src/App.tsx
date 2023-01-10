@@ -6,8 +6,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <PostList/>
       </header>
+      <main>
+      <PostList/>
+      </main>
     </div>
   );
 }

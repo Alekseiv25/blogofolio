@@ -1,7 +1,10 @@
 import { useState } from "react"
 import { getAllPosts, IPost } from '../PostService'
 import style from "./PostList.module.scss"
-import { PostItem } from "./PostItem/PostItem"
+import { MainPostItem } from "./PostItems/MainPostItem/PostItem"
+import { BottomPostItem } from "./PostItems/BottomPostItem/BottomPostItem"
+import { AsidePostItem } from "./PostItems/AsidePostItem/AsidePostItem"
+
 
 export interface IRes {
     count: number
@@ -22,10 +25,27 @@ export const PostList = () => {
     }
 
     return (
+
         <div className={style.posts}>
-            {posts.map((el) => (
-                <PostItem key={el.id} user={el} id={0} image={""} text={""} lesson_num={0} title={""} date={0} />
-            ))
-            }
-        </div>)
+            <div className={style.leftPosts}>
+                <div className={style.mainPost}>
+                    {posts.slice(0, 1).map((el) => (
+                        <MainPostItem key={el.id} user={el} id={0} image={""} text={""} date={0} title={""}  />
+                    ))
+                    }
+                </div>
+                <div className={style.bottomPosts}>
+                    {posts.slice(2, 6).map((el) => (
+                        <BottomPostItem key={el.id} user={el} id={0} image={""} text={""} date={0} title={""} />
+                    ))}
+                </div></div>
+            <aside className={style.asidePosts}>
+                {posts.slice(7, 10).map((el) => (
+                    <AsidePostItem key={el.id} user={el} id={0} image={""} text={""} date={0} title={""} />
+                ))}
+            </aside>
+        </div>
+
+
+    )
 }

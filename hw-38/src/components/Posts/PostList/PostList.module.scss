@@ -3,10 +3,28 @@
 }
 
 .posts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    grid-gap: 0px;
-    grid-auto-flow: dense;
+    display: flex;
+    width: 1100px;
+    margin: 0 auto;
+
+    .leftPosts {
+        width: 70%;
+
+
+        .bottomPosts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+
+
+    .asidePosts {
+
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+    }
 
 }
 
@@ -35,7 +53,7 @@
 }
 
 @keyframes dash {
-    0% { 
+    0% {
         stroke-dasharray: 1, 150;
         stroke-dashoffset: 0;
     }
