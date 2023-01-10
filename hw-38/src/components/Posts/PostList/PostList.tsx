@@ -30,18 +30,18 @@ export const PostList = () => {
             <div className={style.leftPosts}>
                 <div className={style.mainPost}>
                     {posts.slice(0, 1).map((el) => (
-                        <MainPostItem key={el.id} user={el} id={0} image={""} text={""} date={0} title={""}  />
+                        <MainPostItem key={el.id} image={el.image} text={el.text} date={el.date} title={el.title}  />
                     ))
                     }
                 </div>
                 <div className={style.bottomPosts}>
                     {posts.slice(2, 6).map((el) => (
-                        <BottomPostItem key={el.id} user={el} id={0} image={""} text={""} date={0} title={""} />
+                        <BottomPostItem key={el.id} image={el.image} text={el.text} date={el.date}  title={el.title} />
                     ))}
                 </div></div>
             <aside className={style.asidePosts}>
-                {posts.slice(7, 10).map((el) => (
-                    <AsidePostItem key={el.id} user={el} id={0} image={""} text={""} date={0} title={""} />
+                {posts.slice(7, 12).map((el) => (
+                    <AsidePostItem key={el.id} image={el.image} text={el.text} date={el.date}  title={el.title} />
                 ))}
             </aside>
         </div>

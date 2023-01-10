@@ -1,7 +1,5 @@
  export interface IPost {
-    user: any 
-    // Как сделать не эни
-    id: number
+    id?: number
     image: string
     text: string
     date: number
@@ -15,7 +13,7 @@ export interface IRes {
     results: IPost[]
 }
 
-const baseUrl = 'https://studapi.teachmeskills.by/blog/posts/?limit=10'
+const baseUrl = 'https://studapi.teachmeskills.by/blog/posts/?limit=12'
 
 export const getAllPosts = () => {
     return (
