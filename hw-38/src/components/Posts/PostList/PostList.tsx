@@ -4,7 +4,6 @@ import style from "./PostList.module.scss"
 import { MainPostItem } from "./PostItems/MainPostItem/PostItem"
 import { BottomPostItem } from "./PostItems/BottomPostItem/BottomPostItem"
 import { AsidePostItem } from "./PostItems/AsidePostItem/AsidePostItem"
-import { connectFetch } from "../HOC/ConnectFetch"
 
 
 export interface IRes {
@@ -17,10 +16,6 @@ export const PostList = () => {
     const [mainPost, setMainPost] = useState<IPost[]>([])
     const [bottomPost, setBottomPost] = useState<IPost[]>([])
     const [asidePost, setAsidePost] = useState<IPost[]>([])
-
-    const UserListComponent = connectFetch(MainPostItem, getAllPosts(1, 0))
-
-
 
     if (!mainPost.length) {
         getAllPosts(1, 0).then((post) => { setMainPost(post) })
