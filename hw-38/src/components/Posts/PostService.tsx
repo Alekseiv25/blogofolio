@@ -1,4 +1,4 @@
- export interface IPost {
+export interface IPost {
     id?: number
     image: string
     text: string
@@ -13,12 +13,12 @@ export interface IRes {
     results: IPost[]
 }
 
-const baseUrl = 'https://studapi.teachmeskills.by/blog/posts/?limit=12'
 
-export const getAllPosts = () => {
-    return (
-        fetch(baseUrl)
-            .then(response => response.json())
-            .then(((response: IRes) => response.results)))
-
+export const getAllPosts = (limit: number, offset: number) => {
+    return fetch(
+        'https://studapi.teachmeskills.by/blog/posts/'
+        + `?limit=${limit}&offset=${offset}`
+    )
+        .then(response => response.json())
+        .then(res => res.results)
 }
