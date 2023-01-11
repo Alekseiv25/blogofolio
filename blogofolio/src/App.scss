@@ -5,6 +5,34 @@
 
 }
 
+.Main {
+  background-color: #F3F3F3;
+  height: 90vh;
+}
+
+.Footer {
+  background-color: #F3F3F3;
+  display: flex;
+  justify-content: center;
+
+  .Wrapper {
+    width: 1120px;
+    border-top: 4px solid #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      color: #8D8E97;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+}
+
 .App-header {
   background-color: #2231AA;
 }

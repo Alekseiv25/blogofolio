@@ -1,5 +1,5 @@
 .BurgerMenu {
-    position: fixed;
+    position: absolute;
     left: 0;
 
     .content {
@@ -21,7 +21,6 @@
             align-items: center;
             border-bottom: 1px solid white;
             width: 100%;
-            padding: 20px;
         }
 
         ul {

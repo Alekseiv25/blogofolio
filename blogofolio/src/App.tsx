@@ -8,10 +8,15 @@ function App() {
       <header className="App-header">
         <NavBar />
       </header>
-      {/* <main className={bgState === 'light' ? style.lightBackground : style.darkBackground}>
-
-      </main> */}
+      <main className='Main'></main>
+      <footer className='Footer'>
+        <div className='Wrapper'>
+          <p >©2023 Blogofolio</p>
+          <p >All rights reserved</p>
+        </div>
+      </footer>
     </div>
+
   );
 }
 
