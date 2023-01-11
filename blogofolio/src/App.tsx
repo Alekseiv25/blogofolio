@@ -6,8 +6,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <NavBar/>
+        <NavBar />
       </header>
+      {/* <main className={bgState === 'light' ? style.lightBackground : style.darkBackground}>
+
+      </main> */}
     </div>
   );
 }
