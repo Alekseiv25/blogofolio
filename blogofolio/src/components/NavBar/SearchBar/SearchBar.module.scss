@@ -1,0 +1,20 @@
+.input {
+    padding: 20px;
+    border: 0px solid;
+    background-color: #5360CD;
+    box-shadow: none;
+    border-right: 1px solid white;
+    width: 85%;
+    display: none;
+}
+.wrapper {display: flex;}
+
+.active {display: flex;}
+
+.input:focus {
+    outline: 0
+}
+
+.input::placeholder {
+    color: white;
+}
