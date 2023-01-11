@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import { NavBar } from './components/NavBar/NavBar';
+import { SignIn } from './components/SignIn/SignIn';
 
 function App() {
   return (
@@ -8,7 +9,9 @@ function App() {
       <header className="App-header">
         <NavBar />
       </header>
-      <main className='Main'></main>
+      <main className='Main'>
+        <SignIn/>
+      </main>
       <footer className='Footer'>
         <div className='Wrapper'>
           <p >©2023 Blogofolio</p>
