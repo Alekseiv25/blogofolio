@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 import { NavBar } from './components/NavBar/NavBar';
 import { SignIn } from './components/SignIn/SignIn';
+import { Success } from './components/Success/Success';
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
         <NavBar />
       </header>
       <main className='Main'>
-        <SignIn/>
+        {/* <SignIn/> */}
+        <Success />
       </main>
       <footer className='Footer'>
         <div className='Wrapper'>
