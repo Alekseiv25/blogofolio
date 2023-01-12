@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 import { NavBar } from './components/NavBar/NavBar';
 import { PostList } from './components/PostList/PostList';
+import { SelectedPost } from './components/SelectedPost/SelectedPost';
 import { SignIn } from './components/SignIn/SignIn';
 import { Success } from './components/Success/Success';
 
@@ -14,7 +15,8 @@ function App() {
       <main className='Main'>
         {/* <SignIn/> */}
         {/* <Success /> */}
-        <PostList/>
+        {/* <PostList/> */}
+        <SelectedPost />
       </main>
       <footer className='Footer'>
         <div className='Wrapper'>

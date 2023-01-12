@@ -1,0 +1,37 @@
+.selectedPost {
+    max-width: 1120px;
+    margin: 0 auto;
+
+
+    .post {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 20px;
+
+
+        .title {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 56px;
+            line-height: 80px;
+            color: #313037;
+            align-self: center;
+        }
+
+        .image {
+            width: 100%;
+            max-width: 990px;
+            max-height: 520px;
+            align-self: center;
+        }
+
+        .text {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 32px;
+            color: #313037;
+        }
+    }
+}
