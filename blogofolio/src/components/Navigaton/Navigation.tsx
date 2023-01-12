@@ -2,13 +2,14 @@ import styles from './Navigation.module.scss'
 
 interface Props {
     text: string
+    backToHome: string
 }
 
 export const Navigation = (props: Props) => {
-    const { text } = props
+    const { text, backToHome } = props
 
     return (<div className={styles.navigation}>
-        <a href='#!'>Back to home</a>
+        <a href='#!'>{backToHome}</a>
         <h1>{text}</h1>
     </div>)
 }

@@ -4,7 +4,7 @@ import styles from './SignIn.module.scss'
 export const SignIn = () => {
     return (
         <>
-            <Navigation text={'Sign In'} />
+            <Navigation backToHome='Back to home' text={'Sign In'} />
             <form className={styles.Formwrapper}>
                 <span className={styles.text}>Email</span>
                 <input type="email" name="" id="" placeholder='Your email' />

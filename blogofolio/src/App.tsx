@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import { NavBar } from './components/NavBar/NavBar';
+import { PostList } from './components/PostList/PostList';
 import { SignIn } from './components/SignIn/SignIn';
 import { Success } from './components/Success/Success';
 
@@ -12,7 +13,8 @@ function App() {
       </header>
       <main className='Main'>
         {/* <SignIn/> */}
-        <Success />
+        {/* <Success /> */}
+        <PostList/>
       </main>
       <footer className='Footer'>
         <div className='Wrapper'>
