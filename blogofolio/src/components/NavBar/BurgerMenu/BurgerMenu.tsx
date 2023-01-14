@@ -6,15 +6,10 @@ import { DarkBtn } from './ThemeButtons/Dark/DarkButton'
 // import { useState } from 'react'
 
 export const BurgerMenu = () => {
-    // const [menuActive, setMenuActive] = useState(false)
-    // const setMenu = () => { setMenuActive(prev => !prev) }
-
     const [bgState, setBgState] = useState<'light' | 'dark'>('dark')
-
     const changeColorTheme = (style: 'light' | 'dark') => {
         setBgState(style)
     }
-
     return (
         <div className={styles.BurgerMenu}>
             <div className={styles.content}>
