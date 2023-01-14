@@ -13,13 +13,15 @@ function App() {
         <NavBar />
       </header>
       <main className='Main'>
-        {/* <SignIn/> */}
-        {/* <Success /> */}
-        {/* <PostList/> */}
-        <SelectedPost />
+        <div className='wrapper'>
+          <SignIn/>
+          {/* <Success /> */}
+          {/* <PostList/> */}
+          {/* <SelectedPost /> */}
+        </div>
       </main>
       <footer className='Footer'>
-        <div className='Wrapper'>
+        <div className='footer-wrapper'>
           <p >©2023 Blogofolio</p>
           <p >All rights reserved</p>
         </div>
