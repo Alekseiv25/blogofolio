@@ -7,16 +7,6 @@
     padding: 40px;
     border: 1px solid #DADADA;
 
-    .text {
-        font-style: normal;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 20px;
-        color: #313037;
-        margin-top: 20px;
-        margin-bottom: 10px;
-    }
-
     .passwordtext {
         font-style: normal;
         font-weight: 400;
@@ -26,25 +16,6 @@
         margin-top: 15px;
         margin-bottom: 40px;
         text-decoration: none;
-    }
-
-    input {
-        border: 0px;
-        border-radius: 2px;
-        background-color: white;
-        padding: 16px 32px;
-    }
-
-    input:focus {
-        outline: 0
-    }
-
-    .button {
-        background-color: #2231AA;
-        color: white;
-        display: flex;
-        justify-content: center;
-        cursor: pointer;
     }
 
     p {

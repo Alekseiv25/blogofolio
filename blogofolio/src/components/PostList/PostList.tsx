@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { getAllPosts, IPost } from "../Services/PostService"
 import styles from "./PostList.module.scss"
 import { MainPostItem } from './PostItems/MainPostItem/MainPostItem'
@@ -20,11 +20,12 @@ export const PostList = () => {
     const [bottomPost, setBottomPost] = useState<IPost[]>([])
     const [asidePost, setAsidePost] = useState<IPost[]>([])
 
-    if (!mainPost.length) {
-        getAllPosts(1, 0).then((post) => { setMainPost(post) })
-        getAllPosts(4, 1).then((post) => { setBottomPost(post) })
-        getAllPosts(5, 5).then((post) => { setAsidePost(post) })
-    }
+    useEffect(() => {
+        getAllPosts(1, 0).then(post => { setMainPost(post) })
+        getAllPosts(4, 1).then(post => { setBottomPost(post) })
+        getAllPosts(5, 5).then(post => { setAsidePost(post) })
+    }, [])
+
 
     if (!mainPost.length) {
         return (

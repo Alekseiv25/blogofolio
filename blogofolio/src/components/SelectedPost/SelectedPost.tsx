@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { PagesNav } from "../PostList/PagesNav/PagesNav"
 import { PostButtons } from "../PostList/PostButtons/PostButtons"
 import { getAllPosts, IPost } from "../Services/PostService"
@@ -8,9 +8,7 @@ import { SelectedPostNav } from "./SelectedPostNav/SelectedPostNav"
 export const SelectedPost = () => {
     const [selectedPost, setSelectedPost] = useState<IPost[]>([])
 
-    if (!selectedPost.length) {
-        getAllPosts(1, 0).then((post) => { setSelectedPost(post) })
-    }
+    useEffect(() => { getAllPosts(1, 0).then(post => { setSelectedPost(post) }) }, [])
 
 
     return (<section>
