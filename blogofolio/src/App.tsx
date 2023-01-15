@@ -4,6 +4,7 @@ import { NavBar } from './components/NavBar/NavBar';
 import { PostList } from './components/PostList/PostList';
 import { SelectedPost } from './components/SelectedPost/SelectedPost';
 import { SignIn } from './components/SignIn/SignIn';
+import { SignUp } from './components/SignUp/SignUp';
 import { Success } from './components/Success/Success';
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
       </header>
       <main className='Main'>
         <div className='wrapper'>
-          <SignIn/>
+          <SignUp/>
+          {/* <SignIn/> */}
           {/* <Success /> */}
           {/* <PostList/> */}
           {/* <SelectedPost /> */}

@@ -5,6 +5,7 @@ interface InputProps {
     label: string
     placeholder: string
     name: string
+    value?: any
 }
 
 //Что в onChange писать вместо any
