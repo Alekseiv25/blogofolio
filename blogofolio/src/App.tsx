@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+import { Confirmation } from './components/Confirmation/Confirmation';
 import { NavBar } from './components/NavBar/NavBar';
 import { PostList } from './components/PostList/PostList';
 import { SelectedPost } from './components/SelectedPost/SelectedPost';
@@ -15,9 +16,10 @@ function App() {
       </header>
       <main className='Main'>
         <div className='wrapper'>
-          <SignUp/>
+          {/* <SignUp/> */}
           {/* <SignIn/> */}
           {/* <Success /> */}
+          <Confirmation/>
           {/* <PostList/> */}
           {/* <SelectedPost /> */}
         </div>
