@@ -3,13 +3,23 @@ import { UserButton } from '../UserButton/UserButton'
 import { useState } from 'react'
 import { LightBtn } from './ThemeButtons/Light/LightButton'
 import { DarkBtn } from './ThemeButtons/Dark/DarkButton'
-// import { useState } from 'react'
 
-export const BurgerMenu = () => {
+
+interface IProps {
+    show: boolean
+}
+
+export const BurgerMenu = (props: IProps) => {
+    const { show } = props
     const [bgState, setBgState] = useState<'light' | 'dark'>('dark')
     const changeColorTheme = (style: 'light' | 'dark') => {
         setBgState(style)
     }
+
+    if (!show) {
+        return null
+    }
+
     return (
         <div className={styles.BurgerMenu}>
             <div className={styles.content}>

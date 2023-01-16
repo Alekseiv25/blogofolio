@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import './App.scss';
 import { Confirmation } from './components/Confirmation/Confirmation';
+import { BurgerMenu } from './components/NavBar/BurgerMenu/BurgerMenu';
 import { NavBar } from './components/NavBar/NavBar';
 import { PostList } from './components/PostList/PostList';
 import { SelectedPost } from './components/SelectedPost/SelectedPost';
@@ -9,17 +10,25 @@ import { SignUp } from './components/SignUp/SignUp';
 import { Success } from './components/Success/Success';
 
 function App() {
+  const [showLeftMenu, setShowLeftMenu] = useState(false)
+
+  const showMenu = useCallback((showMenu: boolean) => {
+    setShowLeftMenu(showMenu)
+  }, [showLeftMenu])
+
+  
   return (
     <div className="App">
       <header className="App-header">
-        <NavBar />
+        <NavBar onBurgerClick={showMenu} />
       </header>
       <main className='Main'>
+        <BurgerMenu show={showLeftMenu} />
         <div className='wrapper'>
           {/* <SignUp/> */}
           {/* <SignIn/> */}
           {/* <Success /> */}
-          <Confirmation/>
+          <Confirmation />
           {/* <PostList/> */}
           {/* <SelectedPost /> */}
         </div>
