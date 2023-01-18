@@ -2,10 +2,10 @@ import { useEffect, useState } from "react"
 import { getAllPosts, IPost } from "../Services/PostService"
 import styles from "./PostList.module.scss"
 import { MainPostItem } from './PostItems/MainPostItem/MainPostItem'
-import { BottomPostItem } from "./PostItems/BottomPostItem/BottomPostItem"
-import { AsidePostItem } from "./PostItems/AsidePostItem/AsidePostItem"
-import { Navigation } from "../Navigaton/Navigation"
-import { Tabs } from "./Tabs/Tabs"
+import { BottomPostItem } from "./PostItems/BottomPostItem"
+import { AsidePostItem } from "./PostItems/AsidePostItem"
+import { Navigation } from "../Navigaton"
+import { Tabs } from "./Tabs"
 import { PagesNav } from "./PagesNav/PagesNav"
 
 

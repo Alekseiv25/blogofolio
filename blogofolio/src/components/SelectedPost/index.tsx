@@ -3,7 +3,7 @@ import { PagesNav } from "../PostList/PagesNav/PagesNav"
 import { PostButtons } from "../PostList/PostButtons/PostButtons"
 import { getAllPosts, IPost } from "../Services/PostService"
 import styles from './SelectedPost.module.scss'
-import { SelectedPostNav } from "./SelectedPostNav/SelectedPostNav"
+import { SelectedPostNav } from "./SelectedPostNav"
 
 export const SelectedPost = () => {
     const [selectedPost, setSelectedPost] = useState<IPost[]>([])

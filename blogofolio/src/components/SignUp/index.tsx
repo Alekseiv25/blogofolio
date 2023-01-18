@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { Input } from "../Input/Input"
-import { Navigation } from "../Navigaton/Navigation"
-import { Submit } from "../Submit/Submit"
+import { Input } from "../Input"
+import { Navigation } from "../Navigaton"
+import { Submit } from "../Submit"
 import styles from './SignUp.module.scss'
 
 export const SignUp = () => {

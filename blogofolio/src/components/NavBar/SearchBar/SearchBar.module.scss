@@ -5,11 +5,16 @@
     box-shadow: none;
     border-right: 1px solid white;
     width: 85%;
-    display: none;
+    display: flex;
 }
-.wrapper {display: flex;}
 
-.active {display: flex;}
+.wrapper {
+    display: flex;
+}
+
+.active {
+    display: flex;
+}
 
 .input:focus {
     outline: 0

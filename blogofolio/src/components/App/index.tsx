@@ -1,13 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import './App.scss';
-import { Confirmation } from './components/Confirmation/Confirmation';
-import { BurgerMenu } from './components/NavBar/BurgerMenu/BurgerMenu';
-import { NavBar } from './components/NavBar/NavBar';
-import { PostList } from './components/PostList/PostList';
-import { SelectedPost } from './components/SelectedPost/SelectedPost';
-import { SignIn } from './components/SignIn/SignIn';
-import { SignUp } from './components/SignUp/SignUp';
-import { Success } from './components/Success/Success';
+import { Confirmation } from '../Confirmation';
+import { BurgerMenu } from '../NavBar/BurgerMenu';
+import { NavBar } from '../NavBar';
+import { PostList } from '../PostList';
+import { SelectedPost } from '../SelectedPost';
+import { SignIn } from '../SignIn';
+import { SignUp } from '../SignUp';
+import { Success } from '../Success';
 
 function App() {
   const [showLeftMenu, setShowLeftMenu] = useState(false)
@@ -28,8 +28,8 @@ function App() {
           {/* <SignUp/> */}
           {/* <SignIn/> */}
           {/* <Success /> */}
-          <Confirmation />
-          {/* <PostList/> */}
+          {/* <Confirmation email={'example@gmail.com'} /> */}
+          <PostList/>
           {/* <SelectedPost /> */}
         </div>
       </main>

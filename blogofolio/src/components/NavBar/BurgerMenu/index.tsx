@@ -1,8 +1,8 @@
 import styles from './BurgerMenu.module.scss'
-import { UserButton } from '../UserButton/UserButton'
+import { UserButton } from '../UserButton'
 import { useState } from 'react'
-import { LightBtn } from './ThemeButtons/Light/LightButton'
-import { DarkBtn } from './ThemeButtons/Dark/DarkButton'
+import { LightBtn } from './ThemeButtons/Light'
+import { DarkBtn } from './ThemeButtons/Dark'
 
 
 interface IProps {

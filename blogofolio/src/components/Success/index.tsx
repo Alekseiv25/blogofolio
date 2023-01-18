@@ -1,4 +1,4 @@
-import { Navigation } from '../Navigaton/Navigation'
+import { Navigation } from '../Navigaton'
 import styles from './Success.module.scss'
 
 export const Success = () => {

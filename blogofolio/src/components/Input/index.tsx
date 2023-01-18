@@ -8,8 +8,6 @@ interface InputProps {
     value?: any
 }
 
-//Что в onChange писать вместо any
-
 export const Input = (props: InputProps) => {
     const { label, type, placeholder, name } = props
 
