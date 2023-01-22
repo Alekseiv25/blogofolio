@@ -5,35 +5,49 @@ import { Submit } from '../Submit'
 import styles from './SignIn.module.scss'
 
 export const SignIn = () => {
-    const submit: React.FormEventHandler<HTMLFormElement> = (event) => {
-        const formData = new FormData(event.currentTarget)
-        event.preventDefault()
-        for (let [key, value] of formData.entries()) {
-            console.log(key, value)
-        }
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    })
+    const changeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const currentValue = e.currentTarget.value
+        setFormData({
+            ...formData,
+            email: currentValue
+        })
     }
+
+    const changePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const currentValue = e.currentTarget.value
+        setFormData({
+            ...formData,
+            password: currentValue
+        })
+    }
+
+
     return (
         <>
             <Navigation backToHome='Back to home' text={'Sign In'} />
-            <form onSubmit={submit} className={styles.Formwrapper}>
+            <form  className={styles.Formwrapper}>
                 <Input
                     type='email'
                     label='Email'
                     placeholder='Your Email'
                     name='email'
-                // value={signInData.email}
-                // onChange={changeLogin}
+                    value={formData.email}
+                    onChange={changeEmail}
                 />
                 <Input
                     type='password'
                     label='Password'
                     placeholder='Your password'
                     name='password'
-                // value={signInData.password}
-                // onChange={changePassword}
+                    value={formData.password}
+                    onChange={changePassword}
                 />
                 <a href='#!' className={styles.passwordtext}>Forgot password?</a>
-                <Submit value='Sign in' />
+                <Submit value='Sign in' onClick={()=> {}}/>
                 <p>Don't have an account? <a href="#!">Sign up</a></p>
             </form>
         </>

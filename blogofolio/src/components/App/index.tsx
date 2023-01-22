@@ -25,11 +25,11 @@ function App() {
       <main className='Main'>
         <BurgerMenu show={showLeftMenu} />
         <div className='wrapper'>
-          {/* <SignUp/> */}
+          <SignUp/>
           {/* <SignIn/> */}
           {/* <Success /> */}
           {/* <Confirmation email={'example@gmail.com'} /> */}
-          <PostList/>
+          {/* <PostList/> */}
           {/* <SelectedPost /> */}
         </div>
       </main>

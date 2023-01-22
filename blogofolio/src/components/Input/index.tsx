@@ -6,15 +6,16 @@ interface InputProps {
     placeholder: string
     name: string
     value?: any
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const Input = (props: InputProps) => {
-    const { label, type, placeholder, name } = props
+    const { label, type, placeholder, name, } = props
 
     return (
         <>
             <span className={styles.text}>{label}</span>
-            <input type={type} name={name} className={styles.input} placeholder={placeholder} />
+            <input onChange={()=> {}} type={type} name={name} className={styles.input} placeholder={placeholder} />
         </>
 
     )
