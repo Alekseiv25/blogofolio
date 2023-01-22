@@ -1,11 +1,12 @@
 import { useState } from "react"
-import { Link, NavLink } from "react-router-dom"
+import {  NavLink, useNavigate } from "react-router-dom"
 import { Input } from "../Input"
 import { Navigation } from "../Navigaton"
 import { Submit } from "../Submit"
 import styles from './SignUp.module.scss'
 
 export const SignUp = () => {
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -14,7 +15,7 @@ export const SignUp = () => {
     })
     const [showConfirm, setShowConfirm] = useState(false)
     const checkPassword = () => {
-        setShowConfirm(formData.password !== formData.checkPassword)
+        setShowConfirm(formData.password === formData.checkPassword)
     }
 
     const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,9 +51,11 @@ export const SignUp = () => {
     }
 
     if (showConfirm) {
-        <Link to={"/confirmation"}>Confirmation</Link>
+        navigate('/confirmation')
     }
-    else { <Link to='/'></Link> }
+
+    //Почему не работает?(((((
+
 
     return (
         <>
@@ -89,7 +92,7 @@ export const SignUp = () => {
                     value={formData.checkPassword}
                     onChange={changePasswordCheck}
                 />
-                <Submit value="Sign Up" onClick={checkPassword} link={"/confirmation"} />
+                <Submit value="Sign Up" onClick={checkPassword} link={''} />
                 <p>Alredy have an account? <NavLink to={'/signIn'}>Sign In</NavLink></p>
             </form>
         </>

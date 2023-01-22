@@ -10,7 +10,7 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from '../Layout';
 import NotFound from '../NotFound/NotFound';
 
-function App() {
+function App(props: any) {
 
   return (
     <Routes>
@@ -19,7 +19,7 @@ function App() {
         <Route path='post/:id' element={<SelectedPost />} />
         <Route path='signIn' element={<SignIn />} />
         <Route path='signUp' element={<SignUp />} />
-        <Route path='confirmation' element={<Confirmation email={''} />} />
+        <Route path='confirmation' element={<Confirmation email={props.email} />} />
         <Route path='success' element={<Success />} />
         <Route path='search' element={<Search />} />
         <Route path='*' element={<NotFound />} />

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import styles from './Submit.module.scss'
 
 interface IProps {
@@ -8,15 +8,17 @@ interface IProps {
 }
 
 export const Submit = (props: IProps) => {
+    const navigate = useNavigate()
     const { value, link } = props
+    const link1 = () => navigate(link)
     return (
-        <NavLink to={link}>
-            <input type="submit"
-                onClick={() => { }}
-                className={styles.submit}
-                value={value}>
-            </input>
-        </NavLink>
+
+        <input type="submit"
+            onClick={link1}
+            className={styles.submit}
+            value={value}>
+        </input>
+
 
     )
 }
