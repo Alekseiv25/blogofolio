@@ -53,32 +53,3 @@ export const SignIn = () => {
         </>
     )
 }
-
-
-
-
-
-
-    // const [signInData, setSignInData] = useState({
-    //     email: '',
-    //     password: ''
-    // })
-
-    // const changeLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     const currentValue = e.target.value
-    //     setSignInData({
-    //         ...signInData,
-    //         email: currentValue
-    //     })
-    // }
-
-    // const changePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     const currentValue = e.target.value
-    //     setSignInData({
-    //         ...signInData,
-    //         password: currentValue
-    //     })
-    // }
-
-    // const clickForm = (e: any) => {
-    //     console.log(e)

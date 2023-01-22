@@ -36,3 +36,33 @@
 .App-header {
   background-color: #2231AA;
 }
+
+.dark {
+  transition: 0.3s;
+  background: #313037;
+  color: #FFFFFF;
+
+  a {
+    transition: 0.3s;
+    color: white;
+  }
+
+  span {
+    color: #F3F3F3;
+  }
+}
+
+.light {
+  transition: 0.3s;
+  background-color: #F3F3F3;
+  ;
+
+  a {
+    transition: 0.3s;
+    color: #313037
+  }
+
+
+
+
+}

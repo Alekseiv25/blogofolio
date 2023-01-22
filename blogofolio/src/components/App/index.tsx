@@ -9,6 +9,19 @@ import { SignIn } from '../SignIn';
 import { SignUp } from '../SignUp';
 import { Success } from '../Success';
 
+type ThemeType = {
+  active: 'light' | 'dark'
+}
+
+const theme: ThemeType = {
+  active: 'light' 
+}
+
+type ContextType = [ThemeType, React.Dispatch<React.SetStateAction<ThemeType>>]
+export const ThemeContext = React.createContext<ContextType>([{}, {}] as ContextType)
+
+
+
 function App() {
   const [showLeftMenu, setShowLeftMenu] = useState(false)
 
@@ -16,13 +29,16 @@ function App() {
     setShowLeftMenu(showMenu)
   }, [showLeftMenu])
 
-  
+ 
+  const [state, setState] = useState(theme)
+
   return (
-    <div className="App">
+    <div className='App'>
       <header className="App-header">
         <NavBar onBurgerClick={showMenu} />
       </header>
-      <main className='Main'>
+      <ThemeContext.Provider value={[state, setState]}>
+      <main className={`Main ${state.active}`}>
         <BurgerMenu show={showLeftMenu} />
         <div className='wrapper'>
           <SignUp/>
@@ -33,13 +49,16 @@ function App() {
           {/* <SelectedPost /> */}
         </div>
       </main>
-      <footer className='Footer'>
+
+      <footer className={`Footer ${state.active}`}>
         <div className='footer-wrapper'>
           <p >©2023 Blogofolio</p>
           <p >All rights reserved</p>
         </div>
       </footer>
+      </ThemeContext.Provider>
     </div>
+
 
   );
 }

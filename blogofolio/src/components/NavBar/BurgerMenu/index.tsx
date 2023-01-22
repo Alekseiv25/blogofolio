@@ -1,8 +1,9 @@
 import styles from './BurgerMenu.module.scss'
 import { UserButton } from '../UserButton'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { LightBtn } from './ThemeButtons/Light'
 import { DarkBtn } from './ThemeButtons/Dark'
+import { ThemeContext } from '../../App'
 
 
 interface IProps {
@@ -11,10 +12,14 @@ interface IProps {
 
 export const BurgerMenu = (props: IProps) => {
     const { show } = props
-    const [bgState, setBgState] = useState<'light' | 'dark'>('dark')
-    const changeColorTheme = (style: 'light' | 'dark') => {
-        setBgState(style)
-    }
+	const theme = useContext(ThemeContext)
+	const [state, setState] = theme
+	const changeTheme = () => {
+		setState({
+			...state,
+			active: state.active === 'dark' ? 'light' : 'dark'
+		})
+	}
 
     if (!show) {
         return null
@@ -32,10 +37,10 @@ export const BurgerMenu = (props: IProps) => {
                 </ul>
                 <div className={styles.ThemeWrapper}>
                     <div className={styles.DayWrapper}>
-                        <LightBtn active={bgState === 'light'} changeColorTheme={changeColorTheme} />
+                        <LightBtn active={state.active === 'light'} changeColorTheme={changeTheme} />
                     </div>
                     <div className={styles.NightWrapper}>
-                        <DarkBtn active={bgState !== 'light'} changeColorTheme={changeColorTheme} />
+                        <DarkBtn active={state.active === 'dark'} changeColorTheme={changeTheme} />
                     </div>
 
                 </div>
