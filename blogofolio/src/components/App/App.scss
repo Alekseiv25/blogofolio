@@ -5,6 +5,10 @@
   padding-right: 20px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .Main {
   background-color: #F3F3F3;
   min-height: 100vh;
@@ -38,19 +42,32 @@
 }
 
 .dark {
+
   transition: 0.3s;
   background: #313037;
   color: #FFFFFF;
 
   a {
     transition: 0.3s;
-    color: white;
+    color: white !important;
+
+  }
+
+  button {
+    color: white !important
+  }
+
+
+  p {
+    color: white !important;
+
   }
 
   span {
-    color: #F3F3F3;
+    color: #F3F3F3 !important;
   }
 }
+
 
 .light {
   transition: 0.3s;

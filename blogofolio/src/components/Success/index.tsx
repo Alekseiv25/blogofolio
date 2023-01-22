@@ -4,7 +4,7 @@ import styles from './Success.module.scss'
 export const Success = () => {
     return (
         <>
-            <Navigation backToHome='Back to home' text='Success' />
+            <Navigation  text='Success' backToHome={'Back to Home'} />
             <form className={styles.Formwrapper}>
                 <div>
                     <p>Email confirmed.</p>

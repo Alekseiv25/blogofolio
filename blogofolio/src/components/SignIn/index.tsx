@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import { Input } from '../Input'
 import { Navigation } from '../Navigaton'
 import { Submit } from '../Submit'
@@ -47,8 +48,8 @@ export const SignIn = () => {
                     onChange={changePassword}
                 />
                 <a href='#!' className={styles.passwordtext}>Forgot password?</a>
-                <Submit value='Sign in' onClick={()=> {}}/>
-                <p>Don't have an account? <a href="#!">Sign up</a></p>
+                <Submit value='Sign in' onClick={() => { } } link={'/success'}/>
+                <p>Don't have an account? <NavLink to={'/signUp'}>Sign up</NavLink></p>
             </form>
         </>
     )

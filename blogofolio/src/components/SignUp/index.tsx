@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Confirmation } from "../Confirmation"
+import { Link, NavLink } from "react-router-dom"
 import { Input } from "../Input"
 import { Navigation } from "../Navigaton"
 import { Submit } from "../Submit"
@@ -14,7 +14,7 @@ export const SignUp = () => {
     })
     const [showConfirm, setShowConfirm] = useState(false)
     const checkPassword = () => {
-        setShowConfirm(formData.password == formData.checkPassword)
+        setShowConfirm(formData.password !== formData.checkPassword)
     }
 
     const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,6 +48,11 @@ export const SignUp = () => {
             checkPassword: currentValue
         })
     }
+
+    if (showConfirm) {
+        <Link to={"/confirmation"}>Confirmation</Link>
+    }
+    else { <Link to='/'></Link> }
 
     return (
         <>
@@ -84,8 +89,8 @@ export const SignUp = () => {
                     value={formData.checkPassword}
                     onChange={changePasswordCheck}
                 />
-                <Submit value="Sign Up" onClick={checkPassword} />
-                <p>Alredy have an account? <a href="#!">Sign in</a></p>
+                <Submit value="Sign Up" onClick={checkPassword} link={"/confirmation"} />
+                <p>Alredy have an account? <NavLink to={'/signIn'}>Sign In</NavLink></p>
             </form>
         </>
     )

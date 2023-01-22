@@ -7,6 +7,7 @@ import { AsidePostItem } from "./PostItems/AsidePostItem"
 import { Navigation } from "../Navigaton"
 import { Tabs } from "./Tabs"
 import { PagesNav } from "./PagesNav/PagesNav"
+import { Link } from "react-router-dom"
 
 
 export interface IRes {
@@ -42,18 +43,24 @@ export const PostList = () => {
                 <div className={styles.leftPosts}>
                     <div className={styles.mainPost}>
                         {mainPost.map((el) => (
-                            <MainPostItem key={el.id} {...el} />
+                            <Link key={el.id} to={`post/${el.id}`}>
+                                <MainPostItem  {...el} />
+                            </Link>
                         ))
                         }
                     </div>
                     <div className={styles.bottomPosts}>
                         {bottomPost.map((el) => (
-                            <BottomPostItem key={el.id} {...el} />
+                            <Link key={el.id} to={`post/${el.id}`}>
+                                <BottomPostItem  {...el} />
+                            </Link>
                         ))}
                     </div></div>
                 <aside className={styles.asidePosts}>
                     {asidePost.map((el) => (
-                        <AsidePostItem key={el.id} {...el} />
+                        <Link key={el.id} to={`post/${el.id}`}>
+                            <AsidePostItem  {...el} />
+                        </Link>
                     ))}
                 </aside>
             </div>

@@ -1,27 +1,46 @@
 import { useEffect, useState } from "react"
-import { PagesNav } from "../PostList/PagesNav/PagesNav"
+import { useNavigate, useParams } from "react-router-dom"
 import { PostButtons } from "../PostList/PostButtons/PostButtons"
-import { getAllPosts, IPost } from "../Services/PostService"
+import { getPostById, IPost } from "../Services/PostService"
 import styles from './SelectedPost.module.scss'
 import { SelectedPostNav } from "./SelectedPostNav"
 
 export const SelectedPost = () => {
-    const [selectedPost, setSelectedPost] = useState<IPost[]>([])
+    const params = useParams()
+    const navigate = useNavigate()
+    const [selectedPost, setSelectedPost] = useState<IPost>({} as IPost)
 
-    useEffect(() => { getAllPosts(1, 0).then(post => { setSelectedPost(post) }) }, [])
+    useEffect(() => {
+        getPostById(params.id).then(post => { setSelectedPost(post) })
+    }, [])
 
+    if (!selectedPost) {
+        return (
+            <svg className={styles.spinner} viewBox="0 0 50 50">
+                <circle
+                    className={styles.path}
+                    cx="25" cy="25" r="20"
+                    fill="none"
+                    strokeWidth="5">
+                </circle>
+            </svg>)
+    }
+    const goHome = () => navigate('/')
+    //Не работает спинер
 
     return (<section>
+        <div className={styles.nav}>
+            <a className={styles.link} onClick={goHome}>Home</a>
+            <p className={styles.postid}>Post: {params.id}</p>
+        </div>
         <div className={styles.selectedPost}>
-            {selectedPost.map((el) => (
-                <div className={styles.post}>
-                    <p className={styles.title}>{el.title} </p>
-                    <img className={styles.image} src={el.image} alt='123'></img>
-                    <p className={styles.text}>{el.text}</p>
-                    <PostButtons />
-                </div>
-            ))}
-            <SelectedPostNav />
+            <div className={styles.post}>
+                <p className={styles.title}>{selectedPost.title} </p>
+                <img className={styles.image} src={selectedPost.image} alt='123'></img>
+                <p className={styles.text}>{selectedPost.text}</p>
+                <PostButtons />
+            </div>
+            <SelectedPostNav  />
         </div>
 
     </section>)

@@ -19,7 +19,7 @@ export const Confirmation = (props: IProps) => {
                         Please, check your email
                     </p>
                 </div>
-                <Submit value="Go to home" onClick={() => {}} />
+                <Submit value="Go to home" onClick={() => { } } link={"/"} />
             </form>
         </>
     )

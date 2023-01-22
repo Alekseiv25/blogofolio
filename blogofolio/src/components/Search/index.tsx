@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAllPosts, GetSearchPosts, IPost } from "../Services/PostService"
+import {  GetSearchPosts, IPost } from "../Services/PostService"
 import { SearchPost } from "./SearchPost"
 import styles from './Search.module.scss'
 import React from "react"

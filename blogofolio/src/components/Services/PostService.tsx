@@ -30,3 +30,9 @@ export const GetSearchPosts = (search: number | string) => {
         .then(response => response.json())
         .then(res => res.results)
 }
+
+export const getPostById = (id: string = '1') => {
+    return fetch('https://studapi.teachmeskills.by/blog/posts/' + `${id}`)
+        .then(response => response.json())
+        .then(res => res)
+}

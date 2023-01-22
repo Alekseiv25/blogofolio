@@ -1,9 +1,10 @@
 import styles from './SelectedPostNav.module.scss'
 
 export const SelectedPostNav = () => {
+
     return (
-        <div className={styles.SelectedPostNavContainer}>
-            <div className={styles.PrevPage}>
+        <div  className={styles.SelectedPostNavContainer}>
+            <div  className={styles.PrevPage}>
                 <svg width="18"
                     height="15"
                     viewBox="0 0 18 15"
@@ -34,7 +35,6 @@ export const SelectedPostNav = () => {
                     />
                 </svg>
             </div>
-
         </div>
     )
 }

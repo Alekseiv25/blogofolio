@@ -1,9 +1,10 @@
 import styles from './BurgerMenu.module.scss'
 import { UserButton } from '../UserButton'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { LightBtn } from './ThemeButtons/Light'
 import { DarkBtn } from './ThemeButtons/Dark'
-import { ThemeContext } from '../../App'
+import { ThemeContext } from '../../Layout/'
+import { NavLink } from 'react-router-dom'
 
 
 interface IProps {
@@ -29,11 +30,11 @@ export const BurgerMenu = (props: IProps) => {
         <div className={styles.BurgerMenu}>
             <div className={styles.content}>
                 <div className={styles.header}>
-                    <UserButton shortName={'AM'} fullName={'Artem Kurilik'} />
+                    <UserButton shortName={'AM'} fullName={'Artem Murili'} />
                 </div>
                 <ul className={styles.ul}>
-                    <li>Home</li>
-                    <li>Add post</li>
+                    <li><NavLink to='/'>Home</NavLink></li>
+                    <li><NavLink to='/addPost'>Add Post</NavLink></li>
                 </ul>
                 <div className={styles.ThemeWrapper}>
                     <div className={styles.DayWrapper}>
@@ -45,7 +46,7 @@ export const BurgerMenu = (props: IProps) => {
 
                 </div>
                 <div className={styles.LogOut}>
-                    Logout
+                <NavLink to='/signIn'>Sign In</NavLink>
                 </div>
             </div>
 

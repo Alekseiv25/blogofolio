@@ -1,13 +1,22 @@
+import { NavLink } from 'react-router-dom'
 import styles from './Submit.module.scss'
 
-interface Submit {
+interface IProps {
     value: string
     onClick: () => void
+    link: string
 }
 
-export const Submit = (props: Submit) => {
-    const { value} = props
+export const Submit = (props: IProps) => {
+    const { value, link } = props
     return (
-        <input type="submit" onClick={() => { }} className={styles.submit} value={value} />
+        <NavLink to={link}>
+            <input type="submit"
+                onClick={() => { }}
+                className={styles.submit}
+                value={value}>
+            </input>
+        </NavLink>
+
     )
 }
