@@ -9,19 +9,14 @@ interface IProps {
     onBurgerClick: (showMenu: boolean) => void
 }
 export const NavBar = (props: IProps) => {
-    const [showSearchInput, setShowSearchInput] = useState(false)
 
-    const showInput = useCallback((showSearchInput: boolean) => {
-        setShowSearchInput(showSearchInput)
-    }, [showSearchInput])
 
     return (
         <nav className={styles.nav}>
             <BurgerButton onClick={props.onBurgerClick} />
-
             <div className={styles.wrapper}>
-                <SearchBar show={showSearchInput} />
-                <SearchButton onClick={showInput} />
+                <SearchBar />
+                <SearchButton />
                 <UserButton shortName='AM' fullName='Artem Murili' /></div>
         </nav>
     )

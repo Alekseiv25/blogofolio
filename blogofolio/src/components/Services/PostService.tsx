@@ -22,3 +22,11 @@ export const getAllPosts = (limit: number, offset: number) => {
         .then(response => response.json())
         .then(res => res.results)
 }
+export const GetSearchPosts = (search: number | string) => {
+    return fetch(
+        'https://studapi.teachmeskills.by/blog/posts/'
+        + `?search=${search}`
+    )
+        .then(response => response.json())
+        .then(res => res.results)
+}

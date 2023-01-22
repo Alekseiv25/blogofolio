@@ -4,19 +4,10 @@ interface IProps {
     onClick: (isOpen: boolean) => void
 }
 
-export const SearchButton = (props: IProps) => {
-    const { onClick } = props
-    const [isOpen, setIsOpen] = useState(false)
+export const SearchButton = () => {
 
-    const onToogle = useCallback(() => {
-        const newState = !isOpen
-        setIsOpen(newState)
-        if (onClick) {
-            onClick(newState)
-        }
-    }, [isOpen, onClick])
 
-    return (<button className={styles.button} onClick={onToogle}  placeholder='Search...' >
+    return (<button className={styles.button}   placeholder='Search...' >
         <svg xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 50 50"
             width="50px"

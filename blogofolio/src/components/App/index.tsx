@@ -8,6 +8,7 @@ import { SelectedPost } from '../SelectedPost';
 import { SignIn } from '../SignIn';
 import { SignUp } from '../SignUp';
 import { Success } from '../Success';
+import { Search } from '../Search';
 
 type ThemeType = {
   active: 'light' | 'dark'
@@ -41,7 +42,8 @@ function App() {
       <main className={`Main ${state.active}`}>
         <BurgerMenu show={showLeftMenu} />
         <div className='wrapper'>
-          <SignUp/>
+          {/* <SignUp/> */}
+          <Search/>
           {/* <SignIn/> */}
           {/* <Success /> */}
           {/* <Confirmation email={'example@gmail.com'} /> */}
