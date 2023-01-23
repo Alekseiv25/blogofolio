@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { PostButtons } from "../PostList/PostButtons/PostButtons"
+import { Params, useNavigate, useParams } from "react-router-dom"
+import { PostButtons } from "../PostList/PostButtons"
 import { getPostById, IPost } from "../Services/PostService"
 import styles from './SelectedPost.module.scss'
 import { SelectedPostNav } from "./SelectedPostNav"
@@ -14,7 +14,7 @@ export const SelectedPost = () => {
         getPostById(params.id).then(post => { setSelectedPost(post) })
     }, [])
 
-    if (!selectedPost) {
+    if (!selectedPost.image) {
         return (
             <svg className={styles.spinner} viewBox="0 0 50 50">
                 <circle
@@ -27,6 +27,7 @@ export const SelectedPost = () => {
     }
     const goHome = () => navigate('/')
     //Не работает спинер
+    //Заработал :)
 
     return (<section>
         <div className={styles.nav}>
@@ -40,7 +41,7 @@ export const SelectedPost = () => {
                 <p className={styles.text}>{selectedPost.text}</p>
                 <PostButtons />
             </div>
-            <SelectedPostNav  />
+            <SelectedPostNav />
         </div>
 
     </section>)

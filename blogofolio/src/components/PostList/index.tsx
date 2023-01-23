@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react"
 import { getAllPosts, IPost } from "../Services/PostService"
 import styles from "./PostList.module.scss"
-import { MainPostItem } from './PostItems/MainPostItem/MainPostItem'
+import { MainPostItem } from './PostItems/MainPostItem'
 import { BottomPostItem } from "./PostItems/BottomPostItem"
 import { AsidePostItem } from "./PostItems/AsidePostItem"
 import { Navigation } from "../Navigaton"
 import { Tabs } from "./Tabs"
-import { PagesNav } from "./PagesNav/PagesNav"
+import { PagesNav } from "./PagesNav"
 import { Link } from "react-router-dom"
-import { PostButtons } from "./PostButtons/PostButtons"
 
 
 export interface IRes {
@@ -44,24 +43,18 @@ export const PostList = () => {
                 <div className={styles.leftPosts}>
                     <div className={styles.mainPost}>
                         {mainPost.map((el) => (
-                            <Link key={el.id} to={`post/${el.id}`}>
-                                <MainPostItem  {...el} />
-                            </Link>
+                                <MainPostItem key={el.id} {...el} />
                         ))
                         }
                     </div>
                     <div className={styles.bottomPosts}>
                         {bottomPost.map((el) => (
-                            <Link key={el.id} to={`post/${el.id}`}>
-                                <BottomPostItem  {...el} />
-                            </Link>
+                                <BottomPostItem key={el.id}  {...el} />
                         ))}
                     </div></div>
                 <aside className={styles.asidePosts}>
                     {asidePost.map((el) => (
-                        <Link key={el.id} to={`post/${el.id}`}>
-                            <AsidePostItem  {...el} />
-                        </Link>
+                        <AsidePostItem key={el.id} {...el} />
                     ))}
                 </aside>
             </div>

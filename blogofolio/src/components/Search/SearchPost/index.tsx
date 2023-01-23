@@ -1,6 +1,6 @@
 import { IPost } from '../../Services/PostService'
 import style from './SearchPost.module.scss'
-import { PostButtons } from '../../PostList/PostButtons/PostButtons'
+import { PostButtons } from '../../PostList/PostButtons'
 
 export const SearchPost = (props: IPost) => {
     const { date, title, image } = props

@@ -8,7 +8,7 @@ import { Success } from '../Success';
 import { Search } from '../Search';
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../Layout';
-import NotFound from '../NotFound/NotFound';
+import NotFound from '../NotFound';
 import { Reset } from '../Reset';
 
 function App(props: any) {
