@@ -43,25 +43,22 @@ a {
 
 .dark {
 
-  transition: 0.3s;
+  transition: 0.3s all;
   background: #313037;
   color: #FFFFFF;
 
-  // a {
-  //   transition: 0.3s;
-  //   color: white !important;
-
-  // }
+  a {
+    color: white;
+  }
 
   // button {
   //   color: white !important
   // }
 
 
-  // p {
-  //   color: white !important;
-
-  // }
+  p {
+    color: white;
+  }
 
   span {
     color: #F3F3F3 !important;

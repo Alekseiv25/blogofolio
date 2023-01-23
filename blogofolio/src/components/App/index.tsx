@@ -9,6 +9,7 @@ import { Search } from '../Search';
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../Layout';
 import NotFound from '../NotFound/NotFound';
+import { Reset } from '../Reset';
 
 function App(props: any) {
 
@@ -22,6 +23,7 @@ function App(props: any) {
         <Route path='confirmation' element={<Confirmation email={props.email} />} />
         <Route path='success' element={<Success />} />
         <Route path='search' element={<Search />} />
+        <Route path='reset' element={<Reset />} />
         <Route path='*' element={<NotFound />} />
       </Route>
     </Routes>

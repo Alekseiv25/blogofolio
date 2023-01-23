@@ -30,7 +30,7 @@ export const SignIn = () => {
     return (
         <>
             <Navigation backToHome='Back to home' text={'Sign In'} />
-            <form  className={styles.Formwrapper}>
+            <form className={styles.Formwrapper}>
                 <Input
                     type='email'
                     label='Email'
@@ -47,8 +47,8 @@ export const SignIn = () => {
                     value={formData.password}
                     onChange={changePassword}
                 />
-                <a href='#!' className={styles.passwordtext}>Forgot password?</a>
-                <Submit value='Sign in' onClick={() => { } } link={'/success'}/>
+                <NavLink className={styles.passwordtext} to={'/reset'}>Forgot password?</NavLink>
+                <Submit value='Sign in' onClick={() => { }} link={'/success'} />
                 <p>Don't have an account? <NavLink to={'/signUp'}>Sign up</NavLink></p>
             </form>
         </>

@@ -8,6 +8,7 @@ import { Navigation } from "../Navigaton"
 import { Tabs } from "./Tabs"
 import { PagesNav } from "./PagesNav/PagesNav"
 import { Link } from "react-router-dom"
+import { PostButtons } from "./PostButtons/PostButtons"
 
 
 export interface IRes {
