@@ -1,18 +1,18 @@
-import React from "react"
+import React, { createContext, Dispatch, SetStateAction } from "react"
 import { useCallback, useState } from "react"
 import { Outlet } from "react-router-dom"
 import { NavBar } from "../NavBar"
 import { BurgerMenu } from "../NavBar/BurgerMenu"
-type ThemeType = {
-    active: 'light' | 'dark'
+
+
+type ThemeColor = "light" | "dark";
+interface IContext {
+    themeColor: ThemeColor;
+    setThemeColor: Dispatch<SetStateAction<ThemeColor>>;
 }
 
-const theme: ThemeType = {
-    active: 'light'
-}
 
-type ContextType = [ThemeType, React.Dispatch<React.SetStateAction<ThemeType>>]
-export const ThemeContext = React.createContext<ContextType>([{}, {}] as ContextType)
+export const ThemeContext = createContext<IContext>({} as IContext);
 
 const Layout = () => {
     const [showLeftMenu, setShowLeftMenu] = useState(false)
@@ -22,20 +22,25 @@ const Layout = () => {
     }, [])
 
 
-    const [state, setState] = useState(theme)
+    const [themeColor, setThemeColor] = useState<ThemeColor>("light");
+
+    const contextValue: IContext = {
+        themeColor,
+        setThemeColor,
+    };
     return (
         <div className='App'>
             <header className="App-header">
                 <NavBar onBurgerClick={showMenu} />
             </header>
-            <ThemeContext.Provider value={[state, setState]}>
-                <main className={`Main ${state.active}`}>
+            <ThemeContext.Provider value={contextValue}>
+                <main className={`Main ${themeColor === 'light' ? 'light' : 'dark'}`}>
                     <BurgerMenu show={showLeftMenu} />
                     <div className='wrapper'>
                         <Outlet />
                     </div>
                 </main>
-                <footer className={`Footer ${state.active}`}>
+                <footer className={`Footer ${themeColor === 'light' ? 'light' : 'dark'}`}>
                     <div className='footer-wrapper'>
                         <p >©2023 Blogofolio</p>
                         <p >All rights reserved</p>
