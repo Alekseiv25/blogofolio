@@ -2,7 +2,7 @@ import React, { createContext, Dispatch, SetStateAction } from "react"
 import { useCallback, useState } from "react"
 import { Outlet } from "react-router-dom"
 import { NavBar } from "../NavBar"
-import { BurgerMenu } from "../NavBar/BurgerMenu"
+import { BurgerMenu } from "../BurgerMenu"
 
 
 type ThemeColor = "light" | "dark";

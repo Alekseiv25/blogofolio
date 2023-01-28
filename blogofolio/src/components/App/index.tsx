@@ -1,15 +1,15 @@
 import './App.scss';
-import { Confirmation } from '../Confirmation';
-import { PostList } from '../PostList';
-import { SelectedPost } from '../SelectedPost';
-import { SignIn } from '../SignIn';
-import { SignUp } from '../SignUp';
-import { Success } from '../Success';
-import { Search } from '../Search';
+import { Confirmation } from '../Pages/Confirmation';
+import { PostList } from '../Pages/PostList';
+import { SelectedPost } from '../Pages/SelectedPost';
+import { SignIn } from '../Pages/SignIn';
+import { SignUp } from '../Pages/SignUp';
+import { Success } from '../Pages/Success';
+import { Search } from '../Pages/Search';
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../Layout';
-import NotFound from '../NotFound';
-import { Reset } from '../Reset';
+import NotFound from '../Pages/NotFound';
+import { Reset } from '../Pages/Reset';
 
 function App(props: any) {
 

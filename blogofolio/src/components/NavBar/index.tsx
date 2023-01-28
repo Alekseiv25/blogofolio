@@ -1,9 +1,9 @@
 
-import { SearchBar } from './SearchBar'
-import { UserButton } from './UserButton'
+import { SearchBar } from '../SearchBar'
+import { UserButton } from '../UserButton'
 import styles from './NavBar.module.scss'
-import { BurgerButton } from './BurgerMenu/BurgerButton'
-import { SearchButton } from './SearchBar/SearchButton'
+import { BurgerButton } from '../BurgerButton'
+import { SearchButton } from '../SearchBar/SearchButton'
 interface IProps {
     onBurgerClick: (showMenu: boolean) => void
 }
