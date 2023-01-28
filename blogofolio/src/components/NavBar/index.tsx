@@ -13,7 +13,6 @@ export const NavBar = (props: IProps) => {
             <BurgerButton onClick={props.onBurgerClick} />
             <div className={styles.wrapper}>
                 <SearchBar />
-                <SearchButton />
                 <UserButton shortName='AM' fullName='Artem Murili' /></div>
         </nav>
     )

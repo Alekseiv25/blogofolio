@@ -3,7 +3,7 @@ import { UserButton } from '../UserButton'
 import { LightBtn } from '../ThemeButtons/Light'
 import { DarkBtn } from '../ThemeButtons/Dark'
 import { NavLink } from 'react-router-dom'
-import AsideMenuButton from '../AsideMenuButton'
+import AsideMenuButton from '../LogInLogOutButton'
 import { useAuth } from '../hoc/AuthProvider'
 
 
