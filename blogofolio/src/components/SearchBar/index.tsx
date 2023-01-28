@@ -6,6 +6,11 @@ import { SearchButton } from './SearchButton';
 
 export const SearchBar = () => {
     const [searchText, setSearchText] = useState("");
+    const navigate = useNavigate();
+    const exmpl = (e: any) => {
+        setSearchText(e.target.value)
+        navigate("/search", { state: searchText });
+    }
 
     return (
         <div className={styles.wrapper}>
@@ -13,9 +18,9 @@ export const SearchBar = () => {
                 className={styles.input}
                 placeholder='Search...'
                 value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
+                onChange={exmpl}
             />
-            <SearchButton searchText={searchText}/>
+            <SearchButton searchText={searchText} />
         </div>
     )
 }

@@ -16,7 +16,7 @@ export const SearchButton = (props: IProps) => {
     };
 
     return (
-        <button className={styles.button} onClick={() => goToSearchPage(searchText)} placeholder='Search...' >
+        <button className={styles.button}  onClick={() => goToSearchPage(searchText)} placeholder='Search...' >
             <svg xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 50 50"
                 width="50px"

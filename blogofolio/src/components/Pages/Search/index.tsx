@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import { GetSearchPosts, IPost } from "../../Services/PostService"
 import { SearchPost } from "../../SearchPost"
 import styles from './Search.module.scss'
@@ -12,11 +12,12 @@ export const Search = () => {
     const [searchPost, setSearchPost] = useState<IPost[]>([])
     const location = useLocation();
     const searchText = location.state || "nothing";
+
     useEffect(() => {
         GetSearchPosts(searchText).then(post => { setSearchPost(post) })
     }, [searchText])
-    return (
 
+    return (
         <section>
             <input className={`${styles.input} ${themeColor === 'dark' ? `${styles.dark}` : ''}`} type='text' value={`Search result: ${searchText} `} />
             <div >
