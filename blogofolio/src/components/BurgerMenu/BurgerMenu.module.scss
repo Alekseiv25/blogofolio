@@ -17,7 +17,7 @@
         li {
 
             justify-content: center;
-            color: black;
+
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -26,6 +26,7 @@
 
             a {
                 padding: 20px;
+                color: black;
             }
         }
 
@@ -69,7 +70,9 @@
         justify-content: center;
         padding: 20px;
 
-
+        a {
+            color: black;
+        }
     }
 }
 
