@@ -70,8 +70,16 @@
         justify-content: center;
         padding: 20px;
 
-        a {
-            color: black;
+        input {
+            border: 0px solid;
+            background: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        input:hover {
+            scale: 1.1;
         }
     }
 }

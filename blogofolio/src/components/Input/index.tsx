@@ -6,7 +6,7 @@ interface InputProps {
     placeholder: string
     name: string
     value?: any
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const Input = (props: InputProps) => {

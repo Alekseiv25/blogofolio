@@ -3,6 +3,8 @@ import { UserButton } from '../UserButton'
 import { LightBtn } from '../ThemeButtons/Light'
 import { DarkBtn } from '../ThemeButtons/Dark'
 import { NavLink } from 'react-router-dom'
+import AsideMenuButton from '../AsideMenuButton'
+import { useAuth } from '../hoc/AuthProvider'
 
 
 interface IProps {
@@ -10,6 +12,7 @@ interface IProps {
 }
 
 export const BurgerMenu = (props: IProps) => {
+    const { user } = useAuth();
     const { show } = props
 
 
@@ -37,7 +40,11 @@ export const BurgerMenu = (props: IProps) => {
 
                 </div>
                 <div className={styles.LogOut}>
-                    <NavLink to='/signIn'>Sign In</NavLink>
+                    {user ? (
+                        <AsideMenuButton value="Log out" />
+                    ) : (
+                        <AsideMenuButton value="Log in" navigationAdress="signin" />
+                    )}
                 </div>
             </div>
 
