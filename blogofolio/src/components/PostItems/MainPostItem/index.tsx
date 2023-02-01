@@ -22,16 +22,17 @@ export const MainPostItem = (props: IPost) => {
 
 
     return (<div className={style.post}>
-        <Link to={`post/${id}`}>
-        </Link>
+
+
         <div className={style.container}>
+            <Link to={`post/${id}`}>
+                <div className={style.titlewrapper}>
+                    <p className={style.date}>{date}</p>
+                    <p className={`${style.title} ${themeColor === 'dark' ? `${style.dark}` : ''}`}>{title} </p>
+                    <p className={style.text}>{text}</p>
 
-            <div className={style.titlewrapper}>
-                <p className={style.date}>{date}</p>
-                <p className={`${style.title} ${themeColor === 'dark' ? `${style.dark}` : ''}`}>{title} </p>
-                <p className={style.text}>{text}</p>
-
-            </div>
+                </div>
+            </Link>
             <img className={style.image} src={image} alt='123' onClick={handleShowPopup}></img>
         </div>
         <PostButtons />
