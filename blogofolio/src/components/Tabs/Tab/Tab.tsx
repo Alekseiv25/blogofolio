@@ -1,5 +1,4 @@
-import { useContext } from 'react'
-import { ThemeContext } from '../../Layout'
+import { useSelector } from 'react-redux'
 import styles from './Tab.module.scss'
 
 type TabType = {
@@ -8,7 +7,7 @@ type TabType = {
 
 
 export const Tab = (props: TabType) => {
+    const theme = useSelector((state: any) => state.theme)
     const { text } = props
-    const { themeColor } = useContext(ThemeContext)
-    return (<button className={`${styles.tab}  ${themeColor === 'dark' ? `${styles.dark}` : ''}`}>{text}</button>)
+    return (<button className={styles.tab} style={theme}>{text}</button>)
 }

@@ -2,15 +2,12 @@ import { IPost } from '../../Services/PostService'
 import style from './MainPostItem.module.scss'
 import { PostButtons } from '../../PostButtons'
 import { Link } from 'react-router-dom'
-import { ThemeContext } from '../../Layout'
-import { useContext } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { OPEN_POPUP } from '../../store/popUpReducer'
 
 export const MainPostItem = (props: IPost) => {
     const { date, title, text, image, id } = props
-    const { themeColor } = useContext(ThemeContext)
-
+    const theme = useSelector((state: any) => state.theme)
     const dispatch = useDispatch()
 
     const handleShowPopup = () => {
@@ -22,15 +19,12 @@ export const MainPostItem = (props: IPost) => {
 
 
     return (<div className={style.post}>
-
-
         <div className={style.container}>
             <Link to={`post/${id}`}>
                 <div className={style.titlewrapper}>
                     <p className={style.date}>{date}</p>
-                    <p className={`${style.title} ${themeColor === 'dark' ? `${style.dark}` : ''}`}>{title} </p>
+                    <p className={style.title} style={theme}>{title} </p>
                     <p className={style.text}>{text}</p>
-
                 </div>
             </Link>
             <img className={style.image} src={image} alt='123' onClick={handleShowPopup}></img>

@@ -1,15 +1,13 @@
-import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { ThemeContext } from '../../Layout'
 import { IPost } from '../../Services/PostService'
 import { PostButtons } from '../../PostButtons'
 import style from './BottomPostItem.module.scss'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { OPEN_POPUP } from '../../store/popUpReducer'
 
 export const BottomPostItem = (props: IPost) => {
     const { image, date, title, id } = props
-    const { themeColor } = useContext(ThemeContext)
+    const theme = useSelector((state: any) => state.theme)
 
     const dispatch = useDispatch()
 
@@ -26,7 +24,7 @@ export const BottomPostItem = (props: IPost) => {
         <Link to={`post/${id}`}>
             <div className={style.titlewrapper}>
                 <p className={style.date}>{date}</p>
-                <p className={`${style.title}  ${themeColor === 'dark' ? `${style.dark}` : ''}`}>{title} </p>
+                <p className={style.title} style={theme}>{title} </p>
             </div>
         </Link>
         <PostButtons />

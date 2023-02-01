@@ -1,4 +1,5 @@
 import { FormEventHandler } from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hoc/AuthProvider'
 import { Input } from '../../Input'
@@ -13,7 +14,8 @@ export const SignIn = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const { signIn } = useAuth()
-
+    const getThemeSelector = (state: any) => state.theme
+    const theme = useSelector(getThemeSelector)
 
 
     // const [formData, setFormData] = useState({
@@ -85,9 +87,9 @@ export const SignIn = () => {
                 // onChange={changePassword}
                 />
                 <span></span>
-                <NavLink className={styles.passwordtext} to={'/reset'}>Forgot password?</NavLink>
+                <NavLink className={styles.passwordtext} style={theme} to={'/reset'}>Forgot password?</NavLink>
                 <Submit value='Sign in' />
-                <p>Don't have an account? <NavLink to={'/signUp'}>Sign up</NavLink></p>
+                <p>Don't have an account? <NavLink style={theme} to={'/signUp'}>Sign up</NavLink></p>
             </form>
         </>
     )

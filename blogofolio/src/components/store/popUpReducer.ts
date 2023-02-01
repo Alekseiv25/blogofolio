@@ -17,7 +17,7 @@ const defaultValue: IPopupState = {
     isOpen: false
 }
 
-export const popupReducer = (state: IPopupState = defaultValue, action: IPopupAction): IPopupState => {
+const popupReducer = (state: IPopupState = defaultValue, action: IPopupAction): IPopupState => {
     switch (action.type) {
         case OPEN_POPUP:
             return {
@@ -34,3 +34,6 @@ export const popupReducer = (state: IPopupState = defaultValue, action: IPopupAc
             return state
     }
 }
+
+
+export default popupReducer

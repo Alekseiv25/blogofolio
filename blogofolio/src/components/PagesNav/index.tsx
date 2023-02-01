@@ -1,5 +1,4 @@
-import { useContext } from 'react'
-import { ThemeContext } from '../Layout'
+import { useSelector } from 'react-redux'
 import styles from './PagesNav.module.scss'
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
 
 export const PagesNav = (props: Props) => {
     const { number, number2, number3, number4 } = props
-    const { themeColor } = useContext(ThemeContext)
+    const theme = useSelector((state: any) => state.theme)
     return (
         <div className={styles.PagesNavContainer}>
             <div className={styles.PrevPage}>
@@ -28,19 +27,19 @@ export const PagesNav = (props: Props) => {
                 </svg>
                 <button>Prev</button>
             </div>
-            <div className={`${styles.PagesNumber} ${themeColor === 'dark' ? `${styles.dark}` : '' }`}>
-                <a href='#!'>{number}</a>
-                <a href='#!'>{number2}</a>
-                <a href='#!'>{number3}</a>
+            <div className={styles.PagesNumber}>
+                <a style={theme} href='#!'>{number}</a>
+                <a style={theme} href='#!'>{number2}</a>
+                <a style={theme} href='#!'>{number3}</a>
                 <svg width="12"
                     height="2" viewBox="0 0 12 2"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2.57142 2H0.5V0H2.57142V2Z" fill={themeColor === 'dark' ? `#FFFFFF` : '#313037' } />
-                    <path d="M7.10713 2H5.03571V0H7.10713V2Z" fill={themeColor === 'dark' ? `#FFFFFF` : '#313037' } />
-                    <path d="M11.5 2H9.42858V0H11.5V2Z" fill={themeColor === 'dark' ? `#FFFFFF` : '#313037' } />
+                    <path d="M2.57142 2H0.5V0H2.57142V2Z" fill={`${theme.color === '#313037' ? "#313037" : "#DADADA"}`} />
+                    <path d="M7.10713 2H5.03571V0H7.10713V2Z" fill={`${theme.color === '#313037' ? "#313037" : "#DADADA"}`} />
+                    <path d="M11.5 2H9.42858V0H11.5V2Z" fill={`${theme.color === '#313037' ? "#313037" : "#DADADA"}`} />
                 </svg>
-                <a href='#!'>{number4}</a>
+                <a style={theme} href='#!'>{number4}</a>
             </div>
             <div className={styles.NextPage}>
                 <button>Next</button>

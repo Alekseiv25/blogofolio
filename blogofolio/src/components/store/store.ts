@@ -1,11 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { popupReducer } from './popUpReducer'
+import popupReducer from './popUpReducer'
+import themeReduser from './themeReducer'
 
 
 export const rootReducer = combineReducers({
-	popup: popupReducer
+    popup: popupReducer,
+    theme: themeReduser
 })
-
 
 
 export const store = configureStore({

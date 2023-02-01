@@ -1,11 +1,15 @@
 import { useState } from "react"
-import {  NavLink, useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { NavLink, useNavigate } from "react-router-dom"
 import { Input } from "../../Input"
 import { Navigation } from "../../Navigaton"
 import { Submit } from "../../Submit"
 import styles from './SignUp.module.scss'
 
 export const SignUp = () => {
+    const getThemeSelector = (state: any) => state.theme
+    const theme = useSelector(getThemeSelector)
+    
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
         name: '',
@@ -93,7 +97,7 @@ export const SignUp = () => {
                     onChange={changePasswordCheck}
                 />
                 <Submit value="Sign Up" onClick={checkPassword} link={''} />
-                <p>Alredy have an account? <NavLink to={'/signIn'}>Sign In</NavLink></p>
+                <p>Alredy have an account? <NavLink style={theme} to={'/signIn'}>Sign In</NavLink></p>
             </form>
         </>
     )

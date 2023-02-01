@@ -1,19 +1,10 @@
-import React, { createContext, Dispatch, SetStateAction } from "react"
 import { useCallback, useState } from "react"
 import { Outlet } from "react-router-dom"
 import { NavBar } from "../NavBar"
 import { BurgerMenu } from "../BurgerMenu"
 import Modal from "../Modal"
+import { useSelector } from "react-redux"
 
-
-type ThemeColor = "light" | "dark";
-interface IContext {
-    themeColor: ThemeColor;
-    setThemeColor: Dispatch<SetStateAction<ThemeColor>>;
-}
-
-
-export const ThemeContext = createContext<IContext>({} as IContext);
 
 const Layout = () => {
     const [showLeftMenu, setShowLeftMenu] = useState(false)
@@ -23,32 +14,26 @@ const Layout = () => {
     }, [])
 
 
-    const [themeColor, setThemeColor] = useState<ThemeColor>("light");
+    const theme = useSelector((state: any) => state.theme)
 
-    const contextValue: IContext = {
-        themeColor,
-        setThemeColor,
-    };
     return (
         <div className='App'>
             <header className="App-header">
                 <NavBar onBurgerClick={showMenu} />
             </header>
-            <ThemeContext.Provider value={contextValue}>
-                <main className={`Main ${themeColor === 'light' ? 'light' : 'dark'}`}>
-                    <BurgerMenu show={showLeftMenu} />
-                    <div className='wrapper'>
-                        <Outlet />
-                        <Modal />
-                    </div>
-                </main>
-                <footer className={`Footer ${themeColor === 'light' ? 'light' : 'dark'}`}>
-                    <div className='footer-wrapper'>
-                        <p >©2023 Blogofolio</p>
-                        <p >All rights reserved</p>
-                    </div>
-                </footer>
-            </ThemeContext.Provider>
+            <main className='Main' style={theme}>
+                <BurgerMenu show={showLeftMenu} />
+                <div className='wrapper'>
+                    <Outlet />
+                    <Modal />
+                </div>
+            </main>
+            <footer className='Footer' style={theme}>
+                <div className='footer-wrapper'>
+                    <p >©2023 Blogofolio</p>
+                    <p >All rights reserved</p>
+                </div>
+            </footer>
         </div>
     )
 }

@@ -1,14 +1,15 @@
-import { useCallback, useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { GetSearchPosts, IPost } from "../../Services/PostService"
 import { SearchPost } from "../../SearchPost"
 import styles from './Search.module.scss'
-import { ThemeContext } from "../../Layout"
 import { useLocation } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 
 
 export const Search = () => {
-    const { themeColor } = useContext(ThemeContext)
+    const getThemeSelector = (state: any) => state.theme
+    const theme = useSelector(getThemeSelector)
     const [searchPost, setSearchPost] = useState<IPost[]>([])
     const location = useLocation();
     const searchText = location.state || "nothing";
@@ -19,7 +20,7 @@ export const Search = () => {
 
     return (
         <section>
-            <input className={`${styles.input} ${themeColor === 'dark' ? `${styles.dark}` : ''}`} type='text' value={`Search result: ${searchText} `} />
+            <input className={styles.input} style={theme} type='text' value={`Search result: ${searchText} `} />
             <div >
                 {searchPost.map((el) => (
                     <SearchPost key={el.id} {...el} />
