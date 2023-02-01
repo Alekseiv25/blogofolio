@@ -3,6 +3,7 @@ import { useCallback, useState } from "react"
 import { Outlet } from "react-router-dom"
 import { NavBar } from "../NavBar"
 import { BurgerMenu } from "../BurgerMenu"
+import Modal from "../Modal"
 
 
 type ThemeColor = "light" | "dark";
@@ -38,6 +39,7 @@ const Layout = () => {
                     <BurgerMenu show={showLeftMenu} />
                     <div className='wrapper'>
                         <Outlet />
+                        <Modal />
                     </div>
                 </main>
                 <footer className={`Footer ${themeColor === 'light' ? 'light' : 'dark'}`}>
