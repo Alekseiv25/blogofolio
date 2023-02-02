@@ -1,24 +1,19 @@
-import { useCallback, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { TOGGLE_BURGER } from '../store/burgerMenuReducer'
 import styles from './BurgerButton.module.scss'
-interface IProps {
-    onClick?: (isOpen: boolean) => void
-}
 
 
-export const BurgerButton = (props: IProps) => {
-    const { onClick } = props
-    const [isOpen, setIsOpen] = useState(false)
+export const BurgerButton = () => {
+    const dispatch = useDispatch()
 
-    const onToogle = useCallback(() => {
-        const newState = !isOpen
-        setIsOpen(newState)
-        if (onClick) {
-            onClick(newState)
-        }
-    }, [isOpen, onClick])
+    const handleShowBurger = () => {
+        dispatch({
+            type: TOGGLE_BURGER
+        })
+    }
 
     return (
-        <button onClick={onToogle} className={styles.button}  >
+        <button onClick={handleShowBurger} className={styles.button}  >
             <span className={styles.span}></span>
             <span className={styles.span}></span>
             <span className={styles.span}></span>

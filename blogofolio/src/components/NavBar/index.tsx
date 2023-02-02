@@ -1,16 +1,12 @@
-
 import { SearchBar } from '../SearchBar'
 import { UserButton } from '../UserButton'
 import styles from './NavBar.module.scss'
 import { BurgerButton } from '../BurgerButton'
-import { SearchButton } from '../SearchBar/SearchButton'
-interface IProps {
-    onBurgerClick: (showMenu: boolean) => void
-}
-export const NavBar = (props: IProps) => {
+
+export const NavBar = () => {
     return (
         <nav className={styles.nav}>
-            <BurgerButton onClick={props.onBurgerClick} />
+            <BurgerButton />
             <div className={styles.wrapper}>
                 <SearchBar />
                 <UserButton shortName='AM' fullName='Artem Murili' /></div>

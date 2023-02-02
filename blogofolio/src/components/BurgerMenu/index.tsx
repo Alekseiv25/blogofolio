@@ -5,23 +5,16 @@ import { DarkBtn } from '../ThemeButtons/Dark'
 import { NavLink } from 'react-router-dom'
 import AsideMenuButton from '../LogInLogOutButton'
 import { useAuth } from '../hoc/AuthProvider'
+import { AppState } from '../store/store'
+import { useSelector } from 'react-redux'
 
-
-interface IProps {
-    show: boolean
-}
-
-export const BurgerMenu = (props: IProps) => {
+const getBurgerStateSelector = (state: AppState) => state.burger
+export const BurgerMenu = () => {
     const { user } = useAuth();
-    const { show } = props
-
-
-    if (!show) {
-        return null
-    }
+    const burgerState = useSelector(getBurgerStateSelector)
 
     return (
-        <div className={styles.BurgerMenu}>
+        <div className={burgerState.isOpen ? `${styles.BurgerMenu} ${styles.active1}` : `${styles.BurgerMenu}`}>
             <div className={styles.content}>
                 <div className={styles.header}>
                     <UserButton shortName={'AM'} fullName={'Artem Murili'} />

@@ -2,6 +2,9 @@
     position: absolute;
     left: 0;
     z-index: 100;
+    opacity: 0;
+    transition: 0.5s;
+    transform: translateX(-100%);
 
     .content {
         background-color: white;
@@ -93,4 +96,10 @@
 .darkBackground {
     background-color: gray;
     height: 100vh;
+}
+
+
+.BurgerMenu.active1 {
+    opacity: 1;
+    transform: translateX(0);
 }
