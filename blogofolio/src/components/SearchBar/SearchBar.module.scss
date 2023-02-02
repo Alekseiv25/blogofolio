@@ -3,9 +3,11 @@
     border: 0px solid;
     background-color: #5360CD;
     box-shadow: none;
-    border-right: 1px solid white;
     width: 85%;
     display: flex;
+    width: 100%;
+    opacity: 0;
+    transition: 0.5s;
 }
 
 .wrapper {
@@ -22,4 +24,8 @@
 
 .input::placeholder {
     color: white;
+}
+
+.input.active {
+    opacity: 1;
 }

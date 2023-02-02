@@ -1,22 +1,18 @@
-
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { TOGGLE_SEARCH } from '../../store/searchToggleReducer'
 import styles from './SearchButton.module.scss'
 
-interface IProps {
-    searchText: string
-}
+export const SearchButton = () => {
+    const dispatch = useDispatch()
 
-export const SearchButton = (props: IProps) => {
-    const navigate = useNavigate();
-
-    const { searchText } = props;
-
-    const goToSearchPage = (searchText: string) => {
-        navigate("/search", { state: searchText });
-    };
+    const handleShowSearch = () => {
+        dispatch({
+            type: TOGGLE_SEARCH
+        })
+    }
 
     return (
-        <button className={styles.button}  onClick={() => goToSearchPage(searchText)} placeholder='Search...' >
+        <button className={styles.button} onClick={handleShowSearch} placeholder='Search...' >
             <svg xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 50 50"
                 width="50px"

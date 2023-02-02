@@ -1,13 +1,15 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import burgerMenuReducer from './burgerMenuReducer'
 import popupReducer from './popUpReducer'
+import searchToggleReducer from './searchToggleReducer'
 import themeReduser from './themeReducer'
 
 
 export const rootReducer = combineReducers({
     popup: popupReducer,
     theme: themeReduser,
-    burger: burgerMenuReducer
+    burger: burgerMenuReducer,
+    search: searchToggleReducer
 })
 
 
