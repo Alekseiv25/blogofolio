@@ -14,7 +14,7 @@ export const SearchBar = () => {
     const navigate = useNavigate();
     const exmpl = (e: any) => {
         setSearchText(e.target.value)
-        navigate("/search", { state: searchText });
+        navigate("/search", { state: e.target.value });
     }
 
     return (
