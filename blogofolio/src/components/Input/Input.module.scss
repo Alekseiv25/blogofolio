@@ -19,3 +19,8 @@
 input:focus {
     outline: 0
 }
+
+.container {
+    display: flex;
+    flex-direction: column;
+}

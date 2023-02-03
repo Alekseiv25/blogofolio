@@ -4,6 +4,7 @@ interface IProps {
     value: string
     onClick?: () => void
     link?: string
+    className?: string
 }
 
 export const Submit = (props: IProps) => {

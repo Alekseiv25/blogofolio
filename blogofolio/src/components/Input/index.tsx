@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import styles from './Input.module.scss'
 
 interface InputProps {
-    type: 'email' | 'password' | 'text'
+    type: string
     label: string
     placeholder: string
     name: string
@@ -17,10 +17,10 @@ export const Input = (props: InputProps) => {
 
 
     return (
-        <>
+        <div className={styles.container}>
             <span className={styles.text} style={theme}>{label}</span>
             <input onChange={()=> {}} type={type} name={name} className={styles.input} placeholder={placeholder} />
-        </>
+        </div>
 
     )
 }
