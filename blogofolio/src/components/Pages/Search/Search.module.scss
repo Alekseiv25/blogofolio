@@ -15,3 +15,23 @@
 .dark {
     color: #FFFFFF;
 }
+
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 80vh;
+
+    .notresult {
+        font-weight: 700;
+        font-size: 56px;
+        line-height: 80px;
+        background: none;
+        border: none;
+        margin: 0;
+
+    }
+}

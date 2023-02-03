@@ -5,6 +5,7 @@ import { getPostById, IPost } from "../../Services/PostService"
 import styles from './SelectedPost.module.scss'
 import { SelectedPostNav } from "../../SelectedPostNav"
 import { useSelector } from "react-redux"
+import { LoadSpinner } from "../../loadSpinner"
 
 export const SelectedPost = () => {
     const getThemeSelector = (state: any) => state.theme
@@ -19,19 +20,12 @@ export const SelectedPost = () => {
 
     if (!selectedPost.image) {
         return (
-            <svg className={styles.spinner} viewBox="0 0 50 50">
-                <circle
-                    className={styles.path}
-                    cx="25" cy="25" r="20"
-                    fill="none"
-                    strokeWidth="5">
-                </circle>
-            </svg>)
+            <LoadSpinner />
+        )
     }
     const goHome = () => navigate('/')
-    //Не работает спинер
-    //Заработал :)
 
+    
     return (<section>
         <div className={styles.nav}>
             <a href="#!" style={theme} className={styles.link} onClick={goHome}>Home</a>

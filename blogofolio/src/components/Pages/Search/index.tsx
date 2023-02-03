@@ -7,6 +7,7 @@ import { useSelector } from "react-redux"
 
 
 
+
 export const Search = () => {
     const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
@@ -17,6 +18,14 @@ export const Search = () => {
     useEffect(() => {
         GetSearchPosts(searchText).then(post => { setSearchPost(post) })
     }, [searchText])
+
+
+    if (!searchPost.length) {
+        return (<div className={styles.container}>
+            <p className={styles.notresult}>Not results</p>
+        </div>
+        )
+    }
 
     return (
         <section>

@@ -7,6 +7,7 @@ import { AsidePostItem } from "../../PostItems/AsidePostItem"
 import { Navigation } from "../../Navigaton"
 import { Tabs } from "../../Tabs"
 import { PagesNav } from "../../PagesNav"
+import { LoadSpinner } from "../../loadSpinner"
 
 
 export interface IRes {
@@ -29,9 +30,8 @@ export const PostList = () => {
 
     if (!mainPost.length) {
         return (
-            <svg className={styles.spinner} viewBox="0 0 50 50">
-                <circle className={styles.path} cx="25" cy="25" r="20" fill="none" strokeWidth="5"></circle>
-            </svg>)
+            <LoadSpinner />
+        )
     }
 
     return (
@@ -42,13 +42,13 @@ export const PostList = () => {
                 <div className={styles.leftPosts}>
                     <div className={styles.mainPost}>
                         {mainPost.map((el) => (
-                                <MainPostItem key={el.id} {...el} />
+                            <MainPostItem key={el.id} {...el} />
                         ))
                         }
                     </div>
                     <div className={styles.bottomPosts}>
                         {bottomPost.map((el) => (
-                                <BottomPostItem key={el.id}  {...el} />
+                            <BottomPostItem key={el.id}  {...el} />
                         ))}
                     </div></div>
                 <aside className={styles.asidePosts}>
