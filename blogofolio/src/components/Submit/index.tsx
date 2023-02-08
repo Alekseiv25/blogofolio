@@ -8,10 +8,10 @@ interface IProps {
 }
 
 export const Submit = (props: IProps) => {
-    const { value } = props
+    const { value, className } = props
     return (
         <input type="submit"
-            className={styles.submit}
+            className={`${styles.submit} ${className}`}
             value={value}>
         </input>
 
