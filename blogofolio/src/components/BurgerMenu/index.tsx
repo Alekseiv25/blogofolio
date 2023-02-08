@@ -1,11 +1,11 @@
 import styles from './BurgerMenu.module.scss'
-import { UserButton } from '../UserButton'
-import { LightBtn } from '../ThemeButtons/Light'
-import { DarkBtn } from '../ThemeButtons/Dark'
+import { UserButton } from '../Buttons/UserButton'
+import { LightBtn } from '../Buttons/ThemeButtons/Light'
+import { DarkBtn } from '../Buttons/ThemeButtons/Dark'
 import { NavLink } from 'react-router-dom'
-import AsideMenuButton from '../LogInLogOutButton'
+import AsideMenuButton from '../Buttons/LogInLogOutButton'
 import { useAuth } from '../hoc/AuthProvider'
-import { AppState } from '../store/store'
+import { AppState } from '../../store/store'
 import { useSelector } from 'react-redux'
 
 const getBurgerStateSelector = (state: AppState) => state.burger

@@ -1,9 +1,9 @@
-import { IPost } from '../../Services/PostService'
+import { IPost } from '../../../services/PostService'
 import style from './MainPostItem.module.scss'
-import { PostButtons } from '../../PostButtons'
+import { PostButtons } from '../../Buttons/PostButtons'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { OPEN_POPUP } from '../../store/popUpReducer'
+import { OPEN_POPUP } from '../../../store/reducers/popUpReducer'
 
 export const MainPostItem = (props: IPost) => {
     const { date, title, text, image, id } = props

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { AppState } from '../store/store';
+import { AppState } from '../../store/store';
 import styles from './SearchBar.module.scss'
 
 const getSearchStateSelector = (state: AppState) => state.search

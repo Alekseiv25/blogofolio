@@ -1,8 +1,8 @@
 import { SearchBar } from '../SearchBar'
-import { UserButton } from '../UserButton'
+import { UserButton } from '../Buttons/UserButton'
 import styles from './NavBar.module.scss'
-import { BurgerButton } from '../BurgerButton'
-import { SearchButton } from '../SearchBar/SearchButton'
+import { BurgerButton } from '../Buttons/BurgerButton'
+import { SearchButton } from '../Buttons/SearchButton'
 
 export const NavBar = () => {
     return (

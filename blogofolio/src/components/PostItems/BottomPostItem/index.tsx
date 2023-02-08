@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { IPost } from '../../Services/PostService'
-import { PostButtons } from '../../PostButtons'
+import { IPost } from '../../../services/PostService'
+import { PostButtons } from '../../Buttons/PostButtons'
 import style from './BottomPostItem.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { OPEN_POPUP } from '../../store/popUpReducer'
+import { OPEN_POPUP } from '../../../store/reducers/popUpReducer'
 
 export const BottomPostItem = (props: IPost) => {
     const { image, date, title, id } = props

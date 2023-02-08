@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { CLOSE_POPUP } from '../store/popUpReducer'
-import { AppState } from '../store/store'
+import { CLOSE_POPUP } from '../../store/reducers/popUpReducer'
+import { AppState } from '../../store/store'
 import style from './Modal.module.scss'
 
 const getPopupStateSelector = (state: AppState) => state.popup

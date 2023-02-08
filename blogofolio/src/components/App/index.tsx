@@ -1,17 +1,17 @@
 import './App.scss';
-import { Confirmation } from '../Pages/Confirmation';
-import { PostList } from '../Pages/PostList';
-import { SelectedPost } from '../Pages/SelectedPost';
-import { SignIn } from '../Pages/SignIn';
-import { SignUp } from '../Pages/SignUp';
-import { Success } from '../Pages/Success';
-import { Search } from '../Pages/Search';
+import { Confirmation } from '../../pages/Confirmation';
+import { PostList } from '../../pages/PostList';
+import { SelectedPost } from '../../pages/SelectedPost';
+import { SignIn } from '../../pages/SignIn';
+import { SignUp } from '../../pages/SignUp';
+import { Success } from '../../pages/Success';
+import { Search } from '../../pages/Search';
 import { Route, Routes } from 'react-router-dom';
-import Layout from '../Layout';
-import NotFound from '../Pages/NotFound';
-import { Reset } from '../Pages/Reset';
+import Layout from '../../pages/Layout';
+import NotFound from '../../pages/NotFound';
+import { Reset } from '../../pages/Reset';
 import { AuthProvider } from '../hoc/AuthProvider';
-import { CreatePost } from '../Pages/CreatePost';
+import { CreatePost } from '../../pages/CreatePost';
 import RequireAuth from '../hoc/RequireAuth';
 
 function App(props: any) {

@@ -1,8 +1,8 @@
-import { IPost } from '../Services/PostService'
+import { IPost } from '../../services/PostService'
 import style from './SearchPost.module.scss'
-import { PostButtons } from '../PostButtons'
+import { PostButtons } from '../Buttons/PostButtons'
 import { useDispatch } from 'react-redux'
-import { OPEN_POPUP } from '../store/popUpReducer'
+import { OPEN_POPUP } from '../../store/reducers/popUpReducer'
 export const SearchPost = (props: IPost) => {
     const { date, title, image } = props
 
