@@ -1,6 +1,6 @@
 import './App.scss';
 import { Confirmation } from '../../pages/Confirmation';
-import { PostList } from '../../pages/PostList';
+import { Main } from '../../pages/MainPage';
 import { SelectedPost } from '../../pages/SelectedPost';
 import { SignIn } from '../../pages/SignIn';
 import { SignUp } from '../../pages/SignUp';
@@ -20,7 +20,7 @@ function App(props: any) {
     <AuthProvider>
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route index element={<PostList />} />
+          <Route index element={<Main />} />
           <Route path='post/:id' element={<SelectedPost />} />
           <Route path='signIn' element={<SignIn />} />
           <Route path='signUp' element={<SignUp />} />
