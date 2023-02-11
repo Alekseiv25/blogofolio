@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react"
-import { getAllPosts, IPost } from "../../services/PostService"
-
+import { useEffect } from "react"
+import {  IPost } from "../../services/PostService"
 import { Navigation } from "../../components/Navigaton"
 import { Tabs } from "../../components/Tabs"
 import { PagesNav } from "../../components/PagesNav"
@@ -35,7 +34,7 @@ export const Main = () => {
 
     useEffect(() => {
         const loadPostsListAsync = () => {
-            dispatch(loadPostListAsyncAction(120, 0));
+            dispatch(loadPostListAsyncAction(11, 0));
         };
         loadPostsListAsync();
 
@@ -44,17 +43,17 @@ export const Main = () => {
 
 
 
-    // if (!mainPost.length) {
-    //     return (
-    //         <LoadSpinner />
-    //     )
-    // }
+    if (!posts.length) {
+        return (
+            <LoadSpinner />
+        )
+    }
 
     return (
         <section>
             <Navigation text="Blog" backToHome="" />
             <Tabs />
-            <PostList mainPost={posts.slice(1,0)} bottomPost={posts.slice(1,4)} asidePost={posts.slice(5,11)} />
+            <PostList mainPost={posts.slice(0, 1)} bottomPost={posts.slice(1, 5)} asidePost={posts.slice(5, 11)} />
             <PagesNav number={1} number2={2} number3={3} number4={6} />
         </section>
     )

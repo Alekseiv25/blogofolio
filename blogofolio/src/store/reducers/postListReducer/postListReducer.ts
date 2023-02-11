@@ -23,7 +23,7 @@ const postListReducer = (state: IPostsListState = defaultState, action: IPostLis
         case LOAD_POSTS:
             return {
                 ...state,
-                posts: [...state.posts],
+                posts: [...action.posts],
             };
 
         default:
