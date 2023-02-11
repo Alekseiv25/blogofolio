@@ -2,14 +2,20 @@ import { useSelector } from 'react-redux'
 import styles from './PagesNav.module.scss'
 
 interface Props {
-    number: number
-    number2: number
-    number3: number
-    number4: number
+    totalPosts: any
+    postsPerPage: number
+    setCurrentPage: any
 }
 
 export const PagesNav = (props: Props) => {
-    const { number, number2, number3, number4 } = props
+    const { totalPosts, postsPerPage, setCurrentPage } = props
+
+
+    let pages = [];
+    for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+        pages.push(i)
+    }
+
     const theme = useSelector((state: any) => state.theme)
     return (
         <div className={styles.PagesNavContainer}>
@@ -28,9 +34,16 @@ export const PagesNav = (props: Props) => {
                 <button>Prev</button>
             </div>
             <div className={styles.PagesNumber}>
-                <a style={theme} href='#!'>{number}</a>
+                {/* <a style={theme} href='#!'>{number}</a>
                 <a style={theme} href='#!'>{number2}</a>
-                <a style={theme} href='#!'>{number3}</a>
+                <a style={theme} href='#!'>{number3}</a> */}
+
+                {pages.map((page, index) => {
+                    return <button style={theme} onClick={() => setCurrentPage(page)} key={index}>{page}</button>
+                })}
+
+
+
                 <svg width="12"
                     height="2" viewBox="0 0 12 2"
                     fill="none"
@@ -39,7 +52,7 @@ export const PagesNav = (props: Props) => {
                     <path d="M7.10713 2H5.03571V0H7.10713V2Z" fill={`${theme.color === '#313037' ? "#313037" : "#DADADA"}`} />
                     <path d="M11.5 2H9.42858V0H11.5V2Z" fill={`${theme.color === '#313037' ? "#313037" : "#DADADA"}`} />
                 </svg>
-                <a style={theme} href='#!'>{number4}</a>
+                {/* <a style={theme} href='#!'>{number4}</a> */}
             </div>
             <div className={styles.NextPage}>
                 <button>Next</button>

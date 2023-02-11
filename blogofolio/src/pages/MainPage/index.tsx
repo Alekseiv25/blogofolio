@@ -1,5 +1,5 @@
-import { useEffect } from "react"
-import {  IPost } from "../../services/PostService"
+import { useEffect, useState } from "react"
+import { IPost } from "../../services/PostService"
 import { Navigation } from "../../components/Navigaton"
 import { Tabs } from "../../components/Tabs"
 import { PagesNav } from "../../components/PagesNav"
@@ -18,6 +18,10 @@ export interface IRes {
 
 
 export const Main = () => {
+    const [currentPage, setCurrentPage] = useState(1)
+    const postsPerPage = 11
+    const mainPostPage = 1
+
     const dispatch = useDispatch();
     const posts = useSelector((state: AppState) => state.postList.posts);
 
@@ -33,12 +37,7 @@ export const Main = () => {
     // }, [])
 
     useEffect(() => {
-        const loadPostsListAsync = () => {
-            dispatch(loadPostListAsyncAction(11, 0));
-        };
-        loadPostsListAsync();
-
-
+        dispatch(loadPostListAsyncAction(120, 0));
     }, [dispatch]);
 
 
@@ -49,12 +48,24 @@ export const Main = () => {
         )
     }
 
+
+
+
+
+    const lastPostIndex = currentPage /*1*/ * postsPerPage /*11*/
+    const firstPostIndex = lastPostIndex - postsPerPage
+    const currentPost = posts.slice(firstPostIndex, lastPostIndex)
+
+    const mainPostExample = posts.slice(firstPostIndex, 1 )
+
     return (
         <section>
             <Navigation text="Blog" backToHome="" />
             <Tabs />
-            <PostList mainPost={posts.slice(0, 1)} bottomPost={posts.slice(1, 5)} asidePost={posts.slice(5, 11)} />
-            <PagesNav number={1} number2={2} number3={3} number4={6} />
+            <PostList mainPost={mainPostExample} bottomPost={currentPost} asidePost={posts.slice(5, 11)} />
+            <PagesNav setCurrentPage={setCurrentPage} totalPosts={posts.length} postsPerPage={postsPerPage} />
         </section>
     )
 }
+
+// posts.slice(1, 5)
