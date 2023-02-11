@@ -20,7 +20,6 @@ export interface IRes {
 export const Main = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const postsPerPage = 11
-    const mainPostPage = 1
 
     const dispatch = useDispatch();
     const posts = useSelector((state: AppState) => state.postList.posts);
@@ -37,7 +36,7 @@ export const Main = () => {
     // }, [])
 
     useEffect(() => {
-        dispatch(loadPostListAsyncAction(120, 0));
+        dispatch(loadPostListAsyncAction(100, 0));
     }, [dispatch]);
 
 
@@ -54,15 +53,17 @@ export const Main = () => {
 
     const lastPostIndex = currentPage /*1*/ * postsPerPage /*11*/
     const firstPostIndex = lastPostIndex - postsPerPage
-    const currentPost = posts.slice(firstPostIndex, lastPostIndex)
+    const currentPost = posts.slice(firstPostIndex + 1, lastPostIndex - 6)
 
-    const mainPostExample = posts.slice(firstPostIndex, 1 )
+    const mainPostExample = posts.slice(firstPostIndex, lastPostIndex === 11 ? 1 : firstPostIndex + 1)
+
+    const asidePostExample = posts.slice(firstPostIndex + 5, lastPostIndex)
 
     return (
         <section>
             <Navigation text="Blog" backToHome="" />
             <Tabs />
-            <PostList mainPost={mainPostExample} bottomPost={currentPost} asidePost={posts.slice(5, 11)} />
+            <PostList mainPost={mainPostExample} bottomPost={currentPost} asidePost={asidePostExample} />
             <PagesNav setCurrentPage={setCurrentPage} totalPosts={posts.length} postsPerPage={postsPerPage} />
         </section>
     )
