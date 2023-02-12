@@ -1,10 +1,15 @@
 import styles from './SelectedPostNav.module.scss'
 
-export const SelectedPostNav = () => {
+interface Props {
+    nextPage: () => void
+    previousPage: () => void
+}
 
+export const SelectedPostNav = (props: Props) => {
+    const { nextPage, previousPage } = props
     return (
-        <div  className={styles.SelectedPostNavContainer}>
-            <div  className={styles.PrevPage}>
+        <div className={styles.SelectedPostNavContainer}>
+            <div onClick={() => { previousPage() }} className={styles.PrevPage}>
                 <svg width="18"
                     height="15"
                     viewBox="0 0 18 15"
@@ -21,7 +26,7 @@ export const SelectedPostNav = () => {
 
 
 
-            <div className={styles.NextPage}>
+            <div onClick={() => { nextPage() }} className={styles.NextPage}>
                 <button>Next</button>
                 <svg width="18"
                     height="15"

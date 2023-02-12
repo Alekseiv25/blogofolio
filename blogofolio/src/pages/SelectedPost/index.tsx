@@ -10,9 +10,17 @@ import { LoadSpinner } from "../../components/loadSpinner"
 export const SelectedPost = () => {
     const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
-    const params = useParams()
+    const params: any = useParams()
     const navigate = useNavigate()
     const [selectedPost, setSelectedPost] = useState<IPost>({} as IPost)
+
+    const nextPage = () => {
+        navigate(`/post/${Number(params.id) + 1}`)
+    }
+
+    const previousPage = () => {
+        navigate(`post/${Number(params.id) - 1}`)
+    }
 
     useEffect(() => {
         getPostById(params.id).then(post => { setSelectedPost(post) })
@@ -25,7 +33,9 @@ export const SelectedPost = () => {
     }
     const goHome = () => navigate('/')
 
-    
+
+
+
     return (<section>
         <div className={styles.nav}>
             <a href="#!" style={theme} className={styles.link} onClick={goHome}>Home</a>
@@ -38,7 +48,7 @@ export const SelectedPost = () => {
                 <p style={theme} className={styles.text}>{selectedPost.text}</p>
                 <PostButtons />
             </div>
-            <SelectedPostNav />
+            <SelectedPostNav previousPage={previousPage} nextPage={nextPage} />
         </div>
 
     </section>)
