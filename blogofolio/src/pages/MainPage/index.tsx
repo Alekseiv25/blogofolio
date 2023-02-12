@@ -36,7 +36,7 @@ export const Main = () => {
     // }, [])
 
     useEffect(() => {
-        dispatch(loadPostListAsyncAction(100, 0));
+        dispatch(loadPostListAsyncAction(66, 0));
     }, [dispatch]);
 
 
@@ -47,6 +47,18 @@ export const Main = () => {
         )
     }
 
+    const nextPage = () => {
+        setCurrentPage(currentPage + 1)
+    }
+
+    const previousPage = () => {
+        if (currentPage === 1) {
+            return
+        }
+        else {
+            setCurrentPage(currentPage - 1)
+        }
+    }
 
 
 
@@ -64,7 +76,7 @@ export const Main = () => {
             <Navigation text="Blog" backToHome="" />
             <Tabs />
             <PostList mainPost={mainPostExample} bottomPost={currentPost} asidePost={asidePostExample} />
-            <PagesNav setCurrentPage={setCurrentPage} totalPosts={posts.length} postsPerPage={postsPerPage} />
+            <PagesNav previousPage={previousPage} nextPage={nextPage} setCurrentPage={setCurrentPage} totalPosts={posts.length} postsPerPage={postsPerPage} />
         </section>
     )
 }

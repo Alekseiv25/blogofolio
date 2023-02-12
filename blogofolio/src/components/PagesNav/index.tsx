@@ -2,16 +2,26 @@ import { useSelector } from 'react-redux'
 import styles from './PagesNav.module.scss'
 
 interface Props {
-    totalPosts: any
+    totalPosts: number
     postsPerPage: number
-    setCurrentPage: any
+    setCurrentPage: (page: number) => void
+    nextPage: () => void
+    previousPage: () => void
 }
 
 export const PagesNav = (props: Props) => {
-    const { totalPosts, postsPerPage, setCurrentPage } = props
+    const {
+        totalPosts,
+        postsPerPage,
+        setCurrentPage,
+        nextPage,
+        previousPage,
+    } = props
 
 
-    let pages = [];
+    let pages: number[] = [];
+
+
     for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
         pages.push(i)
     }
@@ -19,7 +29,7 @@ export const PagesNav = (props: Props) => {
     const theme = useSelector((state: any) => state.theme)
     return (
         <div className={styles.PagesNavContainer}>
-            <div className={styles.PrevPage}>
+            <div onClick={previousPage} className={styles.PrevPage}>
                 <svg width="18"
                     height="15"
                     viewBox="0 0 18 15"
@@ -39,22 +49,28 @@ export const PagesNav = (props: Props) => {
                 <a style={theme} href='#!'>{number3}</a> */}
 
                 {pages.map((page, index) => {
-                    return <button style={theme} onClick={() => setCurrentPage(page)} key={index}>{page}</button>
+                    return (
+                        <button
+                            style={theme}
+                            onClick={() => setCurrentPage(page)}
+                            key={index}>
+                            {page}
+                        </button>)
                 })}
 
 
 
-                <svg width="12"
+                {/* <svg width="12"
                     height="2" viewBox="0 0 12 2"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path d="M2.57142 2H0.5V0H2.57142V2Z" fill={`${theme.color === '#313037' ? "#313037" : "#DADADA"}`} />
                     <path d="M7.10713 2H5.03571V0H7.10713V2Z" fill={`${theme.color === '#313037' ? "#313037" : "#DADADA"}`} />
                     <path d="M11.5 2H9.42858V0H11.5V2Z" fill={`${theme.color === '#313037' ? "#313037" : "#DADADA"}`} />
-                </svg>
+                </svg> */}
                 {/* <a style={theme} href='#!'>{number4}</a> */}
             </div>
-            <div className={styles.NextPage}>
+            <div onClick={nextPage} className={styles.NextPage}>
                 <button>Next</button>
                 <svg width="18"
                     height="15"
