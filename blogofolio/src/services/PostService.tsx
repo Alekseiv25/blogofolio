@@ -39,3 +39,9 @@ export const getPostById = (id: string = '1') => {
         .then(response => response.json())
         .then(res => res)
 }
+
+export const getPostsCount = async () => {
+    const response = await fetch(`https://studapi.teachmeskills.by/blog/posts/`);
+    const res = await response.json();
+    return res.count;
+  };

@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import burgerMenuReducer from "./reducers/burgerMenuReducer";
+import { paginationReducer } from "./reducers/paginationReducer/paginationReducer";
 import popupReducer from "./reducers/popUpReducer";
 import postListReducer from "./reducers/postListReducer/postListReducer";
 import searchToggleReducer from "./reducers/searchToggleReducer";
@@ -11,5 +12,6 @@ export const rootReducer = combineReducers({
     theme: themeReduser,
     burger: burgerMenuReducer,
     search: searchToggleReducer,
-    postList: postListReducer
+    postList: postListReducer,
+    pagination: paginationReducer
 })

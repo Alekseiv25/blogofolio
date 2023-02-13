@@ -35,6 +35,8 @@
         border: none;
         background: none;
         cursor: pointer;
+
+
     }
 
     .PagesNumber {
@@ -42,7 +44,7 @@
         justify-content: space-between;
         align-items: center;
 
-        button {
+        .button {
             text-decoration: none;
             font-style: normal;
             font-weight: 600;
@@ -51,6 +53,8 @@
             color: #313037;
             margin-right: 20px;
             cursor: pointer;
+
+
         }
 
         svg {
@@ -87,4 +91,10 @@
     a {
         color: white !important;
     }
+}
+
+.button.active {
+
+    font-size: 80px;
+
 }
