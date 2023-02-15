@@ -1,58 +1,71 @@
 import { useSelector } from 'react-redux'
-import { AppState } from '../../store/store'
 import styles from './PagesNav.module.scss'
-import {
-    setCurrentPageAction,
-    setNextPage,
-    setPreviouslyPage,
-} from "../../store/reducers/paginationReducer/actions";
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { loadTotalPostsCountAsyncAction } from '../../store/reducers/postListReducer/postListAction';
-import { LoadSpinner } from '../loadSpinner';
+import { useEffect, useMemo, useState } from 'react';
+
+interface Props {
+    totalPosts: any
+    postsPerPage: number
+    setCurrentPage: any
+}
 
 
-
-const totalPostsCountSelector = (state: AppState) => state.postList.totalPostsCount;
-const postsPerPageSelector = (state: AppState) => state.postList.pageSize;
-const currentPageSelector = (state: AppState) => state.pagination.currentPage;
-
-export const Pagination = () => {
-
-    const dispatch = useDispatch()
-    const currentPage = useSelector(currentPageSelector);
-    const totalPostsCount = useSelector(totalPostsCountSelector);
-    const postsPerPage = useSelector(postsPerPageSelector);
+export const Pagination = (props: Props) => {
+    const { totalPosts, postsPerPage, setCurrentPage } = props
     const theme = useSelector((state: any) => state.theme)
+    let pages: number[] = [];
+    for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+        pages.push(i)
+    }
+    const [currentButton, setCurrentButton]: any = useState(1)
 
+    const [arrOfCurrButton, setArrofCurrButtons] = useState([])
 
     useEffect(() => {
-        dispatch(loadTotalPostsCountAsyncAction());
-    }, [dispatch, currentPage]);
+        let tempNumberOfPages: any = [...arrOfCurrButton]
 
-    let pages: number[] = [];
+        let dotsInitial = '...'
+        let dotsLeft = '... '
+        let dotsRight = ' ...'
 
-    const totalPages = Math.ceil(totalPostsCount / postsPerPage);
+        if (pages.length < 6) {
+            tempNumberOfPages = pages
+        }
 
-    const loadCurrentPage = (page: number) => {
-        dispatch(setCurrentPageAction(page));
-    };
+        if (currentButton >= 1 && currentButton <= 3) {
+            tempNumberOfPages = [1, 2, 3, 4, dotsInitial, pages.length]
+        }
+        else if (currentButton === 4) {
+            const sliced = pages.slice(0, 5)
+            tempNumberOfPages = [...sliced, dotsInitial, pages.length]
+        }
 
-    const loadPreviousPage = (page: number) => {
-        dispatch(setPreviouslyPage(page));
-    };
+        else if (currentButton > 4 && currentButton < pages.length - 2) {
+            const sliced1 = pages.slice(currentButton - 2, currentButton)
+            const sliced2 = pages.slice(currentButton, currentButton + 1)
+            tempNumberOfPages = ([1, dotsLeft, ...sliced1, ...sliced2, dotsRight, pages.length])
+        }
+        else if (currentButton > pages.length - 3) {
+            const sliced3 = pages.slice(pages.length - 4)
+            tempNumberOfPages = ([1, dotsLeft, ...sliced3])
+        }
 
-    const loadNextPage = (page: number) => {
-        dispatch(setNextPage(page));
-    };
+        else if (currentButton === dotsInitial) {
+            setCurrentButton(arrOfCurrButton[arrOfCurrButton.length - 3] + 1)
+        }
 
-    for (let i = 0; i <= totalPages; i++) {
-        pages.push(i);
-    }
+        else if (currentButton === dotsRight) {
+            setCurrentButton(arrOfCurrButton[3] + 2)
+        }
 
-    if (pages.length <= 1) {
-        return (<LoadSpinner />)
-    }
+        else if (currentButton === dotsLeft) {
+            setCurrentButton(arrOfCurrButton[3] - 2)
+        }
+
+        setArrofCurrButtons(tempNumberOfPages)
+        setCurrentPage(currentButton)
+    }, [currentButton])
+
+    //arrOfCurrButton, pages, setCurrentPage зависимости
 
     return (
         <div className={styles.PagesNavContainer}>
@@ -68,26 +81,26 @@ export const Pagination = () => {
                         fill="#8D8E97"
                     />
                 </svg>
-                <button onClick={() => loadPreviousPage(currentPage)} disabled={currentPage === 0 ? true : false}>Prev</button>
+                <button onClick={() => setCurrentButton((prev: number) => prev === 1 ? prev : prev - 1)} disabled={currentButton === 1 ? true : false}>Prev</button>
             </div>
             <div className={styles.PagesNumber}>
 
-                {pages.map((page: number) => {
+                {arrOfCurrButton.map((item: number, index: number) => {
                     return (
                         <button
                             className={
-                                currentPage === page ? `${styles.button} ${styles.active}` : `${styles.button}`
+                                currentButton === item ? `${styles.button} ${styles.active}` : `${styles.button}`
                             }
                             style={theme}
-                            onClick={() => loadCurrentPage(page)}
-                            key={page}>
-                            {page + 1}
+                            onClick={() => setCurrentButton(item)}
+                            key={index}>
+                            {item}
                         </button>)
                 })}
 
             </div>
             <div className={styles.NextPage}>
-                <button onClick={() => loadNextPage(currentPage)} disabled={currentPage === totalPages ? true : false}>Next</button>
+                <button onClick={() => setCurrentButton((prev: number) => prev === pages.length ? prev : prev + 1)} disabled={currentButton === pages.length ? true : false}>Next</button>
                 <svg width="18"
                     height="15"
                     viewBox="0 0 18 15"
@@ -114,3 +127,29 @@ export const Pagination = () => {
 //                     <path d="M11.5 2H9.42858V0H11.5V2Z" fill={`${theme.color === '#313037' ? "#313037" : "#DADADA"}`} />
 //                 </svg> */}
 // {/* <a style={theme} href='#!'>{number4}</a> */ }
+
+
+
+// useEffect(() => {
+//     dispatch(loadTotalPostsCountAsyncAction());
+// }, [dispatch, currentPage]);
+
+// let pages: number[] = [];
+
+// const totalPages = Math.ceil(totalPostsCount / postsPerPage);
+
+// const loadCurrentPage = (page: number) => {
+//     dispatch(setCurrentPageAction(page));
+// };
+
+// const loadPreviousPage = (page: number) => {
+//     dispatch(setPreviouslyPage(page));
+// };
+
+// const loadNextPage = (page: number) => {
+//     dispatch(setNextPage(page));
+// };
+
+// for (let i = 0; i <= totalPages; i++) {
+//     pages.push(i);
+// }
