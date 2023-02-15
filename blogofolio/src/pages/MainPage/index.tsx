@@ -4,20 +4,25 @@ import { Pagination } from "../../components/Pagination"
 import PostList from "../../components/PostList"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { loadPostListAsyncAction } from "../../store/reducers/postListReducer/postListAction"
+import { loadPostListAsyncAction, loadTotalPostsCountAsyncAction } from "../../store/reducers/postListReducer/postListAction"
 import { AppState } from "../../store/store"
 import { LoadSpinner } from "../../components/loadSpinner"
 
 export const Main = () => {
     const dispatch = useDispatch()
     const posts = useSelector((state: AppState) => state.postList.posts);
+    const total = useSelector((state: AppState) => state.postList.totalPostsCount)
 
     const [currentPage, setCurrentPage] = useState(1)
     const postsPerPage = 11
 
     useEffect(() => {
-        dispatch(loadPostListAsyncAction(274, 0))
+        dispatch(loadTotalPostsCountAsyncAction())
     }, [dispatch])
+
+    useEffect(() => {
+        dispatch(loadPostListAsyncAction(total, 0))
+    }, [dispatch, total])
 
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
