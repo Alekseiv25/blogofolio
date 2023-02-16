@@ -9,6 +9,7 @@ interface InputProps {
     value?: any
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
     className?: string
+    isRequired?: boolean
 }
 
 export const Input = (props: InputProps) => {

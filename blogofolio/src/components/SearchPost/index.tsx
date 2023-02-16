@@ -24,6 +24,6 @@ export const SearchPost = (props: IPost) => {
             </div>
 
         </div>
-        <PostButtons />
+        {/* <PostButtons post={post} /> */}
     </div>)
 }

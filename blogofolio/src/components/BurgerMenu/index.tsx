@@ -17,7 +17,8 @@ export const BurgerMenu = () => {
         <div className={burgerState.isOpen ? `${styles.BurgerMenu} ${styles.active1}` : `${styles.BurgerMenu}`}>
             <div className={styles.content}>
                 <div className={styles.header}>
-                    <UserButton shortName={'AM'} fullName={'Artem Murili'} />
+                    {!user ? null : <UserButton shortName={'AM'} fullName={'Artem Murili'} />}
+
                 </div>
                 <ul className={styles.ul}>
                     <li><NavLink to='/'>Home</NavLink></li>

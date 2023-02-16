@@ -1,11 +1,13 @@
 export interface IPost {
-    id?: number
+    id: number
     image: string
     text: string
     date: number
     lesson_num?: number
     title: string
     author?: number
+    likes: number
+    dislikes: number
 }
 
 export interface IRes {
@@ -44,4 +46,6 @@ export const getPostsCount = async () => {
     const response = await fetch(`https://studapi.teachmeskills.by/blog/posts/`);
     const res = await response.json();
     return res.count;
-  };
+};
+
+

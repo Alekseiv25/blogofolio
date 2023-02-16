@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+
+    .favoriteButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+    .favoriteButton:hover {
+        transform: scale(1.1);
+    }
+}

@@ -7,7 +7,8 @@ import { SelectedPostNav } from "../../components/SelectedPostNav"
 import { useSelector } from "react-redux"
 import { LoadSpinner } from "../../components/loadSpinner"
 
-export const SelectedPost = () => {
+export const SelectedPost = (props: { post: IPost }) => {
+    const { post } = props
     const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
     const params: any = useParams()
@@ -46,7 +47,7 @@ export const SelectedPost = () => {
                 <p style={theme} className={styles.title}>{selectedPost.title} </p>
                 <img className={styles.image} src={selectedPost.image} alt='123'></img>
                 <p style={theme} className={styles.text}>{selectedPost.text}</p>
-                <PostButtons />
+                {/* <PostButtons post={post} /> */}
             </div>
             <SelectedPostNav previousPage={previousPage} nextPage={nextPage} />
         </div>

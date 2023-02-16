@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import styles from './PagesNav.module.scss'
 import { useEffect, useMemo, useState } from 'react';
+import { AppState } from '../../store/store';
 
 interface Props {
     totalPosts: any
@@ -8,8 +9,9 @@ interface Props {
     setCurrentPage: any
 }
 
-
+const activeTabSelector = (state: AppState) => state.tabs.activeTab;
 export const Pagination = (props: Props) => {
+    let activeTab = useSelector(activeTabSelector);
     const { totalPosts, postsPerPage, setCurrentPage } = props
     const theme = useSelector((state: any) => state.theme)
     let pages: number[] = [];
@@ -68,7 +70,7 @@ export const Pagination = (props: Props) => {
     //arrOfCurrButton, pages, setCurrentPage зависимости
 
     return (
-        <div className={styles.PagesNavContainer}>
+        <div className={activeTab === 'My favorites' ? `${styles.fav}` : `${styles.PagesNavContainer}`}>
             <div className={styles.PrevPage}>
                 <svg width="18"
                     height="15"

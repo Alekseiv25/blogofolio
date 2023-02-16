@@ -1,13 +1,26 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCurrentPageAction } from '../../../store/reducers/paginationReducer/actions'
+import { setActiveTabAction } from '../../../store/reducers/tabReducer/actions'
+import { ActiveTabType } from '../../../store/reducers/tabReducer/types'
 import styles from './Tab.module.scss'
 
-type TabType = {
-    text: string
-}
-
-
-export const Tab = (props: TabType) => {
+export const Tab = (props: { name: ActiveTabType; activeTab: ActiveTabType; }) => {
+    const { name, activeTab } = props;
+    const dispatch = useDispatch();
     const theme = useSelector((state: any) => state.theme)
-    const { text } = props
-    return (<button className={styles.tab} style={theme}>{text}</button>)
+    const setActiveTab = (tabName: ActiveTabType) => {
+        dispatch(setActiveTabAction(tabName));
+        dispatch(setCurrentPageAction(0));
+    };
+
+    return (<>
+        <button
+            onClick={() => setActiveTab(name)}
+            className={activeTab === name ? `${styles.tab} ${styles.active}` : `${styles.tab}`}
+            style={theme}
+        >
+            {name}
+        </button></>
+
+    )
 }

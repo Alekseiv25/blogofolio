@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { OPEN_POPUP } from '../../../store/reducers/popUpReducer'
 
-export const AsidePostItem = (props: IPost) => {
-    const { date, title, image, id } = props
+export const AsidePostItem = (props: { post: IPost }) => {
+    const { post: { date, title, image, id }, post } = props
     const theme = useSelector((state: any) => state.theme)
     const dispatch = useDispatch()
 
@@ -30,7 +30,7 @@ export const AsidePostItem = (props: IPost) => {
                     </Link>
                     <img className={style.image} src={image} alt='123' onClick={handleShowPopup}></img>
                 </div>
-                <PostButtons />
+                <PostButtons post={post} />
             </div>
 
 

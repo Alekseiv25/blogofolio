@@ -23,3 +23,24 @@
     }
 
 }
+
+.myfavposts {
+    max-width: 1120px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.myfavposts1 {
+    display: block;
+}
+
+.myfavposts2 {
+    width: 100%;
+}
+
+
+.noposts {
+    display: flex;
+    justify-content: center;
+    font-size: 36px;
+}

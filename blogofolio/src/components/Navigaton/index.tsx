@@ -10,10 +10,13 @@ interface Props {
 
 export const Navigation = (props: Props) => {
     const { text, backToHome, className } = props
+
     const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
-    return (<div className={`${styles.navigation} ${className}`}>
-        <NavLink style={theme} to={'/'}>{backToHome}</NavLink>
-        <h1>{text}</h1>
-    </div>)
+
+    return (
+        <div className={`${styles.navigation} ${className}`}>
+            <NavLink style={theme} to={'/'}>{backToHome}</NavLink>
+            <h1>{text}</h1>
+        </div>)
 }

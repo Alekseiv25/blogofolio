@@ -4,7 +4,11 @@ import { paginationReducer } from "./reducers/paginationReducer/paginationReduce
 import popupReducer from "./reducers/popUpReducer";
 import postListReducer from "./reducers/postListReducer/postListReducer";
 import searchToggleReducer from "./reducers/searchToggleReducer";
+import tabReducer from "./reducers/tabReducer/tabReducer";
 import themeReduser from "./reducers/themeReducer";
+import registerReducer from './reducers/registerReducer/registerReducer'
+import { authReducer } from "./reducers/auth/authReducer";
+import { activatedReducer } from "./reducers/activateReducer/activateReducer";
 
 
 export const rootReducer = combineReducers({
@@ -13,5 +17,9 @@ export const rootReducer = combineReducers({
     burger: burgerMenuReducer,
     search: searchToggleReducer,
     postList: postListReducer,
-    pagination: paginationReducer
+    pagination: paginationReducer,
+    tabs: tabReducer,
+    register: registerReducer,
+    auth: authReducer,
+    activate: activatedReducer
 })

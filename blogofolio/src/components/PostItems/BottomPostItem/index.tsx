@@ -5,8 +5,8 @@ import style from './BottomPostItem.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { OPEN_POPUP } from '../../../store/reducers/popUpReducer'
 
-export const BottomPostItem = (props: IPost) => {
-    const { image, date, title, id } = props
+export const BottomPostItem = (props: { post: IPost }) => {
+    const { post: { image, date, title, id }, post } = props
     const theme = useSelector((state: any) => state.theme)
 
     const dispatch = useDispatch()
@@ -27,6 +27,6 @@ export const BottomPostItem = (props: IPost) => {
                 <p className={style.title} style={theme}>{title} </p>
             </div>
         </Link>
-        <PostButtons />
+        <PostButtons post={post} />
     </div>)
 }
