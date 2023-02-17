@@ -39,7 +39,7 @@ export const Main = () => {
 
     const asidePost = posts.slice(indexOfFirstPost + 5, indexOfLastPost)
 
-    if (!bottomPost.length) {
+    if (!posts.length) {
         return <LoadSpinner />
     }
 
@@ -47,8 +47,7 @@ export const Main = () => {
         <section>
             <Navigation text="Blog" backToHome="" />
             <Tabs activeTab1={activeTab} />
-            {activeTab === 'All' && 
-            <PostList mainPost={mainPost} asidePost={asidePost} bottomPost={bottomPost} />}
+            {activeTab === 'All' && <PostList mainPost={mainPost} asidePost={asidePost} bottomPost={bottomPost} />}
             {activeTab === 'My favorites' && <MyFavoritesList />}
             <Pagination totalPosts={posts.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
         </section>
