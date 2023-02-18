@@ -8,8 +8,7 @@ import { useSelector } from "react-redux"
 
 
 
-export const Search = (props: { post: IPost }) => {
-    const { post } = props
+export const Search = () => {
     const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
     const [searchPost, setSearchPost] = useState<IPost[]>([])
@@ -33,7 +32,7 @@ export const Search = (props: { post: IPost }) => {
             <input className={styles.input} style={theme} type='text' value={`Search result: ${searchText} `} />
             <div >
                 {searchPost.map((el) => (
-                    <SearchPost  key={el.id} {...el} />
+                    <SearchPost  post={el} key={el.id} {...el} />
                 ))}
             </div>
 

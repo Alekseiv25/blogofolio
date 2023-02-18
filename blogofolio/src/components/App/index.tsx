@@ -16,19 +16,18 @@ import RequireAuth from '../hoc/RequireAuth';
 import Activation from '../../pages/Activation';
 
 function App(props: any) {
-  const { post } = props
 
   return (
     <AuthProvider>
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Main />} />
-          <Route path='post/:id' element={<SelectedPost post={post} />} />
+          <Route path='post/:id' element={<SelectedPost />} />
           <Route path='signIn' element={<SignIn />} />
           <Route path='signUp' element={<SignUp />} />
           <Route path='confirmation' element={<Confirmation email={props.email} />} />
           <Route path='success' element={<Success />} />
-          <Route path='search' element={<Search post={post} />} />
+          <Route path='search' element={<Search />} />
           <Route path='reset' element={<Reset />} />
           <Route path='*' element={<NotFound />} />
           <Route path='addPost' element={

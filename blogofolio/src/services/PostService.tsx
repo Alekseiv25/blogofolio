@@ -27,13 +27,13 @@ export const getAllPosts = (limit: number, offset: number) => {
 export const GetSearchPosts = (search: number | string) => {
     return fetch(
         'https://studapi.teachmeskills.by/blog/posts/'
-        + `?search=${search}`
+        + `?search=${search}&limit=10` 
     )
         .then(response => response.json())
         .then(res => res.results)
 }
 
-export const getPostById = (id: string = '1') => {
+export const getPostById = (id: number = 1) => {
     return fetch(
         'https://studapi.teachmeskills.by/blog/posts/'
         + `${id}`

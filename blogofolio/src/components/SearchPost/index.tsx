@@ -3,8 +3,8 @@ import style from './SearchPost.module.scss'
 import { PostButtons } from '../Buttons/PostButtons'
 import { useDispatch } from 'react-redux'
 import { OPEN_POPUP } from '../../store/reducers/popUpReducer'
-export const SearchPost = (props: IPost) => {
-    const { date, title, image } = props
+export const SearchPost = (props: {post: IPost}) => {
+    const { post:{date, title, image}, post } = props
 
     const dispatch = useDispatch()
 
@@ -24,6 +24,6 @@ export const SearchPost = (props: IPost) => {
             </div>
 
         </div>
-        {/* <PostButtons post={post} /> */}
+        <PostButtons post={post} />
     </div>)
 }

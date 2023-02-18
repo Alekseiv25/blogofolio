@@ -13,10 +13,8 @@ const getTokensUser = async (
             email,
         }),
     };
-    //   const request = new Request(url, params);
 
-    //   const response = await fetch(request);
-    //   const result = await (response.ok ? Promise.resolve(null) : response.json());
+    
     const request = new Request(url, params);
     const response = await fetch(request);
     const result = await response.json();
