@@ -10,7 +10,7 @@ export const Tab = (props: { name: ActiveTabType; activeTab: ActiveTabType; }) =
     const theme = useSelector((state: any) => state.theme)
     const setActiveTab = (tabName: ActiveTabType) => {
         dispatch(setActiveTabAction(tabName));
-        dispatch(setCurrentPageAction(0));
+        dispatch(setCurrentPageAction(1));
     };
 
     return (<>
