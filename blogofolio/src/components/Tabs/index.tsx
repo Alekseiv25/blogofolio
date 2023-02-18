@@ -30,7 +30,6 @@ export const Tabs = (props: { activeTab1: string }) => {
         switch (activeTab) {
             case "All":
                 dispatch(loadTotalPostsCountAsyncAction());
-                console.log("render");
 
                 break;
             case "My favorites":

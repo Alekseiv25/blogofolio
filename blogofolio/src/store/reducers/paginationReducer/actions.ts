@@ -12,7 +12,7 @@ const setLastPageAction = (lastPage: number) => {
     };
 };
 
-const setCurrentPageAction = (currentPage: number) => {
+const setCurrentPageAction = (currentPage: number = 1) => {
     return {
         type: SET_CURRENT_PAGE,
         currentPage,
