@@ -15,7 +15,7 @@ import { CreatePost } from '../../pages/CreatePost';
 import RequireAuth from '../hoc/RequireAuth';
 import Activation from '../../pages/Activation';
 
-function App(props: any) {
+function App() {
 
   return (
     <AuthProvider>
@@ -25,7 +25,7 @@ function App(props: any) {
           <Route path='post/:id' element={<SelectedPost />} />
           <Route path='signIn' element={<SignIn />} />
           <Route path='signUp' element={<SignUp />} />
-          <Route path='confirmation' element={<Confirmation email={props.email} />} />
+          <Route path='confirmation' element={<Confirmation />} />
           <Route path='success' element={<Success />} />
           <Route path='search' element={<Search />} />
           <Route path='reset' element={<Reset />} />

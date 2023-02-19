@@ -1,13 +1,18 @@
+import { useLocation, useNavigate } from "react-router-dom"
 import { Navigation } from "../../components/Navigaton"
 import { Submit } from "../../components/Submit"
 import styles from './Confirmation.module.scss'
 
-interface IProps {
-    email: string
-}
 
-export const Confirmation = (props: IProps) => {
-    const { email } = props
+
+export const Confirmation = () => {
+    const navigate = useNavigate()
+    const location = useLocation()
+    const email = location.state
+
+    const handleGoToHome = () => {
+        navigate('/')
+    }
     return (
         <>
             <Navigation backToHome='Back to home' text='Registration Confirmation' />
@@ -19,7 +24,7 @@ export const Confirmation = (props: IProps) => {
                         Please, check your email
                     </p>
                 </div>
-                <Submit value="Go to home" onClick={() => { } } link={"/"} />
+                <Submit value="Go to home" onClick={handleGoToHome} />
             </form>
         </>
     )

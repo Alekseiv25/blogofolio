@@ -48,7 +48,7 @@ export const SignUp = () => {
 
         dispatch(
             registerUserAsyncAction(name, email, password, () =>
-                navigate('/confirmation')
+                navigate('/confirmation', {state: email})
             )
         );
     };
