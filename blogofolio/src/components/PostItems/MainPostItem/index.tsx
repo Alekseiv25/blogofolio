@@ -30,6 +30,6 @@ export const MainPostItem = (props: { post: IPost }) => {
             </Link>
             <img className={style.image} src={image} alt='123' onClick={handleShowPopup}></img>
         </div>
-        <PostButtons post={post} />
+        <PostButtons post={post} likes={post.likes} dislikes={post.dislikes} />
     </div>)
 }

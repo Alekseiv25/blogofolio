@@ -24,6 +24,6 @@ export const SearchPost = (props: {post: IPost}) => {
             </div>
 
         </div>
-        <PostButtons post={post} />
+        <PostButtons post={post} likes={post.likes} dislikes={post.dislikes} />
     </div>)
 }

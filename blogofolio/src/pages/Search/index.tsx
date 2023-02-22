@@ -1,26 +1,49 @@
-import { useEffect, useState } from "react"
-import { GetSearchPosts, IPost } from "../../services/PostService"
+import { useEffect } from "react"
+import { IPost } from "../../services/PostService"
 import { SearchPost } from "../../components/SearchPost"
 import styles from './Search.module.scss'
 import { useLocation } from "react-router-dom"
 import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+import { AppState } from "../../store/store"
+import { loadSearchPostsListAsyncAction, loadTotalSearchPostsCountAsyncAction } from "../../store/reducers/searchPostReducer/actions"
+import { Pagination } from "../../components/Pagination"
 
+const totalSearchPostsCountSelector = (state: AppState) =>
+    state.searchPostsList.totalSearchPostsCount;
 
+const currentPageSelector = (state: AppState) =>
+    state.pagination.currentPage;
+
+const searchPostsSelector = (state: AppState) =>
+    state.searchPostsList.searchPosts;
 
 
 export const Search = () => {
     const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
-    const [searchPost, setSearchPost] = useState<IPost[]>([])
+    // const [searchPost, setSearchPost] = useState<IPost[]>([])
     const location = useLocation();
     const searchText = location.state || "nothing";
+    const dispatch = useDispatch()
+    const currentPage = useSelector(currentPageSelector);
+    const searchPostsList = useSelector(searchPostsSelector);
+    const totalSearchPostsCount = useSelector(totalSearchPostsCountSelector);
+    const take = 10;
+    const skip = take * currentPage;
 
+    // useEffect(() => {
+    //     GetSearchPosts(searchText).then(post => { setSearchPost(post) })
+    // }, [searchText])
     useEffect(() => {
-        GetSearchPosts(searchText).then(post => { setSearchPost(post) })
-    }, [searchText])
+        dispatch(loadSearchPostsListAsyncAction(searchText, skip));
+        dispatch(loadTotalSearchPostsCountAsyncAction(searchText));
+    }, [dispatch, searchText, skip]);
+    console.log(totalSearchPostsCount);
 
 
-    if (!searchPost.length) {
+
+    if (!searchPostsList.length) {
         return (<div className={styles.container}>
             <p className={styles.notresult}>Not results</p>
         </div>
@@ -31,9 +54,10 @@ export const Search = () => {
         <section>
             <input className={styles.input} style={theme} type='text' value={`Search result: ${searchText} `} />
             <div >
-                {searchPost.map((el) => (
-                    <SearchPost  post={el} key={el.id} {...el} />
+                {searchPostsList.map((el: IPost) => (
+                    <SearchPost post={el} key={el.id} {...el} />
                 ))}
+                <Pagination postsPerPage={skip} totalPostsCount={totalSearchPostsCount} />
             </div>
 
         </section>

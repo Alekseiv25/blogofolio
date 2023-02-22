@@ -2,21 +2,24 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import styles from './styles.module.scss'
 
+interface Props {
+    dislikes: number
+}
 
-
-const DislikeButton = () => {
+const DislikeButton = (props: Props) => {
+    const { dislikes } = props
     const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
     const [dislikeActive, setDislikeActive] = useState<boolean>(false)
-    const [dislikeCount, setDislikeCount] = useState<number>(Math.floor(Math.random() * 50))
+    // const [dislikeCount, setDislikeCount] = useState<number>(Math.floor(Math.random() * 50))
 
     const DislikeCount = () => {
-        if (!dislikeActive) {
-            setDislikeCount(dislikeCount + 1)
-        }
-        else {
-            setDislikeCount(dislikeCount - 1)
-        }
+        // if (!dislikeActive) {
+        //     setDislikeCount(dislikeCount + 1)
+        // }
+        // else {
+        //     setDislikeCount(dislikeCount - 1)
+        // }
         setDislikeActive(prev1 => !prev1)
     }
 
@@ -35,7 +38,7 @@ const DislikeButton = () => {
             </svg>
 
         </button>
-        <div className={styles.dislikeCounter}>{dislikeCount}</div>
+        <div className={styles.dislikeCounter}>{dislikes}</div>
     </>)
 }
 

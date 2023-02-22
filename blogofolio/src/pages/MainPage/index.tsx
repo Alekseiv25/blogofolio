@@ -1,6 +1,5 @@
 import { Navigation } from "../../components/Navigaton"
 import { Tabs } from "../../components/Tabs"
-import { Pagination } from "../../components/Pagination"
 import PostList from "../../components/PostList"
 import { useSelector } from "react-redux"
 import { AppState } from "../../store/store"
@@ -36,7 +35,6 @@ export const Main = () => {
             <Tabs activeTab1={activeTab} />
             {activeTab === 'All' && <PostList />}
             {activeTab === 'My favorites' && <MyFavoritesList />}
-            <Pagination />
         </section>
     )
 }

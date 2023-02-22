@@ -51,7 +51,7 @@ export const SelectedPost = () => {
                 <p style={theme} className={styles.title}>{selectedPost.title} </p>
                 <img className={styles.image} src={selectedPost.image} alt='123'></img>
                 <p style={theme} className={styles.text}>{selectedPost.text}</p>
-                <PostButtons post={selectedPost} />
+                <PostButtons post={selectedPost} likes={selectedPost.likes} dislikes={selectedPost.dislikes} />
             </div>
             <SelectedPostNav previousPage={previousPage} nextPage={nextPage} />
         </div>

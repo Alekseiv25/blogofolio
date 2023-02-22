@@ -5,30 +5,25 @@ import { AppState } from '../../store/store';
 import { useDispatch } from 'react-redux';
 import { setCurrentPageAction, setNextPage, setPreviouslyPage } from '../../store/reducers/paginationReducer/actions';
 
-// interface Props {
-//     totalPosts: any
-//     postsPerPage: number
-//     setCurrentPage: any
-// }
 
 const activeTabSelector = (state: AppState) => state.tabs.activeTab;
-const totalPostsCountSelector = (state: AppState) => state.postList.totalPostsCount;
-const postsPerPageSelector = (state: AppState) => state.postList.pageSize;
 const currentPageSelector = (state: AppState) => state.pagination.currentPage;
 
 
-export const Pagination = () => {
+export const Pagination = (props: {
+    postsPerPage: number;
+    totalPostsCount: number;
+}) => {
+    const { totalPostsCount, postsPerPage } = props;
     let activeTab = useSelector(activeTabSelector);
     const theme = useSelector((state: any) => state.theme)
     const dispatch = useDispatch()
     const currentPage = useSelector(currentPageSelector);
-    const totalPostsCount = useSelector(totalPostsCountSelector);
-    const postsPerPage = useSelector(postsPerPageSelector);
     const [pages, setPages] = useState<any[]>([1])
     const dots = '...'
 
     useEffect(() => {
-        const totalPages = Math.floor(totalPostsCount / postsPerPage);
+        const totalPages = Math.floor(totalPostsCount / postsPerPage) + 1;
         let pageNumbers: any[] = []
         for (let i = 1; i <= totalPages; i++) {
             pageNumbers.push(i)
@@ -62,6 +57,11 @@ export const Pagination = () => {
     const loadNextPage = (page: number) => {
         dispatch(setNextPage(page));
     };
+
+    if (!totalPostsCount) {
+        return <></>
+    }
+
     return (<div className={activeTab === 'My favorites' ? `${styles.fav}` : `${styles.PagesNavContainer}`}>
         <div className={styles.PrevPage}>
             <svg width="18"

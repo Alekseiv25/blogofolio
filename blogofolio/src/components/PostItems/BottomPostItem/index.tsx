@@ -27,6 +27,6 @@ export const BottomPostItem = (props: { post: IPost }) => {
                 <p className={style.title} style={theme}>{title} </p>
             </div>
         </Link>
-        <PostButtons post={post} />
+        <PostButtons post={post} likes={post.likes} dislikes={post.dislikes} />
     </div>)
 }

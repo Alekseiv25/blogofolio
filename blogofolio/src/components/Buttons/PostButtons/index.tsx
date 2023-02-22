@@ -5,16 +5,18 @@ import DislikeButton from './DislikeButton'
 import { IPost } from '../../../services/PostService'
 
 interface IProps {
-    post: IPost 
+    post: IPost
+    likes: number
+    dislikes: number
 }
 
 export const PostButtons = (props: IProps) => {
-    const { post } = props
+    const { post, likes, dislikes } = props
 
     return (<div className={styles.container}>
         <div className={styles.LikeDislikeContainer}>
-            <LikeButton />
-            <DislikeButton />
+            <LikeButton likes={likes} />
+            <DislikeButton dislikes={dislikes} />
         </div>
         <FavoriteButton post={post} />
     </div>)

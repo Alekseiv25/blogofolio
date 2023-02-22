@@ -3,7 +3,7 @@ import { IPost } from "../../../services/PostService";
 
 
 export interface IPostsListState {
-    posts: IPost[];
+    posts: IPost[]
     totalPostsCount: number;
     myFavouritePosts: IPost[];
     pageSize: number;
@@ -11,5 +11,5 @@ export interface IPostsListState {
 
 export interface IPostListAction extends AnyAction {
     type: string;
-    posts: IPost[];
+    posts: IPost[]
 }

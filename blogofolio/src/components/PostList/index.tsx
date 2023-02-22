@@ -2,21 +2,23 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadPostListAsyncAction } from "../../store/reducers/postListReducer/postListAction";
 import { AppState } from "../../store/store";
+import { Pagination } from "../Pagination";
 import PostlistView from "./PostListView";
 const currentPageSelector = (state: AppState) =>
     state.pagination.currentPage;
 
 const pageSizeSelector = (state: AppState) => state.postList.pageSize;
-
+const totalPostsCountSelector = (state: AppState) => state.postList.totalPostsCount;
 const postsSelector = (state: AppState) => state.postList.posts;
 const PostList = () => {
     const dispatch = useDispatch();
     const currentPage = useSelector(currentPageSelector);
     const postsPerPage = useSelector(pageSizeSelector);
     const posts = useSelector(postsSelector);
+    const totalPostsCount = useSelector(totalPostsCountSelector);
 
     const take = currentPage === 1 ? postsPerPage - 1 : postsPerPage;
-    const skip = currentPage === 1 ? 0 : take * currentPage - 13 
+    const skip = currentPage === 1 ? 0 : take * currentPage - 13
     useEffect(() => {
         dispatch(loadPostListAsyncAction(take, skip));
     }, [take, skip, dispatch]);
@@ -30,10 +32,13 @@ const PostList = () => {
     //     return <LoadSpinner />
     // }
     return (
-        <PostlistView
-            mainPost={mainPost}
-            bottomPost={bottomPost}
-            asidePost={asidePost} />
+        <>
+            <PostlistView
+                mainPost={mainPost}
+                bottomPost={bottomPost}
+                asidePost={asidePost} />
+            <Pagination postsPerPage={postsPerPage} totalPostsCount={totalPostsCount} />
+        </>
     )
 }
 

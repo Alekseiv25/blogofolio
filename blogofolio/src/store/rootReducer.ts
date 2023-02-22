@@ -9,6 +9,7 @@ import themeReduser from "./reducers/themeReducer";
 import registerReducer from './reducers/registerReducer/registerReducer'
 import { authReducer } from "./reducers/auth/authReducer";
 import { activatedReducer } from "./reducers/activateReducer/activateReducer";
+import searchPostsListReducer from "./reducers/searchPostReducer/searchPostReducer";
 
 
 export const rootReducer = combineReducers({
@@ -21,5 +22,6 @@ export const rootReducer = combineReducers({
     tabs: tabReducer,
     register: registerReducer,
     auth: authReducer,
-    activate: activatedReducer
+    activate: activatedReducer,
+    searchPostsList: searchPostsListReducer
 })

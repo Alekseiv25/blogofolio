@@ -2,19 +2,24 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import styles from './styles.module.scss'
 
-const LikeButton = () => {
+interface Props {
+    likes: number
+}
+
+const LikeButton = (props: Props) => {
+    const { likes } = props
     const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
-    const [likeCount, setLikeCount] = useState<number>(Math.floor(Math.random() * 100))
+    // const [likeCount, setLikeCount] = useState<number>(Math.floor(Math.random() * 100))
     const [likeActive, setLikeActive] = useState<boolean>(false)
 
     const LikeCount = () => {
-        if (!likeActive) {
-            setLikeCount(likeCount + 1)
-        }
-        else {
-            setLikeCount(likeCount - 1)
-        }
+        // if (!likeActive) {
+        //     likes + 1
+        // }
+        // else {
+        //     setLikeCount(likeCount - 1)
+        // }
         setLikeActive(prev => !prev)
     }
 
@@ -33,7 +38,7 @@ const LikeButton = () => {
             />
         </svg>
     </button>
-        <div className={styles.LikeCounter}>{likeCount}
+        <div className={styles.LikeCounter}>{likes}
         </div>
     </>
     )
