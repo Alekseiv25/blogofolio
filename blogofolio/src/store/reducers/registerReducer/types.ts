@@ -1,10 +1,9 @@
 import { IPost } from "../../../services/PostService"
+import { IBaseActionType, IObjectStringList } from "../../../tools/types";
 
-interface BaseActionType {
-    type: string;
-}
 
-interface ILoadUserRegisterActionType extends BaseActionType {
+
+interface ILoadUserRegisterActionType extends IBaseActionType {
     payload: IUserType | IObjectStringList | IPost | IPost[] | number;
 }
 
@@ -15,9 +14,7 @@ interface IUserType {
     favoritesPosts: IPost[];
 }
 
-interface IObjectStringList {
-    [key: string]: string[];
-}
+
 
 interface IRegisterState {
     isRegistered: boolean;

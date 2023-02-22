@@ -1,7 +1,6 @@
 import { IPost } from '../../../services/PostService'
-interface IBaseActionType {
-    type: string;
-}
+import { IBaseActionType } from '../../../tools/types';
+
 
 interface ISearchPostsListState {
     searchPosts: IPost[];

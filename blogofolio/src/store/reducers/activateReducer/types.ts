@@ -1,8 +1,7 @@
-interface BaseActionType {
-    type: string;
-}
+import { IBaseActionType } from "../../../tools/types";
 
-interface ILoadUserActivateActionType extends BaseActionType {
+
+interface ILoadUserActivateActionType extends IBaseActionType {
     payload?: null | IObjectStringList;
 }
 
@@ -17,4 +16,4 @@ interface IActivate {
 
 
 
-export type { BaseActionType, ILoadUserActivateActionType, IObjectStringList, IActivate }
+export type { ILoadUserActivateActionType, IActivate, IObjectStringList };

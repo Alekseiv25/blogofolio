@@ -1,6 +1,4 @@
-interface IObjectStringList {
-    [key: string]: string[];
-}
+import { IObjectStringList } from "../../../tools/types";
 
 interface IState {
     tokens: TokenDto | null;

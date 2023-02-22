@@ -1,5 +1,6 @@
 import getTokensUser from "../../../services/auth/auth";
-import { AppDispatch } from "../../store";
+import fetchRefreshToken from "../../../services/refreshToken/refreshToken"
+import { AppDispatch, AppState } from "../../store";
 import { GET_TOKEN_FAILED, GET_TOKEN_SUCCESS } from "./constants";
 import { AuthUserActionType, IObjectStringList, TokenDto } from "./types";
 
@@ -33,3 +34,21 @@ export const getTokensAsyncAction = (email: string, password: string): any => {
         }
     };
 };
+
+export const refreshTokenAsyncAction = (): any => {
+    return async (dispatch: AppDispatch, getState: () => AppState) => {
+        const refreshToken = getState().auth.tokens?.refresh
+        if (!refreshToken) {
+            console.log('No refreshToken')
+            throw new Error()
+        }
+
+        const result = await fetchRefreshToken(refreshToken)
+        if (result.ok) {
+            dispatch(getTokensSuccessAction({
+                access: result.data,
+                refresh: refreshToken
+            }))
+        }
+    }
+}

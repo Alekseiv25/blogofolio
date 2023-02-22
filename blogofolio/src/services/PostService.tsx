@@ -64,3 +64,22 @@ export const getSearchPostsCount = async (value: string): Promise<number> => {
     return res.count;
 };
 
+export const createNewMyPost = async (token: string, formData: FormData) => {
+    const url = 'https://studapi.teachmeskills.by/blog/posts/'
+    const params = {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: formData
+    }
+    const request = new Request(url, params)
+    const response = await fetch(request)
+    const result = await response.json()
+    return {
+        ok: response.ok,
+        status: response.status,
+        data: result
+    }
+}
