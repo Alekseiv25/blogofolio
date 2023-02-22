@@ -1,5 +1,5 @@
 import ImageUploading, { ImageListType } from "react-images-uploading";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -17,11 +17,14 @@ export const CreatePost = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [images, setImages] = useState<ImageListType>([])
+  const [published, setPublished] = useState('')
 
   const onChange = (imageList: ImageListType, addUpdateIndex: number[] | undefined) => {
     console.log(imageList, addUpdateIndex);
     setImages(imageList as never[]);
   }
+
+
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -29,10 +32,14 @@ export const CreatePost = () => {
     formData.append('title', e.currentTarget.titleText.value)
     formData.append('image', images[0].file || 'testFileName')
     dispatch(createNewPostAsyncAction(formData))
+    setPublished('Post published')
   }
 
   const goHome = () => navigate('/')
-
+  const handleDelete = (e: any) => {
+    e.preventDefault()
+    // e.currentTarget.value = ''
+  }
   return (
     <div>
       <div className={styles.nav}>
@@ -52,7 +59,7 @@ export const CreatePost = () => {
                 <input className={styles.image_input} type="button" onClick={onImageUpload} value="Upload Image" />
                 {imageList.map((image, index) => (
                   <div key={index} className="image-item">
-                    <img className={styles.image} src={image.dataURL} alt=""  />
+                    <img className={styles.image} src={image.dataURL} alt="" />
                     <div className={styles.imageRemoveWrapper}>
                       <button className={styles.imageRemove} onClick={() => onImageRemove(index)}>remove</button>
                     </div>
@@ -64,10 +71,12 @@ export const CreatePost = () => {
         </div>
         <TextArea label={"Description"} placeholder={"Description"} name={"description"} />
         <TextArea className={styles.textarea} label={"Text"} name={'text'} placeholder={"Add your text"} />
+        <span>{published}</span>
         <div className={styles.buttons_container}>
-          <input className={styles.delete_button} type="button" value="Delete post" />
+          <input onClick={handleDelete} className={styles.delete_button} type="button" value="Delete post" />
           <div className={styles.container}>
             <input className={styles.reset_button} type="reset" value="Cancel" />
+
             <Submit value={"Add post"} />
           </div>
         </div>
