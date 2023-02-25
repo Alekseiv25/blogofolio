@@ -3,7 +3,7 @@ import { AppState } from "../../store/store";
 import PostListView from "./PostListView";
 
 const favoritesPostsSelector = (state: AppState) =>
-    state.register.favoritesPosts;
+    state.favoriteList.favoritesPosts;
 
 
 

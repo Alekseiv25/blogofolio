@@ -1,28 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
 import { IPost } from "../../../../services/PostService";
-import { addToFavoritesPostsAction, deleteFromFavoritesPostsAction } from "../../../../store/reducers/registerReducer/actions";
+import { addToFavoritesPostsAction, deleteFromFavoritesPostsAction } from "../../../../store/reducers/favoriteReducer/actions";
 import { AppState } from "../../../../store/store";
+import { useAuth } from "../../../hoc/AuthProvider";
 import styles from './styles.module.scss'
 
-const favoritesPostsSelector = (state: AppState) => state.register.favoritesPosts;
+const favoritesPostsSelector = (state: AppState) => state.favoriteList.favoritesPosts;
 
 const FavoriteButton = (props: { post: IPost }) => {
     const dispatch = useDispatch();
     const { post } = props;
     const favoritePosts = useSelector(favoritesPostsSelector);
     const id = post.id;
+    const { user } = useAuth()
 
     const isFavoritePost = (favoritePostId: number) => {
         return favoritePosts.find((post) => post.id === favoritePostId);
     };
 
     const toggleFavoritesPosts = (post: IPost) => {
-        if (!isFavoritePost(id)) {
-            dispatch(addToFavoritesPostsAction(post));
-            console.log(favoritePosts);
-        } else {
-            dispatch(deleteFromFavoritesPostsAction(id));
-        }
+        if (user) {
+            if (!isFavoritePost(id)) {
+                dispatch(addToFavoritesPostsAction(post));
+                console.log(favoritePosts);
+            } else {
+                dispatch(deleteFromFavoritesPostsAction(id));
+            }
+        } else { return alert('You need to signIn') }
     };
 
     const getThemeSelector = (state: any) => state.theme
@@ -30,7 +34,7 @@ const FavoriteButton = (props: { post: IPost }) => {
 
     return (
         <div className={styles.container}>
-            <button onClick={() => toggleFavoritesPosts(post)} className={!!isFavoritePost(id) ? `${styles.favoriteButton} ${styles.active}` : `${styles.favoriteButton}`}>
+            <button onClick={() => toggleFavoritesPosts(post)} className={styles.favoriteButton}  >
                 <svg width="24"
                     height="24"
                     viewBox="0 0 24 24"

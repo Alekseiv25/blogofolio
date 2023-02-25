@@ -10,6 +10,7 @@ import registerReducer from './reducers/registerReducer/registerReducer'
 import { authReducer } from "./reducers/auth/authReducer";
 import { activatedReducer } from "./reducers/activateReducer/activateReducer";
 import searchPostsListReducer from "./reducers/searchPostReducer/searchPostReducer";
+import favoriteReducer from "./reducers/favoriteReducer/favoriteReducer";
 
 
 export const rootReducer = combineReducers({
@@ -23,5 +24,6 @@ export const rootReducer = combineReducers({
     register: registerReducer,
     auth: authReducer,
     activate: activatedReducer,
-    searchPostsList: searchPostsListReducer
+    searchPostsList: searchPostsListReducer,
+    favoriteList: favoriteReducer
 })

@@ -28,9 +28,7 @@ const PostList = () => {
         currentPage === 1 ? posts.slice(1, 5) : posts.slice(0, 6);
     const asidePost =
         currentPage === 1 ? posts.slice(5, 11) : posts.slice(6, 12);
-    // if (!posts.length) {
-    //     return <LoadSpinner />
-    // }
+
     return (
         <>
             <PostlistView

@@ -1,12 +1,9 @@
 import activateUser from "../../../services/activateUser/activateUser";
 import registerUser from "../../../services/registerService/registerService";
-import { IPost } from "../../../services/PostService";
 import { AppDispatch } from "../../store";
 import {
     ACTIVATION_FAILED,
     ACTIVATION_SUCCESS,
-    ADD_TO_FAVORITES,
-    DELETE_FROM_FAVORITES,
     REGISTRATION_FAILED,
     REGISTRATION_SUCCESS,
 } from "./constants";
@@ -79,24 +76,10 @@ const activateUserAsyncAction = (
     };
 };
 
-const addToFavoritesPostsAction = (post: IPost) => {
-    return {
-        type: ADD_TO_FAVORITES,
-        payload: post,
-    };
-};
-const deleteFromFavoritesPostsAction = (id: number) => {
-    return {
-        type: DELETE_FROM_FAVORITES,
-        payload: id,
-    };
-};
 
 export {
     registerUserAsyncAction,
     activationSuccessAction,
     activationFailedAction,
     activateUserAsyncAction,
-    addToFavoritesPostsAction,
-    deleteFromFavoritesPostsAction,
 };

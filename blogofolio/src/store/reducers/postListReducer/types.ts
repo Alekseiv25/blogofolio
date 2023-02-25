@@ -5,7 +5,6 @@ import { IPost } from "../../../services/PostService";
 export interface IPostsListState {
     posts: IPost[]
     totalPostsCount: number;
-    myFavouritePosts: IPost[];
     pageSize: number;
 }
 

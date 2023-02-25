@@ -6,14 +6,11 @@ const REGISTRATION_FAILED = "REGISTRATION_FAILED";
 const ACTIVATION_FAILED = "ACTIVATION_FAILED";
 const ACTIVATION_SUCCESS = "ACTIVATION_SUCCESS";
 
-const ADD_TO_FAVORITES = "ADD_TO_FAVORITES";
-const DELETE_FROM_FAVORITES = "DELETE_FROM_FAVORITES";
 
 const defaultState: IRegisterState = {
     user: undefined,
     isRegistered: false,
     isActivated: false,
-    favoritesPosts: [],
 };
 
 export {
@@ -21,7 +18,5 @@ export {
     REGISTRATION_FAILED,
     ACTIVATION_FAILED,
     ACTIVATION_SUCCESS,
-    ADD_TO_FAVORITES,
-    DELETE_FROM_FAVORITES,
     defaultState,
 };

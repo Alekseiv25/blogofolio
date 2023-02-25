@@ -6,7 +6,6 @@ const ADD_TO_FAVOURITES = "ADD_TO_FAVOURITES";
 const defaultState: IPostsListState = {
     posts: [],
     totalPostsCount: 0,
-    myFavouritePosts: [],
     pageSize: 12,
 };
 

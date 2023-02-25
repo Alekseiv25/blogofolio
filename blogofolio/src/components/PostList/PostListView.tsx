@@ -9,7 +9,7 @@ interface IProps {
     mainPost: IPost[];
     bottomPost: IPost[];
     asidePost: IPost[];
-}const favoritesPostsSelector = (state: AppState) => state.register.favoritesPosts;
+}const favoritesPostsSelector = (state: AppState) => state.favoriteList.favoritesPosts;
 const activeTabSelector = (state: AppState) => state.tabs.activeTab;
 
 const PostlistView = (props: IProps) => {

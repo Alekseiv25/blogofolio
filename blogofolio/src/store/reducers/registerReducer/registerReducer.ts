@@ -1,10 +1,7 @@
-import { IPost } from "../../../services/PostService";
 import {
     ACTIVATION_FAILED,
     ACTIVATION_SUCCESS,
-    ADD_TO_FAVORITES,
     defaultState,
-    DELETE_FROM_FAVORITES,
     REGISTRATION_FAILED,
     REGISTRATION_SUCCESS,
 } from "./constants";
@@ -46,19 +43,6 @@ const registerReducer = (
                 ...state,
                 isActivated: false,
                 errors: action.payload as IObjectStringList,
-            };
-        case ADD_TO_FAVORITES:
-            return {
-                ...state,
-                favoritesPosts: [...state.favoritesPosts, action.payload as IPost],
-            };
-        case DELETE_FROM_FAVORITES:
-            const filterPosts = state.favoritesPosts.filter(
-                (post) => post.id !== action.payload
-            );
-            return {
-                ...state,
-                favoritesPosts: [...filterPosts],
             };
         default:
             return state;

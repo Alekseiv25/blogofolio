@@ -1,6 +1,5 @@
 
 import { getAllPosts, getPostsCount, IPost } from "../../../services/PostService";
-import { getRandomMax, getRandomMin } from "../../../utils/mathRandom/mathRandom";
 import { AppDispatch } from "../../store";
 import {
     GET_OVERALL_POSTS_COUNT,
@@ -19,7 +18,7 @@ const loadPostListAsyncAction = (limit: number, offset: number): any => {
     return (dispatch: AppDispatch) => {
         getAllPosts(limit, offset).then((posts) => {
             const upgradePosts = posts.map((post: IPost) => {
-                return { ...post, likes: getRandomMax(), dislikes: getRandomMin() }
+                return { ...post, likes: 0, dislikes: 0 }
             });
             dispatch(loadPostListAction(upgradePosts));
         });

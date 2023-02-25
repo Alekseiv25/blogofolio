@@ -7,7 +7,7 @@ import styles from './Tabs.module.scss'
 
 
 const totalFavoritesPostsCountSelector = (state: AppState) =>
-    state.register.favoritesPosts.length;
+    state.favoriteList.favoritesPosts.length
 
 const currentPageSelector = (state: AppState) =>
     state.pagination.currentPage;
