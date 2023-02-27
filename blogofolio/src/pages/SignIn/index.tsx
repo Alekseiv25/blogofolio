@@ -1,4 +1,5 @@
-import { FormEventHandler } from 'react'
+import Validator, { ValidationError } from 'fastest-validator'
+import { FormEventHandler, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../components/hoc/AuthProvider'
@@ -10,8 +11,25 @@ import { AppState } from '../../store/store'
 import styles from './SignIn.module.scss'
 
 
+const signInValidationSchema = {
+    email: { type: 'email', optional: true },
+    password: { type: 'string', min: 8, max: 16, optional: true, nullable: true },
+
+}
+
+
+export const check = (schema: Object, data: Object) => {
+    const validator = new Validator()
+    const compiledValidator = validator.compile(schema)
+
+    return compiledValidator(data)
+}
+
+
+
 
 export const SignIn = () => {
+    const [formError, setFormError] = useState<ValidationError[]>([])
     const dispatch = useDispatch();
     const auth = useSelector((state: AppState) => state.auth);
     const navigate = useNavigate()
@@ -25,15 +43,25 @@ export const SignIn = () => {
     const handleSubmit: FormEventHandler<HTMLFormElement> = (e: any) => {
         e.preventDefault();
 
-        const email: string = e.currentTarget.email.value;
-        const password: string = e.currentTarget.password.value;
-        dispatch(getTokensAsyncAction(email, password));
-        console.log(email, password);
-        const userData: any = { email, password }
-        signIn(userData, () => navigate(fromPage))
+        const result = check(signInValidationSchema, {
+            email: e.currentTarget.email.value,
+            password: e.currentTarget.password.value,
+        })
+
+        if (result === true ) {
+            const email: string = e.currentTarget.email.value;
+            const password: string = e.currentTarget.password.value;
+            dispatch(getTokensAsyncAction(email, password));
+            console.log(email, password);
+            const userData: any = { email, password }
+            signIn(userData, () => navigate(fromPage))
+        } else { setFormError(result as ValidationError[]) }
     }
 
+    for (const key in auth.errors) {
+        console.log(key);
 
+    }
 
     return (
         <>
@@ -45,16 +73,19 @@ export const SignIn = () => {
                     label='Email'
                     placeholder='Your Email'
                     name={'email'}
-                    isRequired={false}
                 />
+                {formError.map(err => (
+                    <span  className={styles.errors}>{err.field === 'email' ? err.message : ''}</span>
+                ))}
                 <Input
                     type='password'
                     label='Password'
                     placeholder='Your password'
                     name='password'
-                    isRequired={false}
                 />
-                <span></span>
+                {formError.map(err => (
+                    <span className={styles.errors}>{err.field === 'password' ? err.message : ''}</span>
+                ))}
                 <NavLink className={styles.passwordtext} style={theme} to={'/reset'}>Forgot password?</NavLink>
                 <Submit value='Sign in' />
                 <p>Don't have an account? <NavLink style={theme} to={'/signUp'}>Sign up</NavLink></p>
