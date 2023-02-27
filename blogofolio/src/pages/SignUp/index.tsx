@@ -1,58 +1,77 @@
-import { FormEventHandler, useState } from "react"
+import Validator, { ValidationError } from "fastest-validator"
+import { FormEventHandler, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useNavigate } from "react-router-dom"
 import { Input } from "../../components/Input"
 import { Navigation } from "../../components/Navigaton"
 import { Submit } from "../../components/Submit"
 import { registerUserAsyncAction } from "../../store/reducers/registerReducer/actions"
+import { AppState } from "../../store/store"
 import styles from './SignUp.module.scss'
 
+const signUpValidationSchema = {
+    name: { type: 'string', min: 3, max: 48, optional: true },
+    email: { type: 'email', optional: true },
+    password: { type: 'string', min: 8, max: 16, optional: true, nullable: true },
+    confirmpassword: { type: 'equal', field: 'password', optional: true, nullable: true }
+}
 
+
+export const check = (schema: Object, data: Object) => {
+    const validator = new Validator()
+    const compiledValidator = validator.compile(schema)
+
+    return compiledValidator(data)
+}
 
 export const SignUp = () => {
+    const register = useSelector((state: AppState) => state.register)
+    const [nameApiError, setNameApiError] = useState([])
+    const [emailApiError, setEmailApiError] = useState([])
+    const [formError, setFormError] = useState<ValidationError[]>([])
     const dispatch = useDispatch();
     const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
 
 
-
     const navigate = useNavigate();
-    // const location = useLocation();
-    // const { signIn } = useAuth();
 
-    // const dispatch = useDispatch()
-
-    const validation = {
-        isRequiredUserName: false,
-        isRequiredUserEmail: false,
-        isRequiredUserPassword: false,
-        isRequiredUserConfirmPassword: false,
-    };
-
-    const [isrRequiredField, /*setIsRequiredFiled*/] = useState(validation);
-    // const fromPage = location.state?.from?.pathname || "/";
-
-    // if (showConfirm) {
-    //     navigate('/confirmation')
-    // }
-
-    //Почему не работает?(((((
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
 
-        const name: string = e.currentTarget.userName.value;
-        const email: string = e.currentTarget.userEmail.value;
-        const password: string = e.currentTarget.userPassword.value;
-        // const confirmPassword: string = e.currentTarget.confirmUserPassword.value;
+        const result = check(signUpValidationSchema, {
+            name: e.currentTarget.userName.value,
+            email: e.currentTarget.userEmail.value,
+            password: e.currentTarget.userPassword.value,
+            confirmpassword: e.currentTarget.confirmUserPassword.value
+        })
 
-        dispatch(
-            registerUserAsyncAction(name, email, password, () =>
-                navigate('/confirmation', {state: email})
-            )
-        );
+        if (result === true) {
+            const name: string = e.currentTarget.userName.value;
+            const email: string = e.currentTarget.userEmail.value;
+            const password: string = e.currentTarget.userPassword.value;
+
+            dispatch(
+                registerUserAsyncAction(name, email, password, () =>
+                    navigate('/confirmation', { state: email })
+                )
+            );
+        } else { setFormError(result as ValidationError[]) }
     };
 
+    useEffect(() => {
+        for (const key in register.errors) {
+            console.log(key);
+            if (key === 'username') {
+                const userNameErr: any = (register.errors[key]);
+                setNameApiError(userNameErr)
+            } else if (key === 'email') {
+                const userEmailErr: any = (register.errors[key])
+                setEmailApiError(userEmailErr)
+            }
+        }
+    }, [register.errors])
 
     return (
         <>
@@ -63,29 +82,39 @@ export const SignUp = () => {
                     label='Name'
                     placeholder='Your name'
                     name='userName'
-                    isRequired={isrRequiredField.isRequiredUserName}
                 />
+                <span className={styles.errors}>{register.errors ? nameApiError : ''}</span>
+                {formError.map(err => (
+                    <span className={styles.errors}>{err.field === 'name' ? err.message : ''}</span>
+                ))}
                 <Input
                     type='email'
                     label='Email'
                     placeholder='Your email'
                     name='userEmail'
-                    isRequired={isrRequiredField.isRequiredUserEmail}
                 />
+                <span className={styles.errors}>{register.errors ? emailApiError : ''}</span>
+                {formError.map(err => (
+                    <span className={styles.errors}>{err.field === 'email' ? err.message : ''}</span>
+                ))}
                 <Input
                     type='password'
                     label='Password'
                     placeholder='Your password'
                     name='userPassword'
-                    isRequired={isrRequiredField.isRequiredUserPassword}
                 />
+                {formError.map(err => (
+                    <span className={styles.errors}>{err.field === 'password' ? err.message : ''}</span>
+                ))}
                 <Input
                     type='password'
                     label='Confirm password'
                     placeholder='Confirm password'
                     name='confirmUserPassword'
-                    isRequired={isrRequiredField.isRequiredUserConfirmPassword}
                 />
+                {formError.map(err => (
+                    <span className={styles.errors}>{err.field === 'confirmpassword' ? err.message : ''}</span>
+                ))}
                 <Submit value="Sign Up" link={''} />
                 <p>Alredy have an account? <NavLink style={theme} to={'/signIn'}>Sign In</NavLink></p>
             </form>
