@@ -29,6 +29,9 @@
             font-size: 18px;
             line-height: 28px;
         }
+        @media (max-width: 470px) {
+            .title {font-size: 14px;}
+        }
 
         .text {
             text-align: center;

@@ -10,8 +10,31 @@ import { Submit } from "../../components/Submit";
 import TextArea from "../../components/TextArea";
 import { createNewPostAsyncAction } from "../../store/reducers/myPostsReducer/actions";
 import styles from './CreatePost.module.scss'
+import Validator, { ValidationError } from "fastest-validator";
+
+
+
+const CreatePostValidationSchema = {
+  titleText: { type: 'string', },
+  description: { type: 'string' },
+  text: { type: 'string' }
+
+}
+
+
+export const check = (schema: Object, data: Object) => {
+  const validator = new Validator()
+  const compiledValidator = validator.compile(schema)
+
+  return compiledValidator(data)
+}
+
+
+
+
 
 export const CreatePost = () => {
+  const [formError, setFormError] = useState<ValidationError[]>([])
   const getThemeSelector = (state: any) => state.theme
   const theme = useSelector(getThemeSelector)
   const navigate = useNavigate()
@@ -28,11 +51,21 @@ export const CreatePost = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    formData.append('title', e.currentTarget.titleText.value)
-    formData.append('image', images[0].file || 'testFileName')
-    dispatch(createNewPostAsyncAction(formData))
-    setPublished('Post published')
+
+    const result = check(CreatePostValidationSchema, {
+      titleText: e.currentTarget.titleText.value,
+      descriotion: e.currentTarget.description.value,
+      text: e.currentTarget.text.value
+    })
+    console.log(e.currentTarget.titleText.value);
+
+    if (result === true) {
+      const formData = new FormData(e.currentTarget)
+      formData.append('title', e.currentTarget.titleText.value)
+      formData.append('image', images[0].file || 'testFileName')
+      dispatch(createNewPostAsyncAction(formData))
+      setPublished('Post published')
+    } else { setFormError(result as ValidationError[]) }
   }
 
   const goHome = () => navigate('/')
@@ -40,6 +73,7 @@ export const CreatePost = () => {
     e.preventDefault()
     // e.currentTarget.value = ''
   }
+
   return (
     <div>
       <div className={styles.nav}>
@@ -49,7 +83,13 @@ export const CreatePost = () => {
       <Navigation className={styles.navigation} text={"Add post"} backToHome={""} />
 
       <form className={styles.formwrapper} onSubmit={handleSubmit}>
+      {formError.map(err => (
+          <span className={styles.errors}>{ err.message}</span>
+        ))}
         <Input type={"text"} label={"Title"} placeholder={"Title"} name={"titleText"} />
+        {formError.map(err => (
+          <span className={styles.errors}>{err.field === 'titleText' ? err.message : ''}</span>
+        ))}
         <div className={styles.input_container}>
           <Input className={styles.lesson_input} type={"text"} label={"Lesson number"} placeholder={"20"} name={"lesson_num"} />
           <ImageUploading value={images} onChange={onChange}>
@@ -70,7 +110,13 @@ export const CreatePost = () => {
           </ImageUploading>
         </div>
         <TextArea label={"Description"} placeholder={"Description"} name={"description"} />
+        {formError.map(err => (
+          <span className={styles.errors}>{err.field === 'description' ? err.message : ''}</span>
+        ))}
         <TextArea className={styles.textarea} label={"Text"} name={'text'} placeholder={"Add your text"} />
+        {formError.map(err => (
+          <span className={styles.errors}>{err.field === 'text' ? err.message : ''}</span>
+        ))}
         <span>{published}</span>
         <div className={styles.buttons_container}>
           <input onClick={handleDelete} className={styles.delete_button} type="button" value="Delete post" />

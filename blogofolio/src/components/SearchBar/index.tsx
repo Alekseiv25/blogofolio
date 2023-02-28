@@ -14,7 +14,7 @@ export const SearchBar = () => {
 
     const [searchText, setSearchText] = useState("");
     const navigate = useNavigate();
-    const exmpl = (e: any) => {
+    const onChange = (e: any) => {
         dispatch(setCurrentPageAction(1));
         setSearchText(e.target.value)
         navigate("/search", { state: e.target.value });
@@ -26,7 +26,7 @@ export const SearchBar = () => {
                 className={searchState.isOpen ? `${styles.input} ${styles.active}` : `${styles.input}`}
                 placeholder='Search...'
                 value={searchText}
-                onChange={exmpl}
+                onChange={onChange}
             />
         </div>
     )

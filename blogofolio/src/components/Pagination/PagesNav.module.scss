@@ -26,6 +26,8 @@
 
     }
 
+
+
     button {
         font-style: normal;
         font-weight: 600;
@@ -99,4 +101,18 @@
 
 .fav {
     display: none;
+}
+
+@media (max-width: 440px) {
+    .PagesNavContainer {
+        justify-content: center;
+
+        .PrevPage {
+            display: none;
+        }
+
+        .NextPage {
+            display: none;
+        }
+    }
 }

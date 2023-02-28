@@ -22,7 +22,6 @@ const searchPostsSelector = (state: AppState) =>
 export const Search = () => {
     const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
-    // const [searchPost, setSearchPost] = useState<IPost[]>([])
     const location = useLocation();
     const searchText = location.state || "nothing";
     const dispatch = useDispatch()
@@ -32,9 +31,6 @@ export const Search = () => {
     const take = 10;
     const skip = take * currentPage;
 
-    // useEffect(() => {
-    //     GetSearchPosts(searchText).then(post => { setSearchPost(post) })
-    // }, [searchText])
     useEffect(() => {
         dispatch(loadSearchPostsListAsyncAction(searchText, skip));
         dispatch(loadTotalSearchPostsCountAsyncAction(searchText));

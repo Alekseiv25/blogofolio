@@ -12,6 +12,18 @@
     outline: 0;
 }
 
+@media (max-width: 1030px) {
+    .input {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 680px) {
+    .input {
+        font-size: 22px;
+    }
+}
+
 .dark {
     color: #FFFFFF;
 }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IPost } from "../../../../services/PostService";
 import { addToFavoritesPostsAction, deleteFromFavoritesPostsAction } from "../../../../store/reducers/favoriteReducer/actions";
@@ -9,6 +10,7 @@ const favoritesPostsSelector = (state: AppState) => state.favoriteList.favorites
 
 const FavoriteButton = (props: { post: IPost }) => {
     const dispatch = useDispatch();
+    const [signValidation, setSignValidation] = useState('')
     const { post } = props;
     const favoritePosts = useSelector(favoritesPostsSelector);
     const id = post.id;
@@ -26,7 +28,7 @@ const FavoriteButton = (props: { post: IPost }) => {
             } else {
                 dispatch(deleteFromFavoritesPostsAction(id));
             }
-        } else { return alert('You need to signIn') }
+        } else { setSignValidation('You need to SignIn') }
     };
 
     const getThemeSelector = (state: any) => state.theme
@@ -34,6 +36,7 @@ const FavoriteButton = (props: { post: IPost }) => {
 
     return (
         <div className={styles.container}>
+            <span className={styles.errors}>{signValidation}</span>
             <button onClick={() => toggleFavoritesPosts(post)} className={styles.favoriteButton}  >
                 <svg width="24"
                     height="24"

@@ -19,6 +19,12 @@
             align-self: center;
         }
 
+        @media (max-width:350px) {
+            .title {
+                font-size: 35px;
+            }
+        }
+
         .image {
             width: 100%;
             max-width: 990px;
