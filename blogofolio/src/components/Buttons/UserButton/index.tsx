@@ -1,15 +1,13 @@
-import { useAuth } from '../../hoc/AuthProvider'
+import { useSelector } from 'react-redux'
+import { AppState } from '../../../store/store'
 import styles from './UserButton.module.scss'
 
-type UserButtonType = {
-    shortName: string
-    fullName: string
-}
+const userSelector = (state: AppState) => state.auth.user
 
-
-export const UserButton = (props: UserButtonType) => {
-    const { shortName, fullName } = props
-    const { user } = useAuth();
+export const UserButton = () => {
+    
+    const user = useSelector(userSelector)
+    const shortname = user?.username[0]
 
     if (!user) {
         return (
@@ -25,9 +23,9 @@ export const UserButton = (props: UserButtonType) => {
         return (
             <div className={styles.div}>
                 <div className={styles.div2}>
-                    <span>{shortName}</span>
+                    <span>{shortname}</span>
                 </div>
-                <span>{fullName}</span>
+                <span>{user.username}</span>
             </div>
         )
     }

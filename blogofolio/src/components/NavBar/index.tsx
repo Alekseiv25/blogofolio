@@ -11,7 +11,7 @@ export const NavBar = () => {
             <div className={styles.wrapper}>
                 <SearchBar />
                 <SearchButton />
-                <UserButton shortName='AM' fullName='Artem Murili' /></div>
+                <UserButton /></div>
         </nav>
     )
 }

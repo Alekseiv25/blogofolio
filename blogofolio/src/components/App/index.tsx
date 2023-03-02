@@ -10,7 +10,6 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from '../../pages/Layout';
 import NotFound from '../../pages/NotFound';
 import { Reset } from '../../pages/Reset';
-import { AuthProvider } from '../hoc/AuthProvider';
 import { CreatePost } from '../../pages/CreatePost';
 import RequireAuth from '../hoc/RequireAuth';
 import Activation from '../../pages/Activation';
@@ -18,7 +17,6 @@ import Activation from '../../pages/Activation';
 function App() {
 
   return (
-    <AuthProvider>
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Main />} />
@@ -37,7 +35,6 @@ function App() {
           <Route path='activate/:uid/:token' element={<Activation />} />
         </Route>
       </Routes>
-    </AuthProvider>
   );
 }
 

@@ -4,20 +4,22 @@ import { LightBtn } from '../Buttons/ThemeButtons/Light'
 import { DarkBtn } from '../Buttons/ThemeButtons/Dark'
 import { NavLink } from 'react-router-dom'
 import AsideMenuButton from '../Buttons/LogInLogOutButton'
-import { useAuth } from '../hoc/AuthProvider'
 import { AppState } from '../../store/store'
 import { useSelector } from 'react-redux'
 
+
+const userSelector = (state: AppState) => state.auth.user
 const getBurgerStateSelector = (state: AppState) => state.burger
+
 export const BurgerMenu = () => {
-    const { user } = useAuth();
+    const user = useSelector(userSelector)
     const burgerState = useSelector(getBurgerStateSelector)
 
     return (
         <div className={burgerState.isOpen ? `${styles.BurgerMenu} ${styles.active1}` : `${styles.BurgerMenu}`}>
             <div className={styles.content}>
                 <div className={styles.header}>
-                    {!user ? null : <UserButton shortName={'AM'} fullName={'Artem Murili'} />}
+                    {!user ? null : <UserButton />}
 
                 </div>
                 <ul className={styles.ul}>

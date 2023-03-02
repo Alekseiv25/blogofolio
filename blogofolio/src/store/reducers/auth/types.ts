@@ -1,8 +1,10 @@
 import { IObjectStringList } from "../../../tools/types";
+import { IUserType } from "../registerReducer/types";
 
 interface IState {
     tokens: TokenDto | null;
     errors: IObjectStringList | null;
+    user: IUserType | null
 }
 
 interface TokenDto {
@@ -12,7 +14,7 @@ interface TokenDto {
 
 type AuthUserActionType = {
     type: string;
-    payload: TokenDto | IObjectStringList;
+    payload: TokenDto | IObjectStringList | IUserType
 };
 
 export type { IObjectStringList, IState, TokenDto, AuthUserActionType }

@@ -1,5 +1,6 @@
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../hoc/AuthProvider";
+import { signOutAction } from "../../../store/reducers/auth/actions";
 
 interface IProps {
     value: "Log in" | "Log out";
@@ -9,16 +10,17 @@ interface IProps {
 const LogInLogOutButton = (props: IProps) => {
     const { value, navigationAdress = "" } = props;
     const navigate = useNavigate();
-    const { signOut } = useAuth();
+    const dispatch = useDispatch()
+    // const { signOut } = useAuth();
 
     const goToAdress = () => {
         navigate(`${navigationAdress}`);
     };
 
     const logOutAndGoHome = () => {
-        signOut(() => {
-            navigate("/");
-        });
+        dispatch(signOutAction())
+        navigate("/");
+        ;
     };
     return (
         <input
