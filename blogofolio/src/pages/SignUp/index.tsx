@@ -48,15 +48,16 @@ export const SignUp = () => {
         })
 
         if (result === true) {
+            setFormError(formError)
             const name: string = e.currentTarget.userName.value;
             const email: string = e.currentTarget.userEmail.value;
             const password: string = e.currentTarget.userPassword.value;
-
             dispatch(
                 registerUserAsyncAction(name, email, password, () =>
                     navigate('/confirmation', { state: email })
                 )
             );
+
         } else { setFormError(result as ValidationError[]) }
     };
 

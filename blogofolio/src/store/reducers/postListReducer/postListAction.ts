@@ -17,10 +17,7 @@ const loadPostListAction = (posts: IPost[]): IPostListAction => {
 const loadPostListAsyncAction = (limit: number, offset: number): any => {
     return (dispatch: AppDispatch) => {
         getAllPosts(limit, offset).then((posts) => {
-            const upgradePosts = posts.map((post: IPost) => {
-                return { ...post, likes: 0, dislikes: 0 }
-            });
-            dispatch(loadPostListAction(upgradePosts));
+            dispatch(loadPostListAction(posts));
         });
     };
 };

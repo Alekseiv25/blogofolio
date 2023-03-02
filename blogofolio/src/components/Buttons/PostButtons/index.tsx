@@ -11,12 +11,12 @@ interface IProps {
 }
 
 export const PostButtons = (props: IProps) => {
-    const { post, likes, dislikes } = props
+    const { post } = props
 
     return (<div className={styles.container}>
         <div className={styles.LikeDislikeContainer}>
-            <LikeButton likes={likes} />
-            <DislikeButton dislikes={dislikes} />
+            <LikeButton  />
+            <DislikeButton />
         </div>
         <FavoriteButton post={post} />
     </div>)

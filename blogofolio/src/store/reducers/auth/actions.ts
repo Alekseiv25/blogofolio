@@ -63,17 +63,20 @@ export const getUserAction = (user: IUserType) => {
     }
 }
 
-export const getUserAsyncAction = (email: string, password: string): any => {
+export const getUserAsyncAction = (email: string, password: string, cb: () => void): any => {
     return async (dispatch: AppDispatch, getState: () => AppState) => {
         await dispatch(getTokensAsyncAction(email, password))
         const accessToken = getState().auth.tokens?.access
         if (accessToken === undefined) {
         } else {
             const userInfo = await getUser(accessToken)
-            dispatch(getUserAction(userInfo.data))
+            if (userInfo.ok) {
+                dispatch(getUserAction(userInfo.data))
+                cb()
+            } else { 
+            }
         }
         const userData = getState().auth.user?.username
-
         if (userData === undefined) {
         }
     }

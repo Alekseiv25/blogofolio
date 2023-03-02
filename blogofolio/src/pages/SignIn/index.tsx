@@ -1,11 +1,11 @@
 import Validator, { ValidationError } from 'fastest-validator'
-import { FormEventHandler, useState } from 'react'
+import { FormEventHandler, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Input } from '../../components/Input'
 import { Navigation } from '../../components/Navigaton'
 import { Submit } from '../../components/Submit'
-import {  getUserAsyncAction } from '../../store/reducers/auth/actions'
+import { getUserAsyncAction } from '../../store/reducers/auth/actions'
 import { AppState } from '../../store/store'
 import styles from './SignIn.module.scss'
 
@@ -26,14 +26,16 @@ export const check = (schema: Object, data: Object) => {
 
 
 export const SignIn = () => {
+
     const [formError, setFormError] = useState<ValidationError[]>([])
     const dispatch = useDispatch();
+    const [apiErrors, setApiErrors] = useState('')
+    const navigate = useNavigate()
     const auth = useSelector((state: AppState) => state.auth);
     const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
-
-    // const fromPage = location.state?.from?.pathname || '/'
-
+    const location = useLocation()
+    const fromPage = location.state?.from?.pathname || '/'
     const handleSubmit: FormEventHandler<HTMLFormElement> = (e: any) => {
         e.preventDefault();
 
@@ -43,23 +45,32 @@ export const SignIn = () => {
         })
 
         if (result === true) {
+            setFormError(formError)
             const email: string = e.currentTarget.email.value;
             const password: string = e.currentTarget.password.value;
-            dispatch(getUserAsyncAction(email, password));
+            dispatch(getUserAsyncAction(email, password, () => navigate(fromPage)));
             console.log(email, password);
         } else { setFormError(result as ValidationError[]) }
     }
 
-    for (const key in auth.errors) {
-        console.log(key);
+    useEffect(() => {
+        for (const key in auth.errors) {
+            if (auth.errors === null) {
+                setApiErrors(apiErrors)
+                console.log(auth.errors);
 
-    }
+            } else {
+                const errors: any = (auth.errors[key])
+                setApiErrors(errors)
+            }
+        }
+    }, [auth.errors, apiErrors])
 
     return (
         <>
             <Navigation backToHome='Back to home' text={'Sign In'} />
-            <div>{JSON.stringify(auth, null, 2)}</div>
             <form className={styles.Formwrapper} onSubmit={handleSubmit}>
+                <span className={styles.errors}> {apiErrors}</span>
                 <Input
                     type='email'
                     label='Email'
@@ -67,7 +78,7 @@ export const SignIn = () => {
                     name={'email'}
                 />
                 {formError.map(err => (
-                    <span className={styles.errors}>{err.field === 'email' ? err.message : ''}</span>
+                    <span key={err.field} className={styles.errors}>{err.field === 'email' ? err.message : ''}</span>
                 ))}
                 <Input
                     type='password'
@@ -76,7 +87,7 @@ export const SignIn = () => {
                     name='password'
                 />
                 {formError.map(err => (
-                    <span className={styles.errors}>{err.field === 'password' ? err.message : ''}</span>
+                    <span key={err.field} className={styles.errors}>{err.field === 'password' ? err.message : ''}</span>
                 ))}
                 <NavLink className={styles.passwordtext} style={theme} to={'/reset'}>Forgot password?</NavLink>
                 <Submit value='Sign in' />

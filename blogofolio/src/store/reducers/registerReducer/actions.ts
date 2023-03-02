@@ -36,7 +36,7 @@ const registerUserAsyncAction = (
         const result = await registerUser(username, email, password);
         if (result.ok) {
             dispatch(loadUserRegisterAction(result.data as IUserType));
-            cb();
+            cb()
         } else {
             dispatch(errorRegistrationUserAction(result.data));
         }

@@ -50,12 +50,14 @@
 
 
     .image {
-        max-height: 200px;
-        width: 250px;
+        max-height: 327px;
+        min-width: 60%;
     }
     @media (max-width: 680px) {
         .image {
-            width: 100%;
+            width: 35%;
+            min-width: auto;
+            
         }
     }
 }

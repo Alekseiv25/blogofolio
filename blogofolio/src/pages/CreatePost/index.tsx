@@ -15,10 +15,9 @@ import Validator, { ValidationError } from "fastest-validator";
 
 
 const CreatePostValidationSchema = {
-  titleText: { type: 'string', },
+  titleText: { type: 'string' },
   description: { type: 'string' },
   text: { type: 'string' }
-
 }
 
 
@@ -57,7 +56,6 @@ export const CreatePost = () => {
       descriotion: e.currentTarget.description.value,
       text: e.currentTarget.text.value
     })
-    console.log(e.currentTarget.titleText.value);
 
     if (result === true) {
       const formData = new FormData(e.currentTarget)
@@ -71,7 +69,6 @@ export const CreatePost = () => {
   const goHome = () => navigate('/')
   const handleDelete = (e: any) => {
     e.preventDefault()
-    // e.currentTarget.value = ''
   }
 
   return (
@@ -83,12 +80,9 @@ export const CreatePost = () => {
       <Navigation className={styles.navigation} text={"Add post"} backToHome={""} />
 
       <form className={styles.formwrapper} onSubmit={handleSubmit}>
-      {formError.map(err => (
-          <span className={styles.errors}>{ err.message}</span>
-        ))}
         <Input type={"text"} label={"Title"} placeholder={"Title"} name={"titleText"} />
         {formError.map(err => (
-          <span className={styles.errors}>{err.field === 'titleText' ? err.message : ''}</span>
+          <span key={err.field} className={styles.errors}>{err.field === 'titleText' ? err.message : ''}</span>
         ))}
         <div className={styles.input_container}>
           <Input className={styles.lesson_input} type={"text"} label={"Lesson number"} placeholder={"20"} name={"lesson_num"} />
@@ -111,11 +105,11 @@ export const CreatePost = () => {
         </div>
         <TextArea label={"Description"} placeholder={"Description"} name={"description"} />
         {formError.map(err => (
-          <span className={styles.errors}>{err.field === 'description' ? err.message : ''}</span>
+          <span key={err.field} className={styles.errors}>{err.field === 'description' ? err.message : ''}</span>
         ))}
         <TextArea className={styles.textarea} label={"Text"} name={'text'} placeholder={"Add your text"} />
         {formError.map(err => (
-          <span className={styles.errors}>{err.field === 'text' ? err.message : ''}</span>
+          <span key={err.field} className={styles.errors}>{err.field === 'text' ? err.message : ''}</span>
         ))}
         <span>{published}</span>
         <div className={styles.buttons_container}>
