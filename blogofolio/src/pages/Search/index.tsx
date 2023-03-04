@@ -29,13 +29,12 @@ export const Search = () => {
     const searchPostsList = useSelector(searchPostsSelector);
     const totalSearchPostsCount = useSelector(totalSearchPostsCountSelector);
     const take = 10;
-    const skip = take * currentPage;
+    const skip = take * currentPage - 10;
 
     useEffect(() => {
         dispatch(loadSearchPostsListAsyncAction(searchText, skip));
         dispatch(loadTotalSearchPostsCountAsyncAction(searchText));
     }, [dispatch, searchText, skip]);
-    console.log(totalSearchPostsCount);
 
 
 
@@ -48,7 +47,7 @@ export const Search = () => {
 
     return (
         <section>
-            <input className={styles.input} style={theme} type='text' value={`Search result: ${searchText} `} />
+            <input readOnly className={styles.input} style={theme} type='text' value={`Search result: ${searchText} `} />
             <div >
                 {searchPostsList.map((el: IPost) => (
                     <SearchPost post={el} key={el.id} {...el} />

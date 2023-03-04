@@ -6,6 +6,8 @@ import { NavLink } from 'react-router-dom'
 import AsideMenuButton from '../Buttons/LogInLogOutButton'
 import { AppState } from '../../store/store'
 import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { setCurrentPageAction } from '../../store/reducers/paginationReducer/actions'
 
 
 const userSelector = (state: AppState) => state.auth.user
@@ -14,6 +16,10 @@ const getBurgerStateSelector = (state: AppState) => state.burger
 export const BurgerMenu = () => {
     const user = useSelector(userSelector)
     const burgerState = useSelector(getBurgerStateSelector)
+    const dispatch = useDispatch()
+    const gotoPage = () => {
+        dispatch(setCurrentPageAction(1));
+    }
 
     return (
         <div className={burgerState.isOpen ? `${styles.BurgerMenu} ${styles.active1}` : `${styles.BurgerMenu}`}>
@@ -23,7 +29,7 @@ export const BurgerMenu = () => {
 
                 </div>
                 <ul className={styles.ul}>
-                    <li><NavLink to='/'>Home</NavLink></li>
+                    <li onClick={gotoPage}><NavLink to='/'>Home</NavLink></li>
                     <li><NavLink to='/addPost'>Add Post</NavLink></li>
                 </ul>
                 <div className={styles.ThemeWrapper}>

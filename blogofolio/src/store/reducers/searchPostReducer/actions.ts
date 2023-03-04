@@ -23,7 +23,6 @@ const loadSearchPostsListAsyncAction = (value: string, offset: number): any => {
     return (dispatch: AppDispatch) => {
         getSearchPosts(value, offset).then((posts) => {
             dispatch(loadSearchPostsListAction(posts));
-            console.log(value);
         });
     };
 };

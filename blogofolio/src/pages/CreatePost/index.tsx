@@ -24,7 +24,7 @@ const CreatePostValidationSchema = {
   },
   text: { type: 'string', min: 1 },
   lesson_num: { type: 'string', min: 1 },
-  description: { type: 'string', min: 1 }
+  description: { type: 'string', min: 1 },
 }
 
 
@@ -49,7 +49,6 @@ export const CreatePost = () => {
   const [published, setPublished] = useState('')
 
   const onChange = (imageList: ImageListType, addUpdateIndex: number[] | undefined) => {
-    console.log(imageList, addUpdateIndex);
     setImages(imageList as never[]);
   }
 
@@ -71,7 +70,6 @@ export const CreatePost = () => {
       formData.append('title', e.currentTarget.titleText.value)
       formData.append('image', images[0].file || 'testFileName')
       dispatch(createNewPostAsyncAction(formData, () => { setPublished('Post publised') }))
-      // setPublished('Post published')
     } else { setFormError(result as ValidationError[]) }
   }
 
@@ -91,13 +89,13 @@ export const CreatePost = () => {
       <form className={styles.formwrapper} onSubmit={handleSubmit}>
         <Input type={"text"} label={"Title"} placeholder={"Title"} name={"titleText"} />
         {formError.map(err => (
-          <span key={err.field} className={styles.errors}>{err.field === 'titleText' ? err.message : ''}</span>
+          <span key={err.field} className={styles.errors}>{err.field === 'titleText'  ? 'Please text something there' : ''}</span>
         ))}
         <div className={styles.input_container}>
           <div>
             <Input className={styles.lesson_input} type={"text"} label={"Lesson number"} placeholder={"20"} name={"lesson_num"} />
             {formError.map(err => (
-              <span key={err.field} className={styles.errors}>{err.field === 'lesson_num' ? err.message : ''}</span>
+              <span key={err.field} className={styles.errors}>{err.field === 'lesson_num' ? 'Please text something there' : ''}</span>
             ))}
           </div>
 
@@ -105,7 +103,7 @@ export const CreatePost = () => {
             {({ imageList, onImageUpload, onImageRemove }) => (
               <div className={styles.container}>
                 <span className={styles.text}>Image</span>
-                <input className={styles.image_input} type="button" onClick={onImageUpload} value="Upload Image" />
+                <input name="file" className={styles.image_input} type="button" onClick={onImageUpload} value="Upload Image" />
                 {imageList.map((image, index) => (
                   <div key={index} className="image-item">
                     <img className={styles.image} src={image.dataURL} alt="" />
@@ -120,11 +118,11 @@ export const CreatePost = () => {
         </div>
         <TextArea label={"Description"} placeholder={"Description"} name={"description"} />
         {formError.map(err => (
-          <span key={err.field} className={styles.errors}>{err.field === 'description' ? err.message : ''}</span>
+          <span key={err.field} className={styles.errors}>{err.field === 'description' ? 'Please text something there' : ''}</span>
         ))}
         <TextArea className={styles.textarea} label={"Text"} name={'text'} placeholder={"Add your text"} />
         {formError.map(err => (
-          <span key={err.field} className={styles.errors}>{err.field === 'text' ? err.message : ''}</span>
+          <span key={err.field} className={styles.errors}>{err.field === 'text' ? 'Please text something there' : ''}</span>
         ))}
         <span>{published}</span>
         <div className={styles.buttons_container}>
