@@ -32,7 +32,7 @@ export const Tabs = (props: { activeTab1: string }) => {
                 dispatch(loadTotalPostsCountAsyncAction());
 
                 break;
-            case "My favorites":
+            case "My Favorites":
                 dispatch(loadTotalPostsCountAction(totalFavoritesPostsCount));
                 break;
             default:

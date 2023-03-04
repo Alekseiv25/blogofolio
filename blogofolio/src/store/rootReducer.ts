@@ -11,6 +11,7 @@ import { authReducer } from "./reducers/auth/authReducer";
 import { activatedReducer } from "./reducers/activateReducer/activateReducer";
 import searchPostsListReducer from "./reducers/searchPostReducer/searchPostReducer";
 import favoriteReducer from "./reducers/favoriteReducer/favoriteReducer";
+import myPostsReducer from "./reducers/myPostsReducer/myPostsReducer";
 
 
 export const rootReducer = combineReducers({
@@ -25,5 +26,6 @@ export const rootReducer = combineReducers({
     auth: authReducer,
     activate: activatedReducer,
     searchPostsList: searchPostsListReducer,
-    favoriteList: favoriteReducer
+    favoriteList: favoriteReducer,
+    myPosts: myPostsReducer
 })

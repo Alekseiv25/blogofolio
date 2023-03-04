@@ -72,14 +72,18 @@ export const getUserAsyncAction = (email: string, password: string, cb: () => vo
 
         if (!refreshToken) {
             await dispatch(getTokensAsyncAction(email, password))
-            await dispatch(getUserAsyncAction(email, password, cb))
-            accessToken = getState().auth.tokens?.access
-        }
-        if (!accessToken) {
+            // await dispatch(getUserAsyncAction(email, password, cb))
+            refreshToken = getState().auth.tokens?.refresh
+            if (refreshToken) {
+                await dispatch(getUserAsyncAction(email, password, cb))
+            } else {
+                return
+            }
+            return
+        } else if (!accessToken) {
             await dispatch(refreshTokenAsyncAction())
             await dispatch(getUserAsyncAction(email, password, cb))
-        }
-        if (userData === undefined) {
+        } else if (userData === undefined) {
             const userInfo = await getUser(accessToken!)
             dispatch(getUserAction(userInfo.data))
             cb()

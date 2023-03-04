@@ -1,4 +1,4 @@
-type ActiveTabType = "All" | "My favorites" | "Popular";
+type ActiveTabType = "All" | "My Favorites" | "My Posts";
 
 interface ITabType {
     id: number;

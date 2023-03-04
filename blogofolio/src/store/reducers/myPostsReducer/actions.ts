@@ -1,4 +1,4 @@
-import { createNewMyPost, IPost } from "../../../services/PostService";
+import { createNewMyPost, getMyPosts, IPost } from "../../../services/PostService";
 import { refreshTokenAsyncAction } from "../auth/actions";
 import { AppDispatch, AppState } from "../../store";
 import { ADD_MY_POSTS_FAILED, ADD_MY_POSTS_SUCCESS } from "./constants";
@@ -34,3 +34,21 @@ export const createNewPostAsyncAction = (formData: FormData, cb: () => void): an
         }
     }
 }
+
+export const getMyPostsAsyncAction = (limit: number, offset: number): any => {
+    return async (dispatch: AppDispatch, getState: () => AppState) => {
+        const accessToken = getState().auth.tokens?.access
+        if (!accessToken) {
+            throw new Error("no Access Token");
+        }
+        const result = await getMyPosts(accessToken, limit, offset)
+        if (result.ok) {
+            dispatch(addPostsSuccessAction(result.data.results))
+        } else if (result.status === 401) {
+            await dispatch(refreshTokenAsyncAction())
+            await dispatch(getMyPostsAsyncAction(limit, offset))
+        } else {
+            throw new Error(result.data)
+        }
+    };
+};

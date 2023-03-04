@@ -8,6 +8,7 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { loadPostListAsyncAction, loadTotalPostsCountAsyncAction } from "../../store/reducers/postListReducer/postListAction"
 import { LoadSpinner } from "../../components/loadSpinner"
+import MyPostsList from "../../components/PostList/MyPostsList"
 const activeTabSelector = (state: AppState) => state.tabs.activeTab;
 export const Main = () => {
     let activeTab = useSelector(activeTabSelector);
@@ -34,7 +35,8 @@ export const Main = () => {
             <Navigation text="Blog" backToHome="" />
             <Tabs activeTab1={activeTab} />
             {activeTab === 'All' && <PostList />}
-            {activeTab === 'My favorites' && <MyFavoritesList />}
+            {activeTab === 'My Favorites' && <MyFavoritesList />}
+            {activeTab === 'My Posts' && <MyPostsList />}
         </section>
     )
 }

@@ -62,7 +62,7 @@ export const Pagination = (props: {
         return <></>
     }
 
-    return (<div className={activeTab === 'My favorites' ? `${styles.fav}` : `${styles.PagesNavContainer}`}>
+    return (<div className={activeTab === 'My Favorites' ? `${styles.fav}` : `${styles.PagesNavContainer}`}>
         <div className={styles.PrevPage}>
             <svg width="18"
                 height="15"
