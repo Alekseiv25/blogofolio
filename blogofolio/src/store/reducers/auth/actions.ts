@@ -66,18 +66,23 @@ export const getUserAction = (user: IUserType) => {
 export const getUserAsyncAction = (email: string, password: string, cb: () => void): any => {
     return async (dispatch: AppDispatch, getState: () => AppState) => {
         await dispatch(getTokensAsyncAction(email, password))
-        const accessToken = getState().auth.tokens?.access
-        if (accessToken === undefined) {
-        } else {
-            const userInfo = await getUser(accessToken)
-            if (userInfo.ok) {
-                dispatch(getUserAction(userInfo.data))
-                cb()
-            } else { 
-            }
-        }
         const userData = getState().auth.user?.username
+        let accessToken = getState().auth.tokens?.access
+        let refreshToken = getState().auth.tokens?.refresh
+
+        if (!refreshToken) {
+            await dispatch(getTokensAsyncAction(email, password))
+            await dispatch(getUserAsyncAction(email, password, cb))
+            accessToken = getState().auth.tokens?.access
+        }
+        if (!accessToken) {
+            await dispatch(refreshTokenAsyncAction())
+            await dispatch(getUserAsyncAction(email, password, cb))
+        }
         if (userData === undefined) {
+            const userInfo = await getUser(accessToken!)
+            dispatch(getUserAction(userInfo.data))
+            cb()
         }
     }
 }

@@ -15,7 +15,7 @@ export const addPostFailedACtion = (errors: IObjectStringList): AddPostActionTyp
     payload: errors
 })
 
-export const createNewPostAsyncAction = (formData: FormData): any => {
+export const createNewPostAsyncAction = (formData: FormData, cb: () => void): any => {
     return async (dispatch: AppDispatch, getState: () => AppState) => {
         const accessToken = getState().auth.tokens?.access
         if (!accessToken) {
@@ -23,10 +23,11 @@ export const createNewPostAsyncAction = (formData: FormData): any => {
         }
         const result = await createNewMyPost(accessToken, formData)
         if (result.ok) {
-            // dispatch(addPostsSuccessAction(result.data))
+            dispatch(addPostsSuccessAction(result.data))
+            cb()
         } else if (result.status === 401) {
             await dispatch(refreshTokenAsyncAction())
-            await dispatch(createNewPostAsyncAction(formData))
+            await dispatch(createNewPostAsyncAction(formData, cb))
         } else {
             console.log(result.data);
             throw new Error(result.data)

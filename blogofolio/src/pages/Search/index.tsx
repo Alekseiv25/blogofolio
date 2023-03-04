@@ -23,7 +23,7 @@ export const Search = () => {
     const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
     const location = useLocation();
-    const searchText = location.state || "nothing";
+    const searchText: string = location.state || "nothing";
     const dispatch = useDispatch()
     const currentPage = useSelector(currentPageSelector);
     const searchPostsList = useSelector(searchPostsSelector);
@@ -53,7 +53,7 @@ export const Search = () => {
                 {searchPostsList.map((el: IPost) => (
                     <SearchPost post={el} key={el.id} {...el} />
                 ))}
-                <Pagination postsPerPage={skip} totalPostsCount={totalSearchPostsCount} />
+                <Pagination postsPerPage={take} totalPostsCount={totalSearchPostsCount} />
             </div>
 
         </section>

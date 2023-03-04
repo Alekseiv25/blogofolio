@@ -15,9 +15,16 @@ import Validator, { ValidationError } from "fastest-validator";
 
 
 const CreatePostValidationSchema = {
-  titleText: { type: 'string' },
-  description: { type: 'string' },
-  text: { type: 'string' }
+  titleText: {
+    type: 'string',
+    min: 1,
+    massages: {
+      stringMin: "Your firstname is too short"
+    }
+  },
+  text: { type: 'string', min: 1 },
+  lesson_num: { type: 'string', min: 1 },
+  description: { type: 'string', min: 1 }
 }
 
 
@@ -53,16 +60,18 @@ export const CreatePost = () => {
 
     const result = check(CreatePostValidationSchema, {
       titleText: e.currentTarget.titleText.value,
-      descriotion: e.currentTarget.description.value,
-      text: e.currentTarget.text.value
+      text: e.currentTarget.text.value,
+      lesson_num: e.currentTarget.lesson_num.value,
+      description: e.currentTarget.description.value
+
     })
 
     if (result === true) {
       const formData = new FormData(e.currentTarget)
       formData.append('title', e.currentTarget.titleText.value)
       formData.append('image', images[0].file || 'testFileName')
-      dispatch(createNewPostAsyncAction(formData))
-      setPublished('Post published')
+      dispatch(createNewPostAsyncAction(formData, () => { setPublished('Post publised') }))
+      // setPublished('Post published')
     } else { setFormError(result as ValidationError[]) }
   }
 
@@ -85,7 +94,13 @@ export const CreatePost = () => {
           <span key={err.field} className={styles.errors}>{err.field === 'titleText' ? err.message : ''}</span>
         ))}
         <div className={styles.input_container}>
-          <Input className={styles.lesson_input} type={"text"} label={"Lesson number"} placeholder={"20"} name={"lesson_num"} />
+          <div>
+            <Input className={styles.lesson_input} type={"text"} label={"Lesson number"} placeholder={"20"} name={"lesson_num"} />
+            {formError.map(err => (
+              <span key={err.field} className={styles.errors}>{err.field === 'lesson_num' ? err.message : ''}</span>
+            ))}
+          </div>
+
           <ImageUploading value={images} onChange={onChange}>
             {({ imageList, onImageUpload, onImageRemove }) => (
               <div className={styles.container}>
