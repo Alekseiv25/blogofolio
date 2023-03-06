@@ -27,6 +27,7 @@ export const check = (schema: Object, data: Object) => {
 
 export const SignIn = () => {
 
+
     const [formError, setFormError] = useState<ValidationError[]>([])
     const dispatch = useDispatch();
     const [apiErrors, setApiErrors] = useState('')
@@ -36,6 +37,7 @@ export const SignIn = () => {
     const theme = useSelector(getThemeSelector)
     const location = useLocation()
     const fromPage = location.state?.from?.pathname || '/'
+    const newPassword = location.state
     const handleSubmit: FormEventHandler<HTMLFormElement> = (e: any) => {
         e.preventDefault();
 
@@ -70,6 +72,7 @@ export const SignIn = () => {
         <>
             <Navigation backToHome='Back to home' text={'Sign In'} />
             <form className={styles.Formwrapper} onSubmit={handleSubmit}>
+                {newPassword}
                 <span className={styles.errors}> {apiErrors}</span>
                 <Input
                     type='email'

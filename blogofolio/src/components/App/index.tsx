@@ -13,28 +13,30 @@ import { Reset } from '../../pages/Reset';
 import { CreatePost } from '../../pages/CreatePost';
 import RequireAuth from '../hoc/RequireAuth';
 import Activation from '../../pages/Activation';
+import { NewPassword } from '../../pages/NewPassword/NewPassword';
 
 function App() {
 
   return (
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<Main />} />
-          <Route path='post/:id' element={<SelectedPost />} />
-          <Route path='signIn' element={<SignIn />} />
-          <Route path='signUp' element={<SignUp />} />
-          <Route path='confirmation' element={<Confirmation />} />
-          <Route path='success' element={<Success />} />
-          <Route path='search' element={<Search />} />
-          <Route path='reset' element={<Reset />} />
-          <Route path='*' element={<NotFound />} />
-          <Route path='addPost' element={
-            <RequireAuth>
-              <CreatePost />
-            </RequireAuth>} />
-          <Route path='activate/:uid/:token' element={<Activation />} />
-        </Route>
-      </Routes>
+    <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route index element={<Main />} />
+        <Route path='post/:id' element={<SelectedPost />} />
+        <Route path='signIn' element={<SignIn />} />
+        <Route path='signUp' element={<SignUp />} />
+        <Route path='confirmation' element={<Confirmation />} />
+        <Route path='success' element={<Success />} />
+        <Route path='search' element={<Search />} />
+        <Route path='reset' element={<Reset />} />
+        <Route path='*' element={<NotFound />} />
+        <Route path='addPost' element={
+          <RequireAuth>
+            <CreatePost />
+          </RequireAuth>} />
+        <Route path='activate/:uid/:token' element={<Activation />} />
+        <Route path='password/reset/confirm/:uid/:token' element={<NewPassword />} />
+      </Route>
+    </Routes>
   );
 }
 

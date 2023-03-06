@@ -19,7 +19,6 @@ export const activateUserAsyncAction = (
 ): any => {
     return async (dispatch: AppDispatch) => {
         const result = await activateUser(uid, token);
-        console.log("activation result :", result);
 
         if (result.ok) {
             dispatch(activationSuccessAction());
