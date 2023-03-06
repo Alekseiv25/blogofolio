@@ -106,18 +106,3 @@ export const getMyPosts = async (
         data: result,
     };
 };
-
-export const getMyPostsCount = async (accessToken: string) => {
-    const url = await (`https://studapi.teachmeskills.by/blog/posts/my_posts`);
-    const params = {
-        method: "GET",
-        headers: {
-            "Content-type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-        },
-    };
-    const request = new Request(url, params);
-    const response = await fetch(request);
-    const result = await response.json();
-    return result.count
-};
