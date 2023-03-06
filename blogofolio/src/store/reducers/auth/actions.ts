@@ -49,7 +49,7 @@ export const refreshTokenAsyncAction = (): any => {
         const result = await fetchRefreshToken(refreshToken)
         if (result.ok) {
             dispatch(getTokensSuccessAction({
-                access: result.data,
+                access: result.data.access,
                 refresh: refreshToken
             }))
         }

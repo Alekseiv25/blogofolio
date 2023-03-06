@@ -6,16 +6,13 @@ import { useDispatch } from 'react-redux';
 import { setCurrentPageAction, setNextPage, setPreviouslyPage } from '../../store/reducers/paginationReducer/actions';
 
 
-const activeTabSelector = (state: AppState) => state.tabs.activeTab;
 const currentPageSelector = (state: AppState) => state.pagination.currentPage;
-
 
 export const Pagination = (props: {
     postsPerPage: number;
     totalPostsCount: number;
 }) => {
     const { totalPostsCount, postsPerPage } = props;
-    let activeTab = useSelector(activeTabSelector);
     const theme = useSelector((state: any) => state.theme)
     const dispatch = useDispatch()
     const currentPage = useSelector(currentPageSelector);
@@ -62,7 +59,7 @@ export const Pagination = (props: {
         return <></>
     }
 
-    return (<div className={activeTab === 'My Favorites' ? `${styles.fav}` : `${styles.PagesNavContainer}`}>
+    return (<div className={styles.PagesNavContainer}>
         <div className={styles.PrevPage}>
             <svg width="18"
                 height="15"

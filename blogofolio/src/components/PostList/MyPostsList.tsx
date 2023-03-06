@@ -23,10 +23,10 @@ const MyPostsList = () => {
 
 
     return (<>
-     <PostListView bottomPost={myPosts!} mainPost={[]} asidePost={[]} />
-     <Pagination postsPerPage={take} totalPostsCount={postsCount!}/>
-     </>
-       
+        <PostListView bottomPost={myPosts!} mainPost={[]} asidePost={[]} />
+        <Pagination postsPerPage={take} totalPostsCount={postsCount!} />
+    </>
+
     )
 }
 export default MyPostsList
