@@ -72,7 +72,7 @@ export const getUserAsyncAction = (email: string, password: string, cb: () => vo
 
         if (!refreshToken) {
             await dispatch(getTokensAsyncAction(email, password))
-            refreshToken = getState().auth.tokens?.refresh
+            await dispatch(getUserAsyncAction(email, password, cb))
             if (refreshToken) {
                 await dispatch(getUserAsyncAction(email, password, cb))
             } else {

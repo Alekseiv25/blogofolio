@@ -12,7 +12,7 @@ import { activeTabSelector, postsSelector, totalPostsCountSelector } from "../..
 
 export const Main = () => {
     const dispatch = useDispatch()
-    let activeTab = useSelector(activeTabSelector);
+    const activeTab = useSelector(activeTabSelector);
     const posts = useSelector(postsSelector);
     const total = useSelector(totalPostsCountSelector)
 

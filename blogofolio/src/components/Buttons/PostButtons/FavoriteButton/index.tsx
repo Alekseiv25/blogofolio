@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToFavoritesPostsAction, deleteFromFavoritesPostsAction } from "../../../../store/reducers/favoriteReducer/actions";
 import { favoritesPostsSelector, userSelector } from "../../../../store/selectors/selectors";
 import { IPost } from "../../../../tools/types";
+import { DropDownMenu } from "../DropDownMenu/DropDownMenu";
 import styles from './styles.module.scss'
 
 const FavoriteButton = (props: { post: IPost }) => {
+    const [toggleDropDown, setToggleDropDown] = useState(false)
     const dispatch = useDispatch();
     const [signValidation, setSignValidation] = useState('')
     const { post } = props;
@@ -15,6 +17,7 @@ const FavoriteButton = (props: { post: IPost }) => {
     const isFavoritePost = (favoritePostId: number) => {
         return favoritePosts.find((post) => post.id === favoritePostId);
     };
+
 
     const toggleFavoritesPosts = (post: IPost) => {
         if (user) {
@@ -48,7 +51,7 @@ const FavoriteButton = (props: { post: IPost }) => {
                 </svg>
             </button>
 
-            <button >
+            <button onClick={() => { setToggleDropDown(!toggleDropDown) }} >
                 <svg width="20"
                     height="4"
                     viewBox="0 0 20 4"
@@ -61,9 +64,8 @@ const FavoriteButton = (props: { post: IPost }) => {
                         fill={theme.color === '#313037' ? '#313037' : '#FFFFFF'}
                     />
                 </svg>
-
             </button>
-
+            <DropDownMenu active={toggleDropDown} id={post.id} />
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import { createNewMyPost, getMyPosts } from "../../../services/PostService";
+import { createNewMyPost, deleteMyPost, getMyPosts } from "../../../services/PostService";
 import { refreshTokenAsyncAction } from "../auth/actions";
 import { AppDispatch, AppState } from "../../store";
 import { ADD_MY_POSTS_COUNT, ADD_MY_POSTS_FAILED, ADD_MY_POSTS_SUCCESS } from "./constants";
@@ -32,7 +32,6 @@ export const createNewPostAsyncAction = (formData: FormData, cb: () => void): an
             cb()
         } else if (result.status === 401) {
             await dispatch(refreshTokenAsyncAction())
-            console.log("refreshToken")
             await dispatch(createNewPostAsyncAction(formData, cb))
         } else {
             console.log(result.data);
@@ -53,7 +52,6 @@ export const getMyPostsAsyncAction = (limit: number, offset: number): any => {
             dispatch(addPostCountAction(result.data.count))
         } else if (result.status === 401) {
             await dispatch(refreshTokenAsyncAction())
-            console.log("refreshToken")
             await dispatch(getMyPostsAsyncAction(limit, offset))
         } else {
             throw new Error(result.data)
@@ -61,3 +59,18 @@ export const getMyPostsAsyncAction = (limit: number, offset: number): any => {
     };
 };
 
+export const deleteMyPostAsyncAction = (id: number): any => {
+    return async (dispatch: AppDispatch, getState: () => AppState) => {
+        const accessToken = getState().auth.tokens?.access;
+        if (!accessToken) {
+            throw new Error("no Access Token");
+        }
+        const result = await deleteMyPost(accessToken, id);
+        if (result.ok) {
+        } else if (result.status === 401) {
+            await dispatch(refreshTokenAsyncAction());
+            await dispatch(deleteMyPostAsyncAction(id));
+        } else {
+        }
+    };
+};
