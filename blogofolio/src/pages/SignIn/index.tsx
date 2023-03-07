@@ -6,13 +6,22 @@ import { Input } from '../../components/Input'
 import { Navigation } from '../../components/Navigaton'
 import { Submit } from '../../components/Submit'
 import { getUserAsyncAction } from '../../store/reducers/auth/actions'
-import { AppState } from '../../store/store'
+import { authSelector, getThemeSelector } from '../../store/selectors/selectors'
 import styles from './SignIn.module.scss'
 
 
 const signInValidationSchema = {
-    email: { type: 'email', optional: true },
-    password: { type: 'string', min: 8, max: 16, optional: true, nullable: true },
+    email: {
+        type: 'email',
+        optional: true
+    },
+    password: {
+        type: 'string',
+        min: 8,
+        max: 16,
+        optional: true,
+        nullable: true
+    },
 
 }
 
@@ -32,8 +41,7 @@ export const SignIn = () => {
     const dispatch = useDispatch();
     const [apiErrors, setApiErrors] = useState('')
     const navigate = useNavigate()
-    const auth = useSelector((state: AppState) => state.auth);
-    const getThemeSelector = (state: any) => state.theme
+    const auth = useSelector(authSelector);
     const theme = useSelector(getThemeSelector)
     const location = useLocation()
     const fromPage = location.state?.from?.pathname || '/'

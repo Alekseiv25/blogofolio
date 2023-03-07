@@ -1,6 +1,5 @@
 import ImageUploading, { ImageListType } from "react-images-uploading";
 import React, { useState } from "react";
-
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +10,7 @@ import TextArea from "../../components/TextArea";
 import { createNewPostAsyncAction } from "../../store/reducers/myPostsReducer/actions";
 import styles from './CreatePost.module.scss'
 import Validator, { ValidationError } from "fastest-validator";
-
+import { getThemeSelector } from "../../store/selectors/selectors";
 
 
 const CreatePostValidationSchema = {
@@ -31,17 +30,12 @@ const CreatePostValidationSchema = {
 export const check = (schema: Object, data: Object) => {
   const validator = new Validator()
   const compiledValidator = validator.compile(schema)
-
   return compiledValidator(data)
 }
 
 
-
-
-
 export const CreatePost = () => {
   const [formError, setFormError] = useState<ValidationError[]>([])
-  const getThemeSelector = (state: any) => state.theme
   const theme = useSelector(getThemeSelector)
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -51,7 +45,6 @@ export const CreatePost = () => {
   const onChange = (imageList: ImageListType, addUpdateIndex: number[] | undefined) => {
     setImages(imageList as never[]);
   }
-
 
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -77,6 +70,7 @@ export const CreatePost = () => {
   const handleDelete = (e: any) => {
     e.preventDefault()
   }
+
 
   return (
     <div>
@@ -129,7 +123,6 @@ export const CreatePost = () => {
           <input onClick={handleDelete} className={styles.delete_button} type="button" value="Delete post" />
           <div className={styles.container}>
             <input className={styles.reset_button} type="reset" value="Cancel" />
-
             <Submit value={"Add post"} />
           </div>
         </div>

@@ -1,26 +1,15 @@
 import { useDispatch, useSelector } from "react-redux"
-
-import { DAY } from "../../../../store/reducers/themeReducer"
-
-
+import { ThemeDayAction } from "../../../../store/reducers/themeReducer/actions"
+import { getThemeSelector } from "../../../../store/selectors/selectors"
 
 
 export const LightBtn = () => {
-
     const dispatch = useDispatch()
-
-    const changeThemeDay = () => {
-        dispatch(
-            {
-                type: DAY
-            })
-    }
-
-    const theme = useSelector((state: any) => state.theme)
+    const changeThemeDay = () => { dispatch(ThemeDayAction()) }
+    const theme = useSelector(getThemeSelector)
 
     return (
         <svg
-
             width="35"
             height="35"
             viewBox="0 0 24 24"

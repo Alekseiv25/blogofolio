@@ -1,22 +1,18 @@
-import { IPost } from '../../../services/PostService'
 import style from './AsidePostItem.module.scss'
 import { PostButtons } from '../../Buttons/PostButtons'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { OPEN_POPUP } from '../../../store/reducers/popUpReducer'
+import { popUpOpenAction } from '../../../store/reducers/popUpReducer/actions'
+import { getThemeSelector } from '../../../store/selectors/selectors'
+import { IPost } from '../../../tools/types'
 
 export const AsidePostItem = (props: { post: IPost }) => {
     const { post: { date, title, image, id }, post } = props
-    const theme = useSelector((state: any) => state.theme)
+    const theme = useSelector(getThemeSelector)
     const dispatch = useDispatch()
+    const handleShowPopup = () => { dispatch(popUpOpenAction(image))}
 
-    const handleShowPopup = () => {
-        dispatch({
-            type: OPEN_POPUP,
-            image: image
-        })
-    }
-
+    
     return (
         <>
             <div className={style.post}>

@@ -1,9 +1,10 @@
-import { createNewMyPost, getMyPosts, IPost } from "../../../services/PostService";
+import { createNewMyPost, getMyPosts } from "../../../services/PostService";
 import { refreshTokenAsyncAction } from "../auth/actions";
 import { AppDispatch, AppState } from "../../store";
 import { ADD_MY_POSTS_COUNT, ADD_MY_POSTS_FAILED, ADD_MY_POSTS_SUCCESS } from "./constants";
 import { AddPostActionType } from "./types";
 import { IObjectStringList } from "../registerReducer/types";
+import { IPost } from "../../../tools/types";
 
 export const addPostsSuccessAction = (posts: IPost[]): AddPostActionType => ({
     type: ADD_MY_POSTS_SUCCESS,

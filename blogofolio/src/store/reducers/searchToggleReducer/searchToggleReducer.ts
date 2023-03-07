@@ -1,17 +1,5 @@
-export const TOGGLE_SEARCH = 'TOGGLE_SEARCH'
-
-
-interface ISearchState {
-    isOpen: boolean
-}
-
-interface ISearchAction {
-    type: string
-}
-
-const defaultValue: ISearchState = {
-    isOpen: false
-}
+import { defaultValue, TOGGLE_SEARCH } from "./constants"
+import { ISearchAction, ISearchState } from "./types"
 
 const burgerMenuReducer = (state: ISearchState = defaultValue, action: ISearchAction): ISearchState => {
     switch (action.type) {

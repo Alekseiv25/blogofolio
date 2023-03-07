@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { AppState } from '../../../store/store'
+import { userSelector } from '../../../store/selectors/selectors'
 import styles from './UserButton.module.scss'
 
-const userSelector = (state: AppState) => state.auth.user
+
 
 export const UserButton = () => {
     const navigate = useNavigate()

@@ -1,5 +1,6 @@
 import { AnyAction } from "@reduxjs/toolkit";
-import { IPost } from "../../../services/PostService";
+import { IPost } from "../../../tools/types";
+
 
 
 export interface IPostsListState {

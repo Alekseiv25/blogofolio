@@ -1,26 +1,17 @@
 import { useEffect } from "react"
-import { IPost } from "../../services/PostService"
+
 import { SearchPost } from "../../components/SearchPost"
 import styles from './Search.module.scss'
 import { useLocation } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-import { AppState } from "../../store/store"
 import { loadSearchPostsListAsyncAction, loadTotalSearchPostsCountAsyncAction } from "../../store/reducers/searchPostReducer/actions"
 import { Pagination } from "../../components/Pagination"
-
-const totalSearchPostsCountSelector = (state: AppState) =>
-    state.searchPostsList.totalSearchPostsCount;
-
-const currentPageSelector = (state: AppState) =>
-    state.pagination.currentPage;
-
-const searchPostsSelector = (state: AppState) =>
-    state.searchPostsList.searchPosts;
+import { currentPageSelector, getThemeSelector, searchPostsSelector, totalSearchPostsCountSelector } from "../../store/selectors/selectors"
+import { IPost } from "../../tools/types"
 
 
 export const Search = () => {
-    const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
     const location = useLocation();
     const searchText: string = location.state || "nothing";

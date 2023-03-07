@@ -2,7 +2,8 @@ import {
     getSearchPosts,
     getSearchPostsCount,
 } from "../../../services/PostService";
-import { IPost } from "../../../services/PostService";
+import { IPost } from "../../../tools/types";
+
 import { AppDispatch, AppState } from "../../store";
 import { GET_OVERALL_SEARCH_POSTS_COUNT, LOAD_SEARCH_POSTS } from "./constants";
 import {

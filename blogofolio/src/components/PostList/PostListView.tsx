@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
-import { IPost } from "../../services/PostService";
-import { AppState } from "../../store/store";
+
+import { activeTabSelector, favoritesPostsSelector } from "../../store/selectors/selectors";
+import { IPost } from "../../tools/types";
 import { AsidePostItem } from "../PostItems/AsidePostItem";
 import { BottomPostItem } from "../PostItems/BottomPostItem";
 import { MainPostItem } from "../PostItems/MainPostItem";
@@ -9,8 +10,9 @@ interface IProps {
     mainPost: IPost[];
     bottomPost: IPost[];
     asidePost: IPost[];
-}const favoritesPostsSelector = (state: AppState) => state.favoriteList.favoritesPosts;
-const activeTabSelector = (state: AppState) => state.tabs.activeTab;
+}
+
+
 
 const PostlistView = (props: IProps) => {
     const { mainPost, bottomPost, asidePost } = props

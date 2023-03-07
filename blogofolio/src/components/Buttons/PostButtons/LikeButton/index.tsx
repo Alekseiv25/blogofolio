@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { getThemeSelector } from '../../../../store/selectors/selectors'
 import styles from './styles.module.scss'
 
 
 
 const LikeButton = () => {
-    const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
     const [likeCount, setLikeCount] = useState<number>(Math.floor(Math.random() * 100))
     const [likeActive, setLikeActive] = useState<boolean>(false)

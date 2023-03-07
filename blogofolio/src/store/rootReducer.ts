@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
-import burgerMenuReducer from "./reducers/burgerMenuReducer";
+import burgerMenuReducer from "./reducers/burgerMenuReducer/burgerMenuReducer";
 import { paginationReducer } from "./reducers/paginationReducer/paginationReducer";
-import popupReducer from "./reducers/popUpReducer";
+import popupReducer from "./reducers/popUpReducer/popUpReducer";
 import postListReducer from "./reducers/postListReducer/postListReducer";
-import searchToggleReducer from "./reducers/searchToggleReducer";
+import searchToggleReducer from "./reducers/searchToggleReducer/searchToggleReducer";
 import tabReducer from "./reducers/tabReducer/tabReducer";
-import themeReduser from "./reducers/themeReducer";
+import themeReduser from "./reducers/themeReducer/themeReducer";
 import registerReducer from './reducers/registerReducer/registerReducer'
 import { authReducer } from "./reducers/auth/authReducer";
 import { activatedReducer } from "./reducers/activateReducer/activateReducer";

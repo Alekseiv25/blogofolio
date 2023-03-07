@@ -1,19 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import { NIGHT } from "../../../../store/reducers/themeReducer";
+import { ThemeNightAction } from "../../../../store/reducers/themeReducer/actions";
+import { getThemeSelector } from "../../../../store/selectors/selectors";
 
 
 export const DarkBtn = () => {
 
     const dispatch = useDispatch()
+    const changeThemeDay = () => {dispatch(ThemeNightAction())}
 
-    const changeThemeDay = () => {
-        dispatch(
-            {
-                type: NIGHT
-            })
-    }
-
-    const theme = useSelector((state: any) => state.theme)
+    const theme = useSelector(getThemeSelector)
 
     return (
         <svg

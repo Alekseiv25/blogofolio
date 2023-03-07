@@ -11,7 +11,7 @@ import Layout from '../../pages/Layout';
 import NotFound from '../../pages/NotFound';
 import { Reset } from '../../pages/Reset';
 import { CreatePost } from '../../pages/CreatePost';
-import RequireAuth from '../hoc/RequireAuth';
+import RequireAuth from '../../hoc/RequireAuth';
 import Activation from '../../pages/Activation';
 import { NewPassword } from '../../pages/NewPassword/NewPassword';
 

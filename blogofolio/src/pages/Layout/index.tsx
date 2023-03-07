@@ -3,11 +3,13 @@ import { NavBar } from "../../components/NavBar"
 import { BurgerMenu } from "../../components/BurgerMenu"
 import Modal from "../../components/Modal"
 import { useSelector } from "react-redux"
+import { getThemeSelector } from "../../store/selectors/selectors"
 
 
 const Layout = () => {
-    const theme = useSelector((state: any) => state.theme)
+    const theme = useSelector(getThemeSelector)
 
+    
     return (
         <div className='App'>
             <header className="App-header">

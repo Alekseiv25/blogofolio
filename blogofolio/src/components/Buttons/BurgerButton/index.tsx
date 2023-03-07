@@ -1,16 +1,12 @@
 import { useDispatch } from 'react-redux'
-import { TOGGLE_BURGER } from '../../../store/reducers/burgerMenuReducer'
+import { burgerMenuAction } from '../../../store/reducers/burgerMenuReducer/actions'
 import styles from './BurgerButton.module.scss'
 
 
 export const BurgerButton = () => {
-    const dispatch = useDispatch()
 
-    const handleShowBurger = () => {
-        dispatch({
-            type: TOGGLE_BURGER
-        })
-    }
+    const dispatch = useDispatch()
+    const handleShowBurger = () => { dispatch(burgerMenuAction()) }
 
     return (
         <button onClick={handleShowBurger} className={styles.button}  >

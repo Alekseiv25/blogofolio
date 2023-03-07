@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux'
+import { getThemeSelector } from '../../store/selectors/selectors'
 import styles from './Input.module.scss'
 
 interface InputProps {
@@ -14,7 +15,6 @@ interface InputProps {
 
 export const Input = (props: InputProps) => {
     const { label, type, placeholder, name, className } = props
-    const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
 
 

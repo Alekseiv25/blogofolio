@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyPostsAsyncAction } from "../../store/reducers/myPostsReducer/actions";
+import { myPostsCountSelector, myPostsSelector } from "../../store/selectors/selectors";
 import { AppState } from "../../store/store";
 import { Pagination } from "../Pagination";
 import PostListView from "./PostListView";
 
-const myPostsSelector = (state: AppState) => state.myPosts.myPosts
-const myPostsCountSelector = (state: AppState) => state.myPosts.totalMyPostsCount
 const currentPageSelector = (state: AppState) => state.pagination.currentPage;
 const MyPostsList = () => {
     const dispatch = useDispatch()
@@ -23,8 +22,15 @@ const MyPostsList = () => {
 
 
     return (<>
-        <PostListView bottomPost={myPosts!} mainPost={[]} asidePost={[]} />
-        <Pagination postsPerPage={take} totalPostsCount={postsCount!} />
+        <PostListView
+            bottomPost={myPosts!}
+            mainPost={[]}
+            asidePost={[]}
+        />
+        <Pagination
+            postsPerPage={take}
+            totalPostsCount={postsCount!}
+        />
     </>
 
     )

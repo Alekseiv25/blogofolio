@@ -1,4 +1,5 @@
-import { IPost } from "../../../services/PostService";
+
+import { IPost } from "../../../tools/types";
 import { ADD_TO_FAVORITES, defaultState, DELETE_FROM_FAVORITES } from "./constants";
 import { IFavoriteActionType, IFavoriteListState } from "./types";
 

@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { getThemeSelector } from '../../store/selectors/selectors'
 import styles from './Navigation.module.scss'
 
 interface Props {
@@ -10,8 +11,6 @@ interface Props {
 
 export const Navigation = (props: Props) => {
     const { text, backToHome, className } = props
-
-    const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
 
     return (

@@ -1,5 +1,6 @@
 
-import { getAllPosts, getPostsCount, IPost } from "../../../services/PostService";
+import { getAllPosts, getPostsCount,  } from "../../../services/PostService";
+import { IPost } from "../../../tools/types";
 import { AppDispatch } from "../../store";
 import {
     GET_OVERALL_POSTS_COUNT,

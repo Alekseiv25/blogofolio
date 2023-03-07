@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { PostButtons } from "../../components/Buttons/PostButtons"
-import { getPostById, IPost } from "../../services/PostService"
+import { getPostById,  } from "../../services/PostService"
 import styles from './SelectedPost.module.scss'
 import { SelectedPostNav } from "../../components/SelectedPostNav"
 import { useSelector } from "react-redux"
 import { LoadSpinner } from "../../components/loadSpinner"
+import { getThemeSelector } from "../../store/selectors/selectors"
+import { IPost } from "../../tools/types"
 
 export const SelectedPost = () => {
-
-
-    const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
     const params: any = useParams()
     const navigate = useNavigate()

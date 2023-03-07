@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadPostListAsyncAction } from "../../store/reducers/postListReducer/postListAction";
-import { AppState } from "../../store/store";
+import {
+    currentPageSelector,
+    pageSizeSelector,
+    postsSelector,
+    totalPostsCountSelector
+} from "../../store/selectors/selectors";
 import { Pagination } from "../Pagination";
 import PostlistView from "./PostListView";
-const currentPageSelector = (state: AppState) =>
-    state.pagination.currentPage;
 
-const pageSizeSelector = (state: AppState) => state.postList.pageSize;
-const totalPostsCountSelector = (state: AppState) => state.postList.totalPostsCount;
-const postsSelector = (state: AppState) => state.postList.posts;
+
 const PostList = () => {
     const dispatch = useDispatch();
     const currentPage = useSelector(currentPageSelector);

@@ -10,8 +10,19 @@ import Validator, { ValidationError } from "fastest-validator"
 
 
 const newPasswordValidationSchema = {
-    password: { type: 'string', min: 8, max: 16, optional: true, nullable: true },
-    confirmpassword: { type: 'equal', field: 'password', optional: true, nullable: true }
+    password: {
+        type: 'string',
+        min: 8,
+        max: 16,
+        optional: true,
+        nullable: true
+    },
+    confirmpassword: {
+        type: 'equal',
+        field: 'password',
+        optional: true,
+        nullable: true
+    }
 }
 
 
@@ -20,8 +31,6 @@ export const check = (schema: Object, data: Object) => {
     const compiledValidator = validator.compile(schema)
     return compiledValidator(data)
 }
-
-
 
 
 export const NewPassword = () => {
@@ -49,8 +58,8 @@ export const NewPassword = () => {
         } else {
             setFormError(result as ValidationError[])
         }
-
     }
+
 
     return (
         <>

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
-import { AppState } from "../../store/store";
+import { AppState } from "../store/store";
 // import { useAuth } from "./AuthProvider";
 
 interface IProps {

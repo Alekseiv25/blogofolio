@@ -6,14 +6,33 @@ import { Input } from "../../components/Input"
 import { Navigation } from "../../components/Navigaton"
 import { Submit } from "../../components/Submit"
 import { registerUserAsyncAction } from "../../store/reducers/registerReducer/actions"
-import { AppState } from "../../store/store"
+import { getThemeSelector, registerSelector } from "../../store/selectors/selectors"
 import styles from './SignUp.module.scss'
 
 const signUpValidationSchema = {
-    name: { type: 'string', min: 3, max: 48, optional: true },
-    email: { type: 'email', optional: true },
-    password: { type: 'string', min: 8, max: 16, optional: true, nullable: true },
-    confirmpassword: { type: 'equal', field: 'password', optional: true, nullable: true }
+    name: {
+        type: 'string',
+        min: 3,
+        max: 48,
+        optional: true
+    },
+    email: {
+        type: 'email',
+        optional: true
+    },
+    password: {
+        type: 'string',
+        min: 8,
+        max: 16,
+        optional: true,
+        nullable: true
+    },
+    confirmpassword: {
+        type: 'equal',
+        field: 'password',
+        optional: true,
+        nullable: true
+    }
 }
 
 
@@ -25,12 +44,11 @@ export const check = (schema: Object, data: Object) => {
 }
 
 export const SignUp = () => {
-    const register = useSelector((state: AppState) => state.register)
+    const register = useSelector(registerSelector)
     const [nameApiError, setNameApiError] = useState([])
     const [emailApiError, setEmailApiError] = useState([])
     const [formError, setFormError] = useState<ValidationError[]>([])
     const dispatch = useDispatch();
-    const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
 
 
@@ -74,6 +92,7 @@ export const SignUp = () => {
         }
     }, [register.errors])
 
+    
     return (
         <>
             <Navigation backToHome='Back to home' text={'Sign Up'} />

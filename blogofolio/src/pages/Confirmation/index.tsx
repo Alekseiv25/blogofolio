@@ -13,6 +13,8 @@ export const Confirmation = () => {
     const handleGoToHome = () => {
         navigate('/')
     }
+
+    
     return (
         <>
             <Navigation backToHome='Back to home' text='Registration Confirmation' />

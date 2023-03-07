@@ -1,17 +1,8 @@
-export const DAY = 'DAY'
-export const NIGHT = 'NIGHT'
+import { IBaseActionType } from "../../../tools/types"
+import { DAY, defaultTheme, NIGHT } from "./constants"
+import { ITheme } from "./types"
 
-interface ITheme {
-    background?: string
-    color: string
-}
-
-const defaultTheme: ITheme = {
-    background: '#F3F3F3',
-    color: '#313037',
-}
-
-const themeReduser = (state: ITheme = defaultTheme, action: any): ITheme => {
+const themeReduser = (state: ITheme = defaultTheme, action: IBaseActionType): ITheme => {
     switch (action.type) {
         case DAY:
             return {
@@ -22,7 +13,6 @@ const themeReduser = (state: ITheme = defaultTheme, action: any): ITheme => {
                 background: '#313037',
                 color: '#ffffff'
             }
-
         default:
             return state
     }

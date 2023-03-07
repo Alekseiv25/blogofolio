@@ -1,6 +1,4 @@
-
-import { IPost } from "../../../services/PostService";
-import { IObjectStringList } from "../../../tools/types";
+import { IObjectStringList, IPost } from "../../../tools/types";
 import { ADD_MY_POSTS_COUNT, ADD_MY_POSTS_FAILED, ADD_MY_POSTS_SUCCESS, defaultState } from "./constants";
 import { AddPostActionType, MyPostStateType } from "./types";
 

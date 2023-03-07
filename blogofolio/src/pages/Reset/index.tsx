@@ -36,7 +36,6 @@ export const Reset = () => {
             fetchResetPassword(email)
             setEmail(email)
         } else { setFormError(result as ValidationError[]) }
-
     }
 
 

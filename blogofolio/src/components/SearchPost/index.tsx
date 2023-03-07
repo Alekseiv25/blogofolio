@@ -1,18 +1,16 @@
-import { IPost } from '../../services/PostService'
+
 import style from './SearchPost.module.scss'
 import { PostButtons } from '../Buttons/PostButtons'
 import { useDispatch } from 'react-redux'
-import { OPEN_POPUP } from '../../store/reducers/popUpReducer'
+import { popUpOpenAction } from '../../store/reducers/popUpReducer/actions'
+import { IPost } from '../../tools/types'
 export const SearchPost = (props: {post: IPost}) => {
     const { post:{date, title, image}, post } = props
 
     const dispatch = useDispatch()
 
     const handleShowPopup = () => {
-        dispatch({
-            type: OPEN_POPUP,
-            image: image
-        })
+        dispatch(popUpOpenAction(image))
     }
 
     return (<div className={style.post}>

@@ -1,21 +1,6 @@
-export const OPEN_POPUP = 'OPEN_POPUP'
-export const CLOSE_POPUP = 'CLOSE_POPUP'
+import { CLOSE_POPUP, defaultValue, OPEN_POPUP } from "./constants"
+import { IPopupAction, IPopupState } from "./types"
 
-
-
-interface IPopupState {
-    isOpen: boolean
-    image?: string
-}
-
-interface IPopupAction {
-    type: string
-    image?: string
-}
-
-const defaultValue: IPopupState = {
-    isOpen: false
-}
 
 const popupReducer = (state: IPopupState = defaultValue, action: IPopupAction): IPopupState => {
     switch (action.type) {

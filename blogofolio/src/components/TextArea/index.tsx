@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux'
+import { getThemeSelector } from '../../store/selectors/selectors'
 import styles from './TextArea.module.scss'
 
 interface IProps {
@@ -10,8 +11,9 @@ interface IProps {
 
 const TextArea = (props: IProps) => {
     const { label, placeholder, className, name } = props
-    const getThemeSelector = (state: any) => state.theme
     const theme = useSelector(getThemeSelector)
+
+
     return (
         <>
             <span className={styles.label} style={theme}>{label}</span>

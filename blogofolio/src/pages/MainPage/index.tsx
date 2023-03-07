@@ -2,19 +2,19 @@ import { Navigation } from "../../components/Navigaton"
 import { Tabs } from "../../components/Tabs"
 import PostList from "../../components/PostList"
 import { useSelector } from "react-redux"
-import { AppState } from "../../store/store"
 import MyFavoritesList from "../../components/PostList/MyFavoritesList"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { loadPostListAsyncAction, loadTotalPostsCountAsyncAction } from "../../store/reducers/postListReducer/postListAction"
 import { LoadSpinner } from "../../components/loadSpinner"
 import MyPostsList from "../../components/PostList/MyPostsList"
-const activeTabSelector = (state: AppState) => state.tabs.activeTab;
+import { activeTabSelector, postsSelector, totalPostsCountSelector } from "../../store/selectors/selectors"
+
 export const Main = () => {
-    let activeTab = useSelector(activeTabSelector);
-    const posts = useSelector((state: AppState) => state.postList.posts);
-    const total = useSelector((state: AppState) => state.postList.totalPostsCount)
     const dispatch = useDispatch()
+    let activeTab = useSelector(activeTabSelector);
+    const posts = useSelector(postsSelector);
+    const total = useSelector(totalPostsCountSelector)
 
 
     useEffect(() => {
@@ -29,6 +29,7 @@ export const Main = () => {
     if (!posts.length) {
         return <LoadSpinner />
     }
+
 
     return (
         <section>

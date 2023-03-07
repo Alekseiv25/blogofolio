@@ -1,14 +1,5 @@
-export interface IPost {
-    id: number
-    image: string
-    text: string
-    date: number
-    lesson_num?: number
-    title: string
-    author?: number
-    likes: number
-    dislikes: number
-}
+import { IPost } from "../tools/types"
+
 
 export interface IRes {
     count: number

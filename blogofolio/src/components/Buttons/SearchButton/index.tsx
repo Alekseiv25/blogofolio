@@ -1,14 +1,11 @@
 import { useDispatch } from 'react-redux'
-import { TOGGLE_SEARCH } from '../../../store/reducers/searchToggleReducer'
+import { ToggleSearchAction } from '../../../store/reducers/searchToggleReducer/actions'
 import styles from './SearchButton.module.scss'
 
 export const SearchButton = () => {
     const dispatch = useDispatch()
-
     const handleShowSearch = () => {
-        dispatch({
-            type: TOGGLE_SEARCH
-        })
+        dispatch(ToggleSearchAction())
     }
 
     return (

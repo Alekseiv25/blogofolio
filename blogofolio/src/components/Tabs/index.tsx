@@ -1,21 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadTotalPostsCountAction, loadTotalPostsCountAsyncAction } from "../../store/reducers/postListReducer/postListAction";
-import { AppState } from "../../store/store";
+import { activeTabSelector, currentPageSelector, tabsSelector, totalFavoritesPostsCountSelector } from "../../store/selectors/selectors";
 import { Tab } from "./Tab/Tab"
 import styles from './Tabs.module.scss'
 
 
-const totalFavoritesPostsCountSelector = (state: AppState) =>
-    state.favoriteList.favoritesPosts.length
-
-const currentPageSelector = (state: AppState) =>
-    state.pagination.currentPage;
-
-const tabsSelector = (state: AppState) => state.tabs.tabs;
-const activeTabSelector = (state: AppState) => state.tabs.activeTab;
-
-export const Tabs = (props: { activeTab1: string }) => {
+export const Tabs = (props:
+    {
+        activeTab1: string
+    }) => {
     const { activeTab1 } = props;
     const dispatch = useDispatch()
 

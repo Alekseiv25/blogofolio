@@ -1,6 +1,5 @@
 import styles from './loadSpinner.module.scss'
 
-
 export const LoadSpinner = () => {
     return (
         <svg className={styles.spinner} viewBox="0 0 50 50">

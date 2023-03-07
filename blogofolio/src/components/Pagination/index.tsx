@@ -1,19 +1,16 @@
 import { useSelector } from 'react-redux'
 import styles from './PagesNav.module.scss'
 import { useEffect, useState } from 'react';
-import { AppState } from '../../store/store';
 import { useDispatch } from 'react-redux';
 import { setCurrentPageAction, setNextPage, setPreviouslyPage } from '../../store/reducers/paginationReducer/actions';
-
-
-const currentPageSelector = (state: AppState) => state.pagination.currentPage;
+import { currentPageSelector, getThemeSelector } from '../../store/selectors/selectors';
 
 export const Pagination = (props: {
     postsPerPage: number;
     totalPostsCount: number;
 }) => {
     const { totalPostsCount, postsPerPage } = props;
-    const theme = useSelector((state: any) => state.theme)
+    const theme = useSelector(getThemeSelector)
     const dispatch = useDispatch()
     const currentPage = useSelector(currentPageSelector);
     const [pages, setPages] = useState<any[]>([1])

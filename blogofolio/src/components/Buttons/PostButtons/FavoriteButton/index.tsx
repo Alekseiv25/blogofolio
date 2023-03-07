@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IPost } from "../../../../services/PostService";
 import { addToFavoritesPostsAction, deleteFromFavoritesPostsAction } from "../../../../store/reducers/favoriteReducer/actions";
-import { AppState } from "../../../../store/store";
+import { favoritesPostsSelector, userSelector } from "../../../../store/selectors/selectors";
+import { IPost } from "../../../../tools/types";
 import styles from './styles.module.scss'
 
-const favoritesPostsSelector = (state: AppState) => state.favoriteList.favoritesPosts;
-const userSelector = (state: AppState) => state.auth.user
 const FavoriteButton = (props: { post: IPost }) => {
     const dispatch = useDispatch();
     const [signValidation, setSignValidation] = useState('')

@@ -1,5 +1,5 @@
-import { IPost } from "../../../services/PostService"
-import { IBaseActionType, IObjectStringList } from "../../../tools/types"
+
+import { IBaseActionType, IObjectStringList, IPost } from "../../../tools/types"
 
 
 

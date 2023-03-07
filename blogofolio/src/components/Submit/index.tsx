@@ -9,13 +9,12 @@ interface IProps {
 
 export const Submit = (props: IProps) => {
     const { value, className, onClick } = props
+
+
     return (
         <input type="submit"
             className={`${styles.submit} ${className}`}
             value={value} onClick={onClick}>
-
         </input>
-
-
     )
 }

@@ -4,14 +4,13 @@ import { LightBtn } from '../Buttons/ThemeButtons/Light'
 import { DarkBtn } from '../Buttons/ThemeButtons/Dark'
 import { NavLink } from 'react-router-dom'
 import AsideMenuButton from '../Buttons/LogInLogOutButton'
-import { AppState } from '../../store/store'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { setCurrentPageAction } from '../../store/reducers/paginationReducer/actions'
+import { getBurgerStateSelector, userSelector } from '../../store/selectors/selectors'
 
 
-const userSelector = (state: AppState) => state.auth.user
-const getBurgerStateSelector = (state: AppState) => state.burger
+
 
 export const BurgerMenu = () => {
     const user = useSelector(userSelector)

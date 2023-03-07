@@ -1,17 +1,6 @@
-export const TOGGLE_BURGER = 'TOGGLE_BURGER'
+import { defaultValue, TOGGLE_BURGER } from "./constants"
+import { IBurgerAction, IBurgerState } from "./types"
 
-
-interface IBurgerState {
-    isOpen: boolean
-}
-
-interface IBurgerAction {
-    type: string
-}
-
-const defaultValue: IBurgerState = {
-    isOpen: false
-}
 
 const burgerMenuReducer = (state: IBurgerState = defaultValue, action: IBurgerAction): IBurgerState => {
     switch (action.type) {

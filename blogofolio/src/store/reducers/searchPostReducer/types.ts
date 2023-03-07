@@ -1,5 +1,5 @@
-import { IPost } from '../../../services/PostService'
-import { IBaseActionType } from '../../../tools/types';
+
+import { IBaseActionType, IPost } from '../../../tools/types';
 
 
 interface ISearchPostsListState {

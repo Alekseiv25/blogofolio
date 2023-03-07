@@ -1,18 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { CLOSE_POPUP } from '../../store/reducers/popUpReducer'
-import { AppState } from '../../store/store'
+import { popUpCloseAction } from '../../store/reducers/popUpReducer/actions'
+import { getPopupStateSelector } from '../../store/selectors/selectors'
 import style from './Modal.module.scss'
 
-const getPopupStateSelector = (state: AppState) => state.popup
+
 
 
 const Modal = () => {
     const popupState = useSelector(getPopupStateSelector)
     const dispatch = useDispatch()
-
-    const hadneClosePopup = () => {
-        dispatch({ type: CLOSE_POPUP })
-    }
+    const hadneClosePopup = () => {dispatch(popUpCloseAction())}
 
     return (
         <div className={popupState.isOpen ? `${style.modal} ${style.active}` : `${style.modal}`} >

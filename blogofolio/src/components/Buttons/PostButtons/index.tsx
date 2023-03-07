@@ -2,7 +2,8 @@ import styles from './PostButtons.module.scss'
 import FavoriteButton from './FavoriteButton'
 import LikeButton from './LikeButton'
 import DislikeButton from './DislikeButton'
-import { IPost } from '../../../services/PostService'
+import { IPost } from '../../../tools/types'
+
 
 interface IProps {
     post: IPost
