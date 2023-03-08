@@ -12,7 +12,6 @@ export const BottomPostItem = (props: { post: IPost }) => {
     const dispatch = useDispatch()
     const handleShowPopup = () => {dispatch(popUpOpenAction(image))}
 
-
     return (<div className={style.post}>
         <img className={style.image} src={image} alt='123' onClick={handleShowPopup}></img>
         <Link to={`post/${id}`}>

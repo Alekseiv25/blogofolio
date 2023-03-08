@@ -1,4 +1,5 @@
 import { AppState } from "../store"
+
 export const authSelector = (state: AppState) => state.auth
 export const userSelector = (state: AppState) => state.auth.user
 export const getBurgerStateSelector = (state: AppState) => state.burger

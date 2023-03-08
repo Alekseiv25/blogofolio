@@ -13,7 +13,6 @@ const TextArea = (props: IProps) => {
     const { label, placeholder, className, name } = props
     const theme = useSelector(getThemeSelector)
 
-
     return (
         <>
             <span className={styles.label} style={theme}>{label}</span>

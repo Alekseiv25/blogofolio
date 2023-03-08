@@ -3,18 +3,14 @@ import { Navigation } from "../../components/Navigaton"
 import { Submit } from "../../components/Submit"
 import styles from './Confirmation.module.scss'
 
-
-
 export const Confirmation = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const email = location.state
-
     const handleGoToHome = () => {
         navigate('/')
     }
 
-    
     return (
         <>
             <Navigation backToHome='Back to home' text='Registration Confirmation' />

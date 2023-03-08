@@ -5,18 +5,10 @@ import { activeTabSelector, currentPageSelector, tabsSelector, totalFavoritesPos
 import { Tab } from "./Tab/Tab"
 import styles from './Tabs.module.scss'
 
-
-export const Tabs = (props:
-    {
-        activeTab1: string
-    }) => {
+export const Tabs = (props:{activeTab1: string}) => {
     const { activeTab1 } = props;
     const dispatch = useDispatch()
-
-    const totalFavoritesPostsCount = useSelector(
-        totalFavoritesPostsCountSelector
-    );
-
+    const totalFavoritesPostsCount = useSelector(totalFavoritesPostsCountSelector);
     const currentPage = useSelector(currentPageSelector);
     const tabs = useSelector(tabsSelector);
     const activeTab = useSelector(activeTabSelector);
@@ -33,11 +25,6 @@ export const Tabs = (props:
                 break;
         }
     }, [dispatch, currentPage, activeTab1, totalFavoritesPostsCount, activeTab]);
-
-
-
-
-
 
     return (<div className={styles.tabs}>
         <div className={styles.tabs}>

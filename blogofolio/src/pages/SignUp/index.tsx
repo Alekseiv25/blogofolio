@@ -35,7 +35,6 @@ const signUpValidationSchema = {
     }
 }
 
-
 export const check = (schema: Object, data: Object) => {
     const validator = new Validator()
     const compiledValidator = validator.compile(schema)
@@ -92,7 +91,6 @@ export const SignUp = () => {
         }
     }, [register.errors])
 
-    
     return (
         <>
             <Navigation backToHome='Back to home' text={'Sign Up'} />

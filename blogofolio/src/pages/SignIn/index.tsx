@@ -9,7 +9,6 @@ import { getUserAsyncAction } from '../../store/reducers/auth/actions'
 import { authSelector, getThemeSelector } from '../../store/selectors/selectors'
 import styles from './SignIn.module.scss'
 
-
 const signInValidationSchema = {
     email: {
         type: 'email',
@@ -25,7 +24,6 @@ const signInValidationSchema = {
 
 }
 
-
 export const check = (schema: Object, data: Object) => {
     const validator = new Validator()
     const compiledValidator = validator.compile(schema)
@@ -33,10 +31,7 @@ export const check = (schema: Object, data: Object) => {
     return compiledValidator(data)
 }
 
-
 export const SignIn = () => {
-
-
     const [formError, setFormError] = useState<ValidationError[]>([])
     const dispatch = useDispatch();
     const [apiErrors, setApiErrors] = useState('')
@@ -45,21 +40,18 @@ export const SignIn = () => {
     const theme = useSelector(getThemeSelector)
     const location = useLocation()
     const fromPage = location.state?.from?.pathname || '/'
-    const newPassword = location.state
     const handleSubmit: FormEventHandler<HTMLFormElement> = (e: any) => {
         e.preventDefault();
-
         const result = check(signInValidationSchema, {
             email: e.currentTarget.email.value,
             password: e.currentTarget.password.value,
         })
 
         if (result === true) {
-            setFormError(formError)
+            setFormError([])
             const email: string = e.currentTarget.email.value;
             const password: string = e.currentTarget.password.value;
             dispatch(getUserAsyncAction(email, password, () => navigate(fromPage)));
-            console.log(email, password);
         } else { setFormError(result as ValidationError[]) }
     }
 
@@ -67,7 +59,6 @@ export const SignIn = () => {
         for (const key in auth.errors) {
             if (auth.errors === null) {
                 setApiErrors(apiErrors)
-                console.log(auth.errors);
 
             } else {
                 const errors: any = (auth.errors[key])
@@ -80,7 +71,6 @@ export const SignIn = () => {
         <>
             <Navigation backToHome='Back to home' text={'Sign In'} />
             <form className={styles.Formwrapper} onSubmit={handleSubmit}>
-                {newPassword}
                 <span className={styles.errors}> {apiErrors}</span>
                 <Input
                     type='email'

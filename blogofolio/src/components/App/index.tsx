@@ -16,7 +16,6 @@ import Activation from '../../pages/Activation';
 import { NewPassword } from '../../pages/NewPassword/NewPassword';
 
 function App() {
-
   return (
     <Routes>
       <Route path='/' element={<Layout />}>

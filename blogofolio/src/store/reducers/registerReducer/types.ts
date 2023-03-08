@@ -1,7 +1,5 @@
 import { IBaseActionType, IObjectStringList } from "../../../tools/types";
 
-
-
 interface ILoadUserRegisterActionType extends IBaseActionType {
     payload: IUserType | IObjectStringList 
 }
@@ -11,8 +9,6 @@ interface IUserType {
     email: string;
     id: number;
 }
-
-
 
 interface IRegisterState {
     isRegistered: boolean;

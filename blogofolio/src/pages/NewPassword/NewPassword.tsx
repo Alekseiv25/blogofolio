@@ -8,7 +8,6 @@ import { FormEventHandler, useState } from "react"
 import { resetPasswordAsyncAction } from "../../store/reducers/resetReducer/actions"
 import Validator, { ValidationError } from "fastest-validator"
 
-
 const newPasswordValidationSchema = {
     password: {
         type: 'string',
@@ -25,24 +24,21 @@ const newPasswordValidationSchema = {
     }
 }
 
-
 export const check = (schema: Object, data: Object) => {
     const validator = new Validator()
     const compiledValidator = validator.compile(schema)
     return compiledValidator(data)
 }
 
-
 export const NewPassword = () => {
+    const [newPasswordMessage, setNewPasswordMessage] = useState('')
     const [formError, setFormError] = useState<ValidationError[]>([])
     const navigate = useNavigate();
     const { uid, token } = useParams();
     const dispatch = useDispatch();
     console.log(uid, token);
-
     const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault()
-
         const result = check(newPasswordValidationSchema, {
             password: e.currentTarget.password.value,
             confirmpassword: e.currentTarget.confirm_password.value
@@ -51,7 +47,11 @@ export const NewPassword = () => {
             setFormError([])
             const new_password: string = e.currentTarget.password.value
             if (uid && token) {
-                dispatch(resetPasswordAsyncAction(uid, token, new_password, () => navigate('/signIn', { state: 'Your password is changed' })))
+                setNewPasswordMessage('Your password has been changed')
+                setTimeout(
+                    dispatch(resetPasswordAsyncAction(uid, token, new_password, () => navigate('/signIn'))),
+                    4000
+                )
             } else {
                 return
             }
@@ -60,11 +60,11 @@ export const NewPassword = () => {
         }
     }
 
-
     return (
         <>
             <Navigation text={'New Password'} backToHome={'Back to home'} />
             <form className={styles.formwrapper} onSubmit={handleSubmit} >
+                <span>{newPasswordMessage}</span>
                 <Input type={'password'} label={'Password'} placeholder={'Your Password'} name={'password'} />
                 {formError.map(err => (
                     <span className={styles.errors}>{err.field === 'password' ? err.message : ''}</span>

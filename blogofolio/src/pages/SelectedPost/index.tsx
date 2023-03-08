@@ -14,11 +14,9 @@ export const SelectedPost = () => {
     const params: any = useParams()
     const navigate = useNavigate()
     const [selectedPost, setSelectedPost] = useState<IPost>({} as IPost)
-
     const nextPage = () => {
         navigate(`/post/${Number(params.id) + 1}`)
     }
-
     const previousPage = () => {
         navigate(`post/${Number(params.id) - 1}`)
     }
@@ -34,12 +32,6 @@ export const SelectedPost = () => {
     }
     const goHome = () => navigate('/')
 
-
-
-
-
-
-
     return (<section>
         <div className={styles.nav}>
             <a href="#!" style={theme} className={styles.link} onClick={goHome}>Home</a>
@@ -54,6 +46,5 @@ export const SelectedPost = () => {
             </div>
             <SelectedPostNav previousPage={previousPage} nextPage={nextPage} />
         </div>
-
     </section>)
 }

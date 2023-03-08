@@ -1,4 +1,4 @@
-import activateUser from "../../../services/activateUser/activateUser";
+import { activateUser } from "../../../services/registerService/registerService";
 import { AppDispatch } from "../../store";
 import { ILoadUserActivateActionType, IObjectStringList } from "./types";
 
@@ -19,7 +19,6 @@ export const activateUserAsyncAction = (
 ): any => {
     return async (dispatch: AppDispatch) => {
         const result = await activateUser(uid, token);
-
         if (result.ok) {
             dispatch(activationSuccessAction());
             cb();

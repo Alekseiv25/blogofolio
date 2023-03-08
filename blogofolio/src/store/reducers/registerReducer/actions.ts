@@ -1,5 +1,5 @@
-import activateUser from "../../../services/activateUser/activateUser";
-import registerUser from "../../../services/registerService/registerService";
+import activateUser from "../../../services/auth/auth";
+import {registerUser} from "../../../services/registerService/registerService";
 import { AppDispatch } from "../../store";
 import {
     ACTIVATION_FAILED,

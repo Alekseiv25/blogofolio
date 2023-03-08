@@ -1,7 +1,6 @@
 import { ACTIVATION_FAILED, ACTIVATION_SUCCESS, defaultState } from "./constants";
 import { IActivate, ILoadUserActivateActionType, IObjectStringList } from "./types";
 
-
 export const activatedReducer = (
     state: IActivate = defaultState,
     action: ILoadUserActivateActionType
@@ -19,7 +18,6 @@ export const activatedReducer = (
                 isActivated: false,
                 errors: action.payload as IObjectStringList,
             };
-
         default:
             return state;
     }

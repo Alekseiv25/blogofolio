@@ -1,4 +1,3 @@
-
 import { IBaseActionType, IPost } from "../../../tools/types";
 
 interface IFavoriteActionType extends IBaseActionType {
@@ -9,8 +8,6 @@ interface IFavoriteType {
     id: number;
     favoritesPosts: IPost[];
 }
-
-
 
 interface IFavoriteListState {
     favoritesPosts: IPost[];

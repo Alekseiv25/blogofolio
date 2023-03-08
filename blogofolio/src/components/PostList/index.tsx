@@ -10,7 +10,6 @@ import {
 import { Pagination } from "../Pagination";
 import PostlistView from "./PostListView";
 
-
 const PostList = () => {
     const dispatch = useDispatch();
     const currentPage = useSelector(currentPageSelector);
@@ -35,8 +34,12 @@ const PostList = () => {
             <PostlistView
                 mainPost={mainPost}
                 bottomPost={bottomPost}
-                asidePost={asidePost} />
-            <Pagination postsPerPage={postsPerPage} totalPostsCount={totalPostsCount} />
+                asidePost={asidePost}
+            />
+            <Pagination
+                postsPerPage={postsPerPage}
+                totalPostsCount={totalPostsCount}
+            />
         </>
     )
 }

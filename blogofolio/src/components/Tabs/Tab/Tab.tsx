@@ -5,12 +5,7 @@ import { ActiveTabType } from '../../../store/reducers/tabReducer/types'
 import { getThemeSelector, userSelector } from '../../../store/selectors/selectors'
 import styles from './Tab.module.scss'
 
-export const Tab = (props:
-    {
-        name: ActiveTabType;
-        activeTab: ActiveTabType;
-    }
-) => {
+export const Tab = (props: { name: ActiveTabType; activeTab: ActiveTabType; }) => {
     const { name, activeTab } = props;
     const dispatch = useDispatch();
     const user = useSelector(userSelector)
@@ -22,6 +17,7 @@ export const Tab = (props:
     if (!user && name === "My Posts") {
         return null
     }
+
     return (<>
         <button
             onClick={() => setActiveTab(name)}
@@ -30,6 +26,5 @@ export const Tab = (props:
         >
             {name}
         </button></>
-
     )
 }

@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-
 import { SearchPost } from "../../components/SearchPost"
 import styles from './Search.module.scss'
 import { useLocation } from "react-router-dom"
@@ -9,7 +8,6 @@ import { loadSearchPostsListAsyncAction, loadTotalSearchPostsCountAsyncAction } 
 import { Pagination } from "../../components/Pagination"
 import { currentPageSelector, getThemeSelector, searchPostsSelector, totalSearchPostsCountSelector } from "../../store/selectors/selectors"
 import { IPost } from "../../tools/types"
-
 
 export const Search = () => {
     const theme = useSelector(getThemeSelector)
@@ -27,8 +25,6 @@ export const Search = () => {
         dispatch(loadTotalSearchPostsCountAsyncAction(searchText));
     }, [dispatch, searchText, skip]);
 
-
-
     if (!searchPostsList.length) {
         return (<div className={styles.container}>
             <p className={styles.notresult}>Not results</p>
@@ -45,7 +41,6 @@ export const Search = () => {
                 ))}
                 <Pagination postsPerPage={take} totalPostsCount={totalSearchPostsCount} />
             </div>
-
         </section>
     )
 }

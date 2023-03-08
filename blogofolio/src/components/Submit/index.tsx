@@ -1,5 +1,4 @@
 import styles from './Submit.module.scss'
-
 interface IProps {
     value: string
     onClick?: () => void
@@ -9,7 +8,6 @@ interface IProps {
 
 export const Submit = (props: IProps) => {
     const { value, className, onClick } = props
-
 
     return (
         <input type="submit"

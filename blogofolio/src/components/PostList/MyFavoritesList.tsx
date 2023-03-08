@@ -2,12 +2,9 @@ import { useSelector } from "react-redux";
 import { favoritesPostsSelector } from "../../store/selectors/selectors";
 import PostListView from "./PostListView";
 
-
 const MyFavoritesList = () => {
-
     const posts = useSelector(favoritesPostsSelector);
     const favoritesPosts = posts
-
 
     return (
         <>
@@ -19,4 +16,5 @@ const MyFavoritesList = () => {
         </>
     )
 }
+
 export default MyFavoritesList

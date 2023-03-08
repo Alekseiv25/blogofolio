@@ -3,13 +3,10 @@ import { useSelector } from 'react-redux'
 import { getThemeSelector } from '../../../../store/selectors/selectors'
 import styles from './styles.module.scss'
 
-
-
 const DislikeButton = () => {
     const theme = useSelector(getThemeSelector)
     const [dislikeActive, setDislikeActive] = useState<boolean>(false)
     const [dislikeCount, setDislikeCount] = useState<number>(Math.floor(Math.random() * 50))
-
     const DislikeCount = () => {
         if (!dislikeActive) {
             setDislikeCount(dislikeCount + 1)
@@ -33,7 +30,6 @@ const DislikeButton = () => {
                     fill={dislikeActive ? `${"#ff0000"}` : `${theme.color === '#313037' ? '#313037' : '#FFFFFF'}`}
                 />
             </svg>
-
         </button>
         <div className={styles.dislikeCounter}>{dislikeCount}</div>
     </>)

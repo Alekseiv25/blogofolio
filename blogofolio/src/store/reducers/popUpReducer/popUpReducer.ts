@@ -1,7 +1,6 @@
 import { CLOSE_POPUP, defaultValue, OPEN_POPUP } from "./constants"
 import { IPopupAction, IPopupState } from "./types"
 
-
 const popupReducer = (state: IPopupState = defaultValue, action: IPopupAction): IPopupState => {
     switch (action.type) {
         case OPEN_POPUP:
@@ -19,6 +18,5 @@ const popupReducer = (state: IPopupState = defaultValue, action: IPopupAction): 
             return state
     }
 }
-
 
 export default popupReducer

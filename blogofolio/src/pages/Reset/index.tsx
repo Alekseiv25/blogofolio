@@ -3,14 +3,12 @@ import { FormEventHandler, useState } from 'react'
 import { Input } from '../../components/Input'
 import { Navigation } from '../../components/Navigaton'
 import { Submit } from '../../components/Submit'
-import { fetchResetPassword } from '../../services/reset/resetService'
+import { fetchResetPassword } from '../../services/user/getUser'
 import styles from './Reset.module.scss'
-
 
 const resetValidationSchema = {
     email: { type: 'email' },
 }
-
 
 export const check = (schema: Object, data: Object) => {
     const validator = new Validator()
@@ -19,13 +17,10 @@ export const check = (schema: Object, data: Object) => {
     return compiledValidator(data)
 }
 
-
-
 export const Reset = () => {
     const [formError, setFormError] = useState<ValidationError[]>([])
     const [email, setEmail] = useState<string>()
     const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-
         const result = check(resetValidationSchema, {
             email: e.currentTarget.email.value,
         })
@@ -37,7 +32,6 @@ export const Reset = () => {
             setEmail(email)
         } else { setFormError(result as ValidationError[]) }
     }
-
 
     return (
         <>

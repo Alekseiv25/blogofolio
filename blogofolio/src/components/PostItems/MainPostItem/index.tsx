@@ -12,9 +12,7 @@ export const MainPostItem = (props: { post: IPost }) => {
         post: { date, title, text, image, id, }, post } = props
     const theme = useSelector(getThemeSelector)
     const dispatch = useDispatch()
-
     const handleShowPopup = () => { dispatch(popUpOpenAction(image))}
-
 
     return (<div className={style.post}>
         <div className={style.container}>

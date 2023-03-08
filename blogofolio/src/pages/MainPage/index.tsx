@@ -16,11 +16,9 @@ export const Main = () => {
     const posts = useSelector(postsSelector);
     const total = useSelector(totalPostsCountSelector)
 
-
     useEffect(() => {
         dispatch(loadTotalPostsCountAsyncAction())
     }, [dispatch])
-
 
     useEffect(() => {
         dispatch(loadPostListAsyncAction(total, 0))
@@ -29,7 +27,6 @@ export const Main = () => {
     if (!posts.length) {
         return <LoadSpinner />
     }
-
 
     return (
         <section>

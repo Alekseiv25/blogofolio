@@ -1,4 +1,4 @@
-import { IObjectStringList } from "../../../tools/types";
+import { IObjectStringList, IPost } from "../../../tools/types";
 import { IUserType } from "../registerReducer/types";
 
 interface IState {

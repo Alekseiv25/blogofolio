@@ -12,11 +12,9 @@ export const AsidePostItem = (props: { post: IPost }) => {
     const dispatch = useDispatch()
     const handleShowPopup = () => { dispatch(popUpOpenAction(image))}
 
-    
     return (
         <>
             <div className={style.post}>
-
                 <div className={style.container}>
                     <Link to={`post/${id}`}>
                         <div className={style.titlewrapper}>
@@ -28,7 +26,5 @@ export const AsidePostItem = (props: { post: IPost }) => {
                 </div>
                 <PostButtons post={post} likes={post.likes} dislikes={post.dislikes} />
             </div>
-
-
         </>)
 }

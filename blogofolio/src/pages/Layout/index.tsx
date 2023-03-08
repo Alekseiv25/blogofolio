@@ -5,11 +5,9 @@ import Modal from "../../components/Modal"
 import { useSelector } from "react-redux"
 import { getThemeSelector } from "../../store/selectors/selectors"
 
-
 const Layout = () => {
     const theme = useSelector(getThemeSelector)
 
-    
     return (
         <div className='App'>
             <header className="App-header">

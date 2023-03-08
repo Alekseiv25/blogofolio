@@ -12,5 +12,4 @@ const burgerMenuReducer = (state: ISearchState = defaultValue, action: ISearchAc
     }
 }
 
-
 export default burgerMenuReducer

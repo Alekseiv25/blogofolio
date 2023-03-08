@@ -1,13 +1,10 @@
-
 import { IBaseActionType, IPost } from '../../../tools/types';
-
 
 interface ISearchPostsListState {
     searchPosts: IPost[];
     totalSearchPostsCount: number;
     pageSize: number;
 }
-
 interface ISearchPostsListGetPostsAction extends IBaseActionType {
     posts: IPost[];
 }

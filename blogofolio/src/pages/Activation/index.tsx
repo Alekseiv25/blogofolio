@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { activateUserAsyncAction } from "../../store/reducers/activateReducer/actions";
 import { activateSelector } from "../../store/selectors/selectors";
 
-
 const Activation = () => {
     const navigate = useNavigate();
     const { uid, token } = useParams();
@@ -16,12 +15,10 @@ const Activation = () => {
         }
     }, [navigate, token, uid, dispatch]);
 
-    
     return (
         <div>
             Activation
             <div>{JSON.stringify(activate)}</div>
-
         </div>
     );
 };

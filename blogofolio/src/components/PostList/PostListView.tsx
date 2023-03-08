@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { activeTabSelector, favoritesPostsSelector } from "../../store/selectors/selectors";
+import { activeTabSelector, favoritesPostsSelector, myPostsCountSelector } from "../../store/selectors/selectors";
 import { IPost } from "../../tools/types";
 import { AsidePostItem } from "../PostItems/AsidePostItem";
 import { BottomPostItem } from "../PostItems/BottomPostItem";
@@ -12,15 +12,16 @@ interface IProps {
     asidePost: IPost[];
 }
 
-
-
 const PostlistView = (props: IProps) => {
     const { mainPost, bottomPost, asidePost } = props
     let activeTab = useSelector(activeTabSelector);
     const favoritePosts = useSelector(favoritesPostsSelector);
+    const myPostsCount = useSelector(myPostsCountSelector)
 
     if (!favoritePosts.length && activeTab === 'My Favorites') {
         return (<div className={styles.noposts}><p>No favorites Posts </p></div>)
+    } else if (myPostsCount === 0 && activeTab === 'My Posts') {
+        return (<div className={styles.noposts}><p>No My Posts </p></div>)
     } else {
 
         return (

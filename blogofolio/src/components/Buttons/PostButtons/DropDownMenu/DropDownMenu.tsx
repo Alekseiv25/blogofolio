@@ -19,6 +19,7 @@ export const DropDownMenu = (props: IProps) => {
         await dispatch(deleteMyPostAsyncAction(id))
         await dispatch(getMyPostsAsyncAction(take, skip))
     }
+
     return (
         <div className={active === true && activeTab === 'My Posts' ? `${styles.active}` : `${styles.disable}`}>
             <button onClick={handleDelete}>Delete Post</button>

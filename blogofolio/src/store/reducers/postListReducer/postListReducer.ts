@@ -5,7 +5,6 @@ import {
 } from "./constants";
 import { IPostListAction, IPostsListState } from "./types";
 
-
 const postListReducer = (
     state: IPostsListState = defaultState,
     action: IPostListAction

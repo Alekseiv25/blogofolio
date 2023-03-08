@@ -9,9 +9,6 @@ import { useDispatch } from 'react-redux'
 import { setCurrentPageAction } from '../../store/reducers/paginationReducer/actions'
 import { getBurgerStateSelector, userSelector } from '../../store/selectors/selectors'
 
-
-
-
 export const BurgerMenu = () => {
     const user = useSelector(userSelector)
     const burgerState = useSelector(getBurgerStateSelector)
@@ -25,7 +22,6 @@ export const BurgerMenu = () => {
             <div className={styles.content}>
                 <div className={styles.header}>
                     {!user ? null : <UserButton />}
-
                 </div>
                 <ul className={styles.ul}>
                     <li onClick={gotoPage}><NavLink to='/'>Home</NavLink></li>
@@ -38,7 +34,6 @@ export const BurgerMenu = () => {
                     <div className={styles.NightWrapper}>
                         <DarkBtn />
                     </div>
-
                 </div>
                 <div className={styles.LogOut}>
                     {user ? (
@@ -48,9 +43,6 @@ export const BurgerMenu = () => {
                     )}
                 </div>
             </div>
-
-
-
         </div>
     )
 }

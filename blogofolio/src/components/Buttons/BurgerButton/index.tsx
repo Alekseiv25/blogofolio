@@ -4,7 +4,6 @@ import styles from './BurgerButton.module.scss'
 
 
 export const BurgerButton = () => {
-
     const dispatch = useDispatch()
     const handleShowBurger = () => { dispatch(burgerMenuAction()) }
 

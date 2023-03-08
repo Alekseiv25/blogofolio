@@ -14,7 +14,7 @@ const getTokensUser = async (
         }),
     };
 
-    
+
     const request = new Request(url, params);
     const response = await fetch(request);
     const result = await response.json();
@@ -24,4 +24,5 @@ const getTokensUser = async (
         data: result,
     };
 };
+
 export default getTokensUser 

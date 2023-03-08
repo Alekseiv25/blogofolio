@@ -15,11 +15,9 @@ const MyPostsList = () => {
     const take = 4;
     const skip = take * currentPage - 4;
 
-
     useEffect(() => {
         dispatch(getMyPostsAsyncAction(take, skip));
     }, [dispatch, postsCount, skip]);
-
 
     return (<>
         <PostListView
@@ -32,7 +30,6 @@ const MyPostsList = () => {
             totalPostsCount={postsCount!}
         />
     </>
-
     )
 }
 export default MyPostsList

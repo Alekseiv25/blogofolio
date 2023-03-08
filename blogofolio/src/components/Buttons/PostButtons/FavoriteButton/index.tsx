@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavoritesPostsAction, deleteFromFavoritesPostsAction } from "../../../../store/reducers/favoriteReducer/actions";
-import { favoritesPostsSelector, userSelector } from "../../../../store/selectors/selectors";
+import { favoritesPostsSelector, getThemeSelector, userSelector } from "../../../../store/selectors/selectors";
 import { IPost } from "../../../../tools/types";
 import { DropDownMenu } from "../DropDownMenu/DropDownMenu";
 import styles from './styles.module.scss'
@@ -14,24 +14,19 @@ const FavoriteButton = (props: { post: IPost }) => {
     const favoritePosts = useSelector(favoritesPostsSelector);
     const id = post.id;
     const user = useSelector(userSelector)
+    const theme = useSelector(getThemeSelector)
     const isFavoritePost = (favoritePostId: number) => {
         return favoritePosts.find((post) => post.id === favoritePostId);
     };
-
-
     const toggleFavoritesPosts = (post: IPost) => {
         if (user) {
             if (!isFavoritePost(id)) {
                 dispatch(addToFavoritesPostsAction(post));
-                console.log(favoritePosts);
             } else {
                 dispatch(deleteFromFavoritesPostsAction(id));
             }
         } else { setSignValidation('You need to SignIn') }
     };
-
-    const getThemeSelector = (state: any) => state.theme
-    const theme = useSelector(getThemeSelector)
 
     return (
         <div className={styles.container}>
@@ -50,7 +45,6 @@ const FavoriteButton = (props: { post: IPost }) => {
                     />
                 </svg>
             </button>
-
             <button onClick={() => { setToggleDropDown(!toggleDropDown) }} >
                 <svg width="20"
                     height="4"

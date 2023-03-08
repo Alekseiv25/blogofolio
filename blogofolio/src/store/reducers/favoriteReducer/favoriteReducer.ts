@@ -1,4 +1,3 @@
-
 import { IPost } from "../../../tools/types";
 import { ADD_TO_FAVORITES, defaultState, DELETE_FROM_FAVORITES } from "./constants";
 import { IFavoriteActionType, IFavoriteListState } from "./types";
@@ -22,6 +21,5 @@ const favoriteReducer = (state: IFavoriteListState = defaultState,action: IFavor
             return state;
     }
 };
-
 
 export default favoriteReducer

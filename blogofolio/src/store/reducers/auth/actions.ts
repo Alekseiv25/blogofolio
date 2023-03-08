@@ -1,13 +1,10 @@
-import getTokensUser from "../../../services/auth/auth";
-import { getUser } from "../../../services/getUser/getUser";
-import fetchRefreshToken from "../../../services/refreshToken/refreshToken"
+import getTokensUser  from "../../../services/auth/auth";
+import { fetchRefreshToken, getUser } from "../../../services/user/getUser";
 import { IBaseActionType } from "../../../tools/types";
 import { AppDispatch, AppState } from "../../store";
 import { IUserType } from "../registerReducer/types";
 import { GET_TOKEN_FAILED, GET_TOKEN_SUCCESS, GET_USER, SIGN_OUT } from "./constants";
 import { AuthUserActionType, IObjectStringList, TokenDto } from "./types";
-
-
 
 export const getTokensSuccessAction = (
     tokens: TokenDto
@@ -69,16 +66,14 @@ export const getUserAsyncAction = (email: string, password: string, cb: () => vo
         const userData = getState().auth.user?.username
         let accessToken = getState().auth.tokens?.access
         let refreshToken = getState().auth.tokens?.refresh
+        const errors = getState().auth.errors
 
         if (!refreshToken) {
-            await dispatch(getTokensAsyncAction(email, password))
-            await dispatch(getUserAsyncAction(email, password, cb))
-            if (refreshToken) {
-                await dispatch(getUserAsyncAction(email, password, cb))
-            } else {
+            if (errors) {
                 return
             }
-            return
+            await dispatch(getTokensAsyncAction(email, password))
+            await dispatch(getUserAsyncAction(email, password, cb))
         } else if (!accessToken) {
             await dispatch(refreshTokenAsyncAction())
             await dispatch(getUserAsyncAction(email, password, cb))
